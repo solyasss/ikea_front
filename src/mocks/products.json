@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Chair",
+    "price": "59.99",
+    "image": "/src/assets/img/products/product-1.png"
+  },
+  {
+    "id": 2,
+    "name": "Lamp",
+    "price": "19.99",
+    "image": "/src/assets/img/products/product-2.png"
+  },
+  {
+    "id": 3,
+    "name": "Lamp",
+    "price": "19.99",
+    "image": "/src/assets/img/products/product-3.png"
+  }
+]
