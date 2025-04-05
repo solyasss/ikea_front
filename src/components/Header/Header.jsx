@@ -1,6 +1,6 @@
 import classes from './Headers.module.css';
 import burgerIcon from '../../assets/img/header/burger copy.svg';
-import UnionIcon from "../../assets/BuyNow.svg";
+import UnionIcon from "../../assets/img/icons_svg/BuyNow.svg";
 import GeoIcon from "../../assets/img/header/Vector.svg";
 import UserIcon from "../../assets/img/header/uil_user1.svg";
 import BuyIcon from "../../assets/img/header/BuyIcon.svg";
