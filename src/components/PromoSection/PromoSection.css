@@ -1,0 +1,25 @@
+.promo-section {
+    margin-bottom: 32px;
+}
+
+.promo-section__title {
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.promo-section__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+}
+
+.promo-section__col-6 {
+    grid-column: span 6;
+    min-height: 400px;
+}
+
+.promo-section__col-12 {
+    grid-column: span 12;
+   min-height: 364px;
+}
