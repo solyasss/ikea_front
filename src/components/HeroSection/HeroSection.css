@@ -3,5 +3,60 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 140vh;
 }
+
+.hero-section h1 {
+    margin-top: 47px;
+    font-weight:600;
+    font-size: 90px !important;
+    text-align: center;
+    color: #1F1F1F;
+}
+
+.start-accaunt-button {
+    color: white;
+    font-weight: 600;
+    background-color: black;
+    border-radius: 40px;
+    width: 377px;
+    padding: 10px;
+
+}
+
+.hero-block-buttons {
+    display: flex;
+    gap: 52px;
+}
+
+.catalog-dropdown {
+    width: 200px;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 40px;
+    background: url("/src/assets/img/heroSection/catalog-dropdown-img.svg") no-repeat right 28px center;
+    background-size: 20px 20px;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.hero-block-navigations{
+    margin-left: 140px;
+    margin-top: 130px;
+}
+
+.hero-cards{
+   display: flex;
+   margin-top: 40px;
+   margin-bottom: 10px;
+   gap: 54px;
+}
+
+.discount-text{
+    font-weight: 700;
+}
+
