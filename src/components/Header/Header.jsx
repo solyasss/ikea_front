@@ -39,7 +39,7 @@ export default function Headers() {
                         </div>
                     </div>
 
-                    <div className={classes.menuItems}>
+                    <div className={classes.menuItemsLeft}>
                         <div className={classes.logoText}>
                             <img src={GeoIcon} alt="Гео" />
                             <a href="#kyiv"><p>Київ</p></a>

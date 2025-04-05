@@ -1,18 +1,18 @@
-import { FaSearch } from 'react-icons/fa'; 
-import classes from './Search.module.css'; 
+import { FaSearch } from 'react-icons/fa';
+import classes from './Search.module.css';
 
 const Search = () => {
     return (
         <div className={classes.inputGroup}>
+            <FaSearch className={classes.searchIcon} />
             <input
                 type="text"
-                className={classes.searchInput} 
+                className={classes.searchInput}
                 placeholder="Поиск"
                 aria-label="Search"
-                aria-describedby="basic-addon1"
             />
         </div>
     );
-}
+};
 
-export default Search; 
+export default Search;
