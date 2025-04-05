@@ -1,0 +1,91 @@
+header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.leftMenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.burgerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.menuItems {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+
+.menuItems a {
+    text-decoration: none;
+    color: #5F5F5F;
+}
+
+.menuItems a p {
+    margin: 0;
+    cursor: pointer;
+}
+
+.rightMenu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.logoText {
+    display: flex;
+    gap: 10px;
+}
+
+.logoGroup {
+    display: flex;
+    gap: 20px;
+}
+
+.firstHeader {
+    background-color: #839D9A;
+    overflow: hidden;
+}
+
+.firstHeader div{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    animation: running-text 15s linear infinite;
+    width: auto;
+   
+}
+
+  .movingText {
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+  }
+
+  @keyframes running-text {
+    0%{
+        transform: translateX(-100%);
+    }
+
+    100%{
+        transform: translateX(100%);
+    }
+  }
+  

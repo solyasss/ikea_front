@@ -1,0 +1,22 @@
+.searchInput {
+    padding-left: 30px;
+    border-radius: 25px; 
+    width: 860px;
+    height: 40px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    pointer-events: none; 
+}
+
+.inputGroup {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+   
+}
