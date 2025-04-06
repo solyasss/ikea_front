@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
+import buyNowImg from "../assets/BuyNow.svg";
 import Headers from "../components/Header/Header";
 
 function Home() {
@@ -16,7 +16,6 @@ function Home() {
                 <ul>
                     <li><Link to="/registration">Go to Registration</Link></li>
                     <li><Link to="/products">View Products</Link></li>
-                    <li><Link to="/promo">Promo</Link></li>
                 </ul>
             </div>
         </>
