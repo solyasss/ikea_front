@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "/src/assets/img/promo/promo-1.png",
+    "title": "НАША НОВА КОЛЕКЦІЯ",
+    "link": "/products?collection=new",
+    "variant": "standard",
+    "colSpan": 6
+  },
+  {
+    "id": 2,
+    "image": "/src/assets/img/promo/promo-2.png",
+    "title": "НАШІ НАЙКРАЩІ ПРОПОЗИЦІЇ",
+    "link": "/products?offers=best",
+    "variant": "standard",
+    "colSpan": 6
+  },
+  {
+    "id": 3,
+    "image": "/src/assets/img/promo/promo-3.png",
+    "title": "",
+    "link": "/products/sofas",
+    "variant": "icon",
+    "colSpan": 12
+  }
+]
