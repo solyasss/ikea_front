@@ -87,18 +87,13 @@ header {
 
 .firstHeader div{
     display: flex;
+    color: #ffff;
     gap: 50px;
     align-items: center;
     animation: running-text 15s linear infinite;
     width: auto;
    
 }
-
-  .movingText {
-    display: inline-block;
-    color: #fff;
-    text-align: center;
-  }
 
   @keyframes running-text {
     0%{

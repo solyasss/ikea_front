@@ -20,6 +20,14 @@ export default function Headers() {
                     <p className={classes.movingText}>#buy now</p>
                     <p className={classes.movingText}>#вседлядому</p>
                 </div>
+                {/* <div>
+                    <p className={classes.movingText}>#швидкотазручно</p>
+                    <p className={classes.movingText}>#buy now</p>
+                    <p className={classes.movingText}>#вседлядому</p>
+                    <p className={classes.movingText}>#швидкотазручно</p>
+                    <p className={classes.movingText}>#buy now</p>
+                    <p className={classes.movingText}>#вседлядому</p>
+                </div> */}
             </div>
             <header>
                 <nav className={classes.menu}>
