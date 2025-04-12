@@ -92,10 +92,10 @@ header {
     align-items: center;
     animation: running-text 15s linear infinite;
     width: auto;
-   
+
 }
 
-  @keyframes running-text {
+@keyframes running-text {
     0%{
         transform: translateX(-100%);
     }
@@ -103,5 +103,4 @@ header {
     100%{
         transform: translateX(100%);
     }
-  }
-  
+}

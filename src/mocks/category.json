@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "title": "Гостиная",
+    "slug": "living-room",
+    "subcategories": [
+      {
+        "title": "Диваны",
+        "slug": "sofas"
+      },
+      {
+        "title": "Кресла",
+        "slug": "armchairs"
+      },
+      {
+        "title": "Журнальные столики",
+        "slug": "coffee-tables"
+      },
+      {
+        "title": "Шкафы и полки",
+        "slug": "wardrobes-and-shelves"
+      },
+      {
+        "title": "Стеллажи для ТВ",
+        "slug": "tv-stands"
+      },
+      {
+        "title": "Ковры",
+        "slug": "carpets"
+      },
+      {
+        "title": "Освещение",
+        "slug": "lighting"
+      },
+      {
+        "title": "Декор",
+        "slug": "decor"
+      },
+      {
+        "title": "Системы хранения",
+        "slug": "storage"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Спальня",
+    "slug": "bedroom",
+    "subcategories": [
+      {
+        "title": "Кровати",
+        "slug": "beds"
+      },
+      {
+        "title": "Матрасы",
+        "slug": "mattresses"
+      },
+      {
+        "title": "Шкафы",
+        "slug": "closets"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Кухня и столовая",
+    "slug": "kitchen-and-dining",
+    "subcategories": [
+      {
+        "title": "Обеденные столы",
+        "slug": "dining-tables"
+      },
+      {
+        "title": "Стулья",
+        "slug": "chairs"
+      },
+      {
+        "title": "Барные стулья",
+        "slug": "bar-stools"
+      },
+      {
+        "title": "Посуда",
+        "slug": "dishes"
+      },
+      {
+        "title": "Сервировка стола",
+        "slug": "table-setting"
+      },
+      {
+        "title": "Столовые приборы",
+        "slug": "cutlery"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Ванная",
+    "slug": "bathroom",
+    "subcategories": [
+      {
+        "title": "Полки и шкафчики",
+        "slug": "shelves-and-cabinets"
+      },
+      {
+        "title": "Полотенца",
+        "slug": "towels"
+      },
+      {
+        "title": "Шторки для душа",
+        "slug": "shower-curtains"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Офис",
+    "slug": "office",
+    "subcategories": [
+      {
+        "title": "Письменные столы",
+        "slug": "desks"
+      },
+      {
+        "title": "Офисные кресла",
+        "slug": "office-chairs"
+      },
+      {
+        "title": "Книжные шкафы",
+        "slug": "bookshelves"
+      },
+      {
+        "title": "Настольные лампы",
+        "slug": "desk-lamps"
+      }
+    ]
+  }
+]

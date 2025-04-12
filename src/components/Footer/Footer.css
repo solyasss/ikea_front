@@ -1,0 +1,27 @@
+.footer-wrapper {
+    background-color: #F2F2F2;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    min-height: 677px;
+    width: 100%;
+}
+.marg-y{
+    margin: 78px 0;
+}
+.marg-bot{
+    margin-bottom: 50px !important;
+}
+footer.footer-wrapper a {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+footer.footer-wrapper a:hover {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+.categories {
+    text-decoration: none !important;
+    color: #000 !important;
+}

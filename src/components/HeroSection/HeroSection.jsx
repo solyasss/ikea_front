@@ -13,7 +13,6 @@ export default function HeroSection() {
     return (
         <>
             <section className="hero-section">
-                <Headers />
                 <h1>{TITLE}</h1>
                 <div className="hero-block-navigations">
                     <div className="hero-block-buttons">

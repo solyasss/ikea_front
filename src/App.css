@@ -29,7 +29,13 @@ body {
         font-weight: 400 !important;
     }
 
+
     /*font weight*/
+    .fw-light{
+        font-weight: 300 !important;
+    }
+
+
     .fw-reg {
         font-weight: 400 !important;
     }
