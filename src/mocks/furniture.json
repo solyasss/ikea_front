@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Набор №1",
+    "image": "/src/assets/img/furniture/furniture-1.png",
+    "link": "/furniture-set-1"
+  },
+  {
+    "name": "Набор №2",
+    "image": "/src/assets/img/furniture/furniture-2.png",
+    "link": "/furniture-set-2"
+  },
+  {
+    "name": "Набор №3",
+    "image": "/src/assets/img/furniture/furniture-3.png",
+    "link": "/furniture-set-3"
+  },
+  {
+    "name": "Набор №4",
+    "image": "/src/assets/img/furniture/furniture-4.png",
+    "link": "/furniture-set-4"
+  },
+  {
+    "name": "Набор №5",
+    "image": "/src/assets/img/furniture/furniture-5.png",
+    "link": "/furniture-set-5"
+  },
+  {
+    "name": "Набор №6",
+    "image": "/src/assets/img/furniture/furniture-6.png",
+    "link": "/furniture-set-6"
+  },
+  {
+    "name": "Набор №7",
+    "image": "/src/assets/img/furniture/furniture-7.png",
+    "link": "/furniture-set-7"
+  },
+  {
+    "name": "Набор №8",
+    "image": "/src/assets/img/furniture/furniture-8.png",
+    "link": "/furniture-set-8"
+  },
+  {
+    "name": "Набор №9",
+    "image": "/src/assets/img/furniture/furniture-9.png",
+    "link": "/furniture-set-9"
+  },
+  {
+    "name": "Набор №10",
+    "image": "/src/assets/img/furniture/furniture-10.png",
+    "link": "/furniture-set-10"
+  },
+  {
+    "name": "Набор №11",
+    "image": "/src/assets/img/furniture/furniture-11.png",
+    "link": "/furniture-set-11"
+  },
+  {
+    "name": "Набор №12",
+    "image": "/src/assets/img/furniture/furniture-12.png",
+    "link": "/furniture-set-12"
+  },
+  {
+    "name": "Набор №13",
+    "image": "/src/assets/img/furniture/furniture-13.png",
+    "link": "/furniture-set-13"
+  },
+  {
+    "name": "Набор №14",
+    "image": "/src/assets/img/furniture/furniture-14.png",
+    "link": "/furniture-set-14"
+  },
+  {
+    "name": "Набор №15",
+    "image": "/src/assets/img/furniture/furniture-15.png",
+    "link": "/furniture-set-15"
+  },
+  {
+    "name": "Набор №16",
+    "image": "/src/assets/img/furniture/furniture-16.png",
+    "link": "/furniture-set-16"
+  },
+  {
+    "name": "Набор №17",
+    "image": "/src/assets/img/furniture/furniture-17.png",
+    "link": "/furniture-set-17"
+  },
+  {
+    "name": "Набор №18",
+    "image": "/src/assets/img/furniture/furniture-18.png",
+    "link": "/furniture-set-18"
+  }
+]
