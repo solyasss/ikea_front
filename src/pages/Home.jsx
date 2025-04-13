@@ -5,8 +5,11 @@ import HeroSection from "../components/HeroSection/HeroSection";
 import PromoSection from "../components/PromoSection/PromoSection";
 
 import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
+import CategoryCards from "../components/CategorySlider/CategorySlider"
+import sliderData from "../mocks/sliderData.json"; 
 
-function Home() {
+function Home() { 
+
     return (
         <>
             <HeroSection />
@@ -27,6 +30,8 @@ function Home() {
             </div>
 
             <PromoSection title="ЗНАЙДИ ТЕ, ЩО ШУКАЄШ!" />
+            <CategoryCards title="РЕКОМЕНДАЦІЇ" cards={sliderData}/>
+            <CategoryCards title="НАЙКРАЩІ НАБОРИ" cards={sliderData}/>
         </>
     );
 }
