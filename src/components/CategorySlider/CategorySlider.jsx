@@ -1,4 +1,4 @@
-import CategoryCards from "../CategoryСards/CategoryСards"
+import CategoryCards from "../CategoryCards/CategoryСards"
 import "./CategorySlider.css"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
