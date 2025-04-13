@@ -8,8 +8,6 @@ import CategoryCards from "../components/CategorySlider/CategorySlider"
 import FurnitureCards from "../components/FurnitureCards/FurnitureCards";
 import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
 
-import sliderData from "../mocks/sliderData.json";
-
 import InformationCard from "../components/InformationCard/InformationCard";
 import sliderData from "../mocks/sliderData.json";
 
