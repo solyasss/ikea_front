@@ -44,6 +44,10 @@ body {
         font-weight: 500 !important;
     }
 
+    .fw-sem-bold {
+        font-weight: 600 !important;
+    }
+
     /*font colors*/
     .lt-grey {
         color: #646464 !important;

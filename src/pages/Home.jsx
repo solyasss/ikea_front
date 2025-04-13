@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 
 import HeroSection from "../components/HeroSection/HeroSection";
 import PromoSection from "../components/PromoSection/PromoSection";
-
-import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
 import informImg from "../assets/img/InformationCard/inform-1.png"
 import CategoryCards from "../components/CategorySlider/CategorySlider"
-import InformationCard from "../components/InformationCard/InformationCard";
-import sliderData from "../mocks/sliderData.json";
+import sliderData from "../mocks/sliderData.json"; 
 
 function Home() {
 
@@ -30,7 +27,7 @@ function Home() {
                     <li><Link to="/products">View Products</Link></li>
                 </ul>
             </div>
-
+<div className="container">
             <PromoSection title="ЗНАЙДИ ТЕ, ЩО ШУКАЄШ!" />
             <CategoryCards title="РЕКОМЕНДАЦІЇ" cards={sliderData} />
             <CategoryCards title="НАЙКРАЩІ НАБОРИ" cards={sliderData} />
@@ -42,6 +39,8 @@ function Home() {
                 Bibendum neque at em integer integer. Tempus a mi in enim dui rhoncus vulputate nulla et. 
                 Ornare sed cursus sed viverra."
             />
+    <FurnitureCards />
+        </div>
         </>
     );
 }
