@@ -5,10 +5,12 @@ import HeroSection from "../components/HeroSection/HeroSection";
 import PromoSection from "../components/PromoSection/PromoSection";
 
 import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
+import informImg from "../assets/img/InformationCard/inform-1.png"
 import CategoryCards from "../components/CategorySlider/CategorySlider"
-import sliderData from "../mocks/sliderData.json"; 
+import InformationCard from "../components/InformationCard/InformationCard";
+import sliderData from "../mocks/sliderData.json";
 
-function Home() { 
+function Home() {
 
     return (
         <>
@@ -30,8 +32,16 @@ function Home() {
             </div>
 
             <PromoSection title="ЗНАЙДИ ТЕ, ЩО ШУКАЄШ!" />
-            <CategoryCards title="РЕКОМЕНДАЦІЇ" cards={sliderData}/>
-            <CategoryCards title="НАЙКРАЩІ НАБОРИ" cards={sliderData}/>
+            <CategoryCards title="РЕКОМЕНДАЦІЇ" cards={sliderData} />
+            <CategoryCards title="НАЙКРАЩІ НАБОРИ" cards={sliderData} />
+            <InformationCard
+                image={informImg}
+                title="ВАЖЛИВА ІНФОРМАЦІЯ"
+                InternalTitle="ВАЖЛИВА ІНФОРМАЦІЯ"
+                text="Lorem ipsum dolor sit amet consectetur. 
+                Bibendum neque at em integer integer. Tempus a mi in enim dui rhoncus vulputate nulla et. 
+                Ornare sed cursus sed viverra."
+            />
         </>
     );
 }

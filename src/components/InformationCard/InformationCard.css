@@ -1,0 +1,17 @@
+.custom-card {
+    border-radius: 15px;
+    padding: 0px;
+  }
+
+.card-body{
+    padding: 80px 40px;
+}
+
+.card-text{
+    padding-right: 0px;
+}
+
+.text-block {
+    background-color: #F2F2F2;
+}
+  
