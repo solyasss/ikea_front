@@ -18,7 +18,7 @@ export default function FurnitureCard({ name, image, link }) {
     const finalLink = link || fallbackItem.link || "#";
 
     return (
-        <Link to={finalLink} className="furniture-card ">
+        <Link to={finalLink} className="furniture-card">
             <div className="furniture-card__image-container">
                 <img src={finalImage} alt={finalName} className="furniture-card__image" />
             </div>

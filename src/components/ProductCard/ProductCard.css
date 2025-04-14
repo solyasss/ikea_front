@@ -1,14 +1,30 @@
 .product-card {
+    position: relative;
     border: 1px solid #ddd;
     background-color: #fff;
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-    width: 200px;
+    border-radius: 20px;
+    text-align: start;
+    min-width: 160px;
+}
+
+.product-label-top {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    z-index: 999;
+}
+
+.product-card-text {
+    padding: 10px 16px !important;
 }
 
 .product-image {
     width: 100%;
-    height: auto;
+    min-height: 115px;
     margin-bottom: 0.5rem;
 }
+
+
+
