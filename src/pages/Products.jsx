@@ -7,8 +7,7 @@ import Headers from "../components/Header/Header";
 function Products() {
     return (
         <>
-            <Headers />
-            <div className="product-list">
+            <div className="product-list container">
                 <h2>Products Page</h2>
                 <Link to="/" style={{ color: "#007bff", textDecoration: "underline" }}>
                     Вернуться на главную
