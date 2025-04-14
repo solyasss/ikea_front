@@ -10,13 +10,16 @@ import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
 
 import InformationCard from "../components/InformationCard/InformationCard";
 import sliderData from "../mocks/sliderData.json";
+import AdditionalRecommendations from "../components/AdditionalRecommendations/AdditionalRecommendations.jsx";
+import recommendationsData from '/src/mocks/recommendations.json';
+
 
 function Home() {
 
     return (
         <>
             <HeroSection/>
-
+            <div className="container">
             <div style={{padding: "2rem"}}>
                 <h1>Welcome to BuyNow</h1>
 
@@ -31,10 +34,15 @@ function Home() {
                     <li><Link to="/products">View Products</Link></li>
                 </ul>
             </div>
-            <div className="container">
+
                 <PromoSection title="ЗНАЙДИ ТЕ, ЩО ШУКАЄШ!"/>
                 <CategoryCards title="РЕКОМЕНДАЦІЇ" cards={sliderData}/>
                 <CategoryCards title="НАЙКРАЩІ НАБОРИ" cards={sliderData}/>
+                <AdditionalRecommendations
+                    title={recommendationsData.title}
+                    showButtons={true}
+                    data={recommendationsData}
+                />
                 <FurnitureCards/>
                 <InformationCard
                     image={informImg}

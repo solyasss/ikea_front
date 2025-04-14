@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 function Registration() {
     return (
-        <div>
+        <div className="container">
             <h2>Registration Page</h2>
             <Link to="/" style={{ color: "#007bff", textDecoration: "underline" }}>
                 Вернуться на главную
