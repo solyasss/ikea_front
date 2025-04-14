@@ -31,6 +31,7 @@ export default function HeroSection() {
                             <ProductCard
                                 key={item.id}
                                 name={item.name}
+                                title={item.title}
                                 price={item.price}
                                 image={item.image}
                             />

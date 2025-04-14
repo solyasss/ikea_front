@@ -4,6 +4,7 @@ body {
     font-family: "Montserrat", sans-serif !important;
 
     /*font size*/
+
     h1 {
         font-size: 32px !important;
     }
@@ -31,10 +32,18 @@ body {
 
 
     /*font weight*/
-    .fw-light{
-        font-weight: 300 !important;
+
+    .fw-thin {
+        font-weight: 100 !important;
     }
 
+    .fw-ext-light {
+        font-weight: 200 !important;
+    }
+
+    .fw-light {
+        font-weight: 300 !important;
+    }
 
     .fw-reg {
         font-weight: 400 !important;
@@ -48,20 +57,34 @@ body {
         font-weight: 600 !important;
     }
 
+    .fw-bold {
+        font-weight: 700 !important;
+    }
+
+    .fw-ext-bold {
+        font-weight: 800 !important;
+    }
+
+    .fw-black {
+        font-weight: 900 !important;
+    }
+
     /*font colors*/
+
     .lt-grey {
         color: #646464 !important;
     }
 
-   /*buttons*/
-   .btn {
-       border-radius: 30px;
-       font-weight: 600;
-       padding:  16.5px;
+    /*buttons*/
 
-   }
+    .btn {
+        border-radius: 30px;
+        font-weight: 600;
+        padding: 16.5px;
 
-    .cust-checkbox{
+    }
+
+    .cust-checkbox {
         border-radius: 5px !important;
         color: #646464 !important;
     }

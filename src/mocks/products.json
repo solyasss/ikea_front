@@ -1,20 +1,23 @@
 [
   {
     "id": 1,
-    "name": "Chair",
-    "price": "59.99",
+    "name": "Подушки",
+    "title": "спальна кімната... ",
+    "price": "12",
     "image": "/src/assets/img/products/product-1.png"
   },
   {
     "id": 2,
-    "name": "Lamp",
-    "price": "19.99",
+    "name": "Ковдра",
+    "title": "спальна кімната... ",
+    "price": "30",
     "image": "/src/assets/img/products/product-2.png"
   },
   {
     "id": 3,
-    "name": "Lamp",
-    "price": "19.99",
+    "name": "Ліжко",
+    "title": "спальна кімната... ",
+    "price": "414",
     "image": "/src/assets/img/products/product-3.png"
   }
 ]
