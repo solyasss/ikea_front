@@ -6,6 +6,7 @@ import PromoSection from "../components/PromoSection/PromoSection";
 import informImg from "../assets/img/InformationCard/inform-1.png"
 import CategoryCards from "../components/CategorySlider/CategorySlider"
 import FurnitureCards from "../components/FurnitureCards/FurnitureCards";
+import NewOptions from '../components/NewOptions/NewOptions'
 import buyNowImg from "../assets/img/icons_svg/BuyNow.svg";
 
 import InformationCard from "../components/InformationCard/InformationCard";
@@ -44,6 +45,8 @@ function Home() {
                     data={recommendationsData}
                 />
                 <FurnitureCards/>
+                <NewOptions />
+
                 <InformationCard
                     image={informImg}
                     title="ВАЖЛИВА ІНФОРМАЦІЯ"
@@ -52,6 +55,7 @@ function Home() {
                 Bibendum neque at em integer integer. Tempus a mi in enim dui rhoncus vulputate nulla et. 
                 Ornare sed cursus sed viverra."
                 />
+
 
             </div>
         </>

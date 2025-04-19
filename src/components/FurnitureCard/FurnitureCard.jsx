@@ -11,7 +11,7 @@ import "./FurnitureCard.css";
  * Если какие-то пропсы не переданы, берем данные из первого элемента furnitureData.
  */
 export default function FurnitureCard({ name, image, link }) {
-    // Если пропсы не заданы, берём "первый элемент" из JSON
+
     const fallbackItem = furnitureData[0] || {};
     const finalName = name || fallbackItem.name;
     const finalImage = image || fallbackItem.image;
