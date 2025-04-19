@@ -1,0 +1,15 @@
+.feature-card {
+    background-color: #F1F1F1;
+    text-align: center;
+    flex: 1 1;
+    max-width: 380px;
+    padding: 30px 36px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3,
+img{
+    margin-bottom: 10px;
+}

@@ -4,6 +4,10 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import NewOptionsProducts from "../components/NewOptionsProducts/NewOptionsProducts";
 import { Link } from "react-router-dom";
 import Headers from "../components/Header/Header";
+import FeatureSection from "../components/FeatureSection/FeatureSection";
+import FeatureData from "../mocks/FeatureCard.json"
+import SectionDescriptionData from "../mocks/SectionDescription.json";
+import SectionDescription from "../components/SectionDescription/SectionDescription";
 
 function Products() {
     return (
@@ -20,6 +24,14 @@ function Products() {
                         name={item.name}
                         price={item.price}
                         image={item.image}
+                    />
+                ))}
+                <FeatureSection cards={FeatureData}/>
+                {SectionDescriptionData.map((item) => (
+                    <SectionDescription 
+                        key={item.id}
+                        title={item.title}
+                        description={item.description}
                     />
                 ))}
             </div>
