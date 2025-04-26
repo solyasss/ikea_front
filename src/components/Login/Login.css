@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.fw-med { font-weight: 600 !important; }
+.fw-bold { font-weight: 700 !important; }
+.lt-grey { color: #646464 !important; }
+
+.login-page { height: 100vh; overflow: hidden; }
+
+.login-left {
+    height: 100vh;
+}
+.login-bg {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+}
+.back-btn {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.back-icon {
+    width: 28px;
+    height: 28px;
+}
+.login-heading {
+    position: absolute;
+    top: 220px;
+    left: 70px;
+    font-size: 32px;
+    line-height: 38px;
+    text-transform: uppercase;
+
+}
+
+.login-form {
+    width: 428px;
+}
+@media (max-width: 991px) {
+    .login-form { margin-top: 80px; }
+}
+
+.login-input {
+    border: 1px solid #646464 !important;
+    border-radius: 8px !important;
+    height: 50px !important;
+    font-size: 16px;
+}
+.login-input::placeholder {
+    color: #aaa;
+}
+
+.info-text {
+    font-size: 12px;
+    color: #646464 !important;
+}
+.link-underline {
+    text-decoration: underline;
+    color: #000 !important;
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.pwd-icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 15px;
+    cursor: pointer;
+}
+.cust-checkbox {
+    border: 1px solid #000 !important;
+    width: 20px;
+    height: 20px;
+}
+.cust-checkbox:checked::before {
+    content: "";
+    position: relative;
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: block;
+}
+
+.btn-dark {
+    border-radius: 30px !important;
+    padding: 16.5px !important;
+    font-weight: 600 !important;
+    height: 50px;
+}
+.btn-outline {
+    border: 1px solid #000 !important;
+    border-radius: 30px !important;
+    padding: 16.5px !important;
+    font-weight: 600 !important;
+    height: 50px;
+}
+
+.register-text {
+    font-size: 14px;
+}
+.login-form a {
+    color: #000 !important;
+    text-decoration: underline;
+}
+.forgot-link {
+    font-size: 14px;
+    color: #000 !important;
+    text-decoration: underline;
+}
+.info-icon {
+
+    right: 20px;
+}
+.btn-outline {
+    text-decoration: none !important;
+}
