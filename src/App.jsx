@@ -9,6 +9,8 @@ import Products from "./pages/Products";
 import NotFound from "./pages/NotFound.jsx";
 import Promo from "./pages/Promo";
 import Login from "./pages/Login.jsx";
+import Favorites from "./pages/Favorites.jsx";
+import Basket from "./pages/Basket.jsx";
 
 function App() {
     return (
@@ -19,6 +21,9 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/promo" element={<Promo />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/basket" element={<Basket />} />
+
         </Routes>
     );
 }

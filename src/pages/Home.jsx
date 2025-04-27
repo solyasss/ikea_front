@@ -34,6 +34,8 @@ function Home() {
                     <li><Link to="/registration">Go to Registration</Link></li>
                     <li><Link to="/products">View Products</Link></li>
                     <li><Link to="/login">Go to Login</Link></li>
+                    <li><Link to="/favorites">Go to Favorites</Link></li>
+                    <li><Link to="/basket">Go to Basket</Link></li>
                 </ul>
             </div>
 
