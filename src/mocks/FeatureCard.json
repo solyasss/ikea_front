@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "title": "Доставка",
+      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "icon": "/src/assets/img/feature_card/img-1.png"
+    },
+    {
+      "id": 2,
+      "title": "Оплата",
+      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "icon": "/src/assets/img/feature_card/img-2.png"
+    },
+    {
+      "id": 3,
+      "title": "Організація",
+      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "icon": "/src/assets/img/feature_card/img-3.png"
+    },
+    {
+      "id": 4,
+      "title": "Планування",
+      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "icon": "/src/assets/img/feature_card/img-4.png"
+    }
+]
+  

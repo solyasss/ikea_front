@@ -1,0 +1,22 @@
+.feature-card * {
+    margin: 0;
+    padding: 0;
+}
+
+.feature-card {
+    background-color: #F1F1F1;
+    text-align: center;
+    flex: 1 1;
+    max-width: 370px;
+    padding: 33px 66px 30px 66px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.feature-card h3,
+.feature-card img {
+    margin-bottom: 10px;
+}
