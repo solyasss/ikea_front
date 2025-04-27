@@ -11,6 +11,8 @@ import Promo from "./pages/Promo";
 import Login from "./pages/Login.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Basket from "./pages/Basket.jsx";
+import Idea from "./pages/Idea.jsx";
+import AdminPanel from "./pages/AdminPanel.jsx";
 
 function App() {
     return (
@@ -23,7 +25,8 @@ function App() {
             <Route path="/promo" element={<Promo />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/basket" element={<Basket />} />
-
+            <Route path="/Idea" element={<Idea />} />
+            <Route path="/admin" element={<AdminPanel />} />    
         </Routes>
     );
 }
