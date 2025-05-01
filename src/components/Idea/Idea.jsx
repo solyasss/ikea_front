@@ -3,12 +3,14 @@ import SectionDescription from "../SectionDescription/SectionDescription";
 import InformationCard from "../InformationCard/InformationCard";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import AdditionalRecommendations from "../AdditionalRecommendations/AdditionalRecommendations";
+import AllCollectionsCards from "../AllCollectionsCards/AllCollectionsCards";
 
 import informImg1 from "../../assets/img/ideas/idea_img1.png";
 import informImg2 from "../../assets/img/ideas/idea_img2.png";
 
 import sliderData from "../../mocks/sliderData.json";
 import recommendationsData from '../../mocks/recommendations.json';
+import collectionCardData from "../../mocks/collectionsCard.json"
 
 
 import "./idea.css"
@@ -33,6 +35,7 @@ function Idea() {
                 text="Lorem ipsum dolor sit amet consectetur. Bibendum neque at em integer integer. Tempus a mi in enim dui rhoncus vulputate nulla et. Ornare sed cursus sed viverra.Lorem ipsum dolor sit amet ."
             />
             <CategorySlider title="РЕКОМЕНДАЦІЇ" cards={sliderData} />
+            <AllCollectionsCards cards={collectionCardData} />
             <AdditionalRecommendations
                 title={recommendationsData.title}
                 showButtons={true}

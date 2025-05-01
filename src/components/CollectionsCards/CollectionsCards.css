@@ -1,0 +1,21 @@
+.collection_card {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    flex: 1 1 300px; 
+    max-width: 481px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 640px;
+}
+
+.collection_card a {
+    text-align: center;
+    background-color: #B6C3C2;
+    padding: 20px 0px 20px 0px;
+    border-radius: 0px 0px 20px 20px;
+    text-decoration: none;
+    color: black;
+
+}
