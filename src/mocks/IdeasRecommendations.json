@@ -1,0 +1,119 @@
+{
+    "title": "ІДЕЇ",
+    "buttons": [
+      {
+        "id": 1,
+        "text": "Назва фільтра / категорії",
+        "link": "/filter1"
+      },
+      {
+        "id": 2,
+        "text": "Назва фільтра / категорії",
+        "link": "/filter2"
+      },
+      {
+        "id": 3,
+        "text": "Назва фільтра / категорії",
+        "link": "/filter3"
+      },
+      {
+        "id": 4,
+        "text": "Назва фільтра / категорії",
+        "link": "/filter4"
+      }
+    ],
+    "images": [
+      {
+        "id": 1,
+        "src": "/src/assets/img/ideas_recommendations/col1_img1.png",    
+        "link": "/idea-detail/1",
+        "column": 1,
+        "heightRatio": 8
+      },
+      {
+        "id": 2,
+        "src": "/src/assets/img/ideas_recommendations/col1_img2.png",
+        "link": "/idea-detail/2",
+        "column": 1,
+        "heightRatio": 4
+      },
+      {
+        "id": 3,
+        "src": "/src/assets/img/ideas_recommendations/col1_img3.png",
+        "link": "/idea-detail/3",
+        "column": 1,
+        "heightRatio": 4
+      },
+      {
+        "id": 4,
+        "src": "/src/assets/img/ideas_recommendations/col1_img4.png",
+        "link": "/idea-detail/4",
+        "column": 1,
+        "heightRatio": 4
+      },
+      {
+        "id": 5,
+        "src": "/src/assets/img/ideas_recommendations/col2_img1.png",
+        "link": "/idea-detail/5",
+        "column": 2,
+        "heightRatio": 4
+      },
+      {
+        "id": 6,
+        "src": "/src/assets/img/ideas_recommendations/col2_img2.png",
+        "link": "/idea-detail/6",
+        "column": 2,
+        "heightRatio": 8
+      },
+      {
+        "id": 7,
+        "src": "/src/assets/img/ideas_recommendations/col2_img3.png",
+        "link": "/idea-detail/7",
+        "column": 2,
+        "heightRatio": 8
+      },
+      {
+        "id": 8,
+        "src": "/src/assets/img/ideas_recommendations/col2_img4.png",
+        "link": "/idea-detail/8",
+        "column": 2,
+        "heightRatio": 8
+      },
+      {
+        "id": 9,
+        "src": "/src/assets/img/ideas_recommendations/col2_img5.png",
+        "link": "/idea-detail/9",
+        "column": 2,
+        "heightRatio": 8
+      },
+      {
+        "id": 10,
+        "src": "/src/assets/img/ideas_recommendations/col3_img1.png",
+        "link": "/idea-detail/10",
+        "column": 3,
+        "heightRatio": 8
+      },
+      {
+        "id": 11,
+        "src": "/src/assets/img/ideas_recommendations/col3_img2.png",
+        "link": "/idea-detail/11",
+        "column": 3,
+        "heightRatio": 4
+      },
+      {
+        "id": 12,
+        "src": "/src/assets/img/ideas_recommendations/col3_img3.png",
+        "link": "/idea-detail/12",
+        "column": 3,
+        "heightRatio": 4
+      },
+      {
+        "id": 13,
+        "src": "/src/assets/img/ideas_recommendations/col3_img4.png",
+        "link": "/idea-detail/13",
+        "column": 3,
+        "heightRatio": 4
+      }
+    ]
+  }
+  
