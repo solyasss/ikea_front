@@ -88,4 +88,9 @@ body {
         border-radius: 5px !important;
         color: #646464 !important;
     }
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
 }
