@@ -1,8 +1,9 @@
 .inputGroup {
     position: relative;
     width: 100%;
-    max-width: 1271px; 
-    margin: 0 auto;
+    padding: 0px 20px 0px 20px;
+    max-width: 1070px;
+    margin: 0px auto;
     display: flex;
     align-items: center;
 }
@@ -20,7 +21,7 @@
 
 .searchIcon {
     position: absolute;
-    left: 1rem;
+    left: 2.2rem;
     top: 50%;
     transform: translateY(-50%);
     color: #888;
