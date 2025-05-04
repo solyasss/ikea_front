@@ -1,0 +1,109 @@
+.hedaer__container {
+    padding: 13px 30px 13px 30px
+}
+
+header {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.burger_container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.leftMenu {
+    display: flex;
+    align-items: center;
+    height: auto;
+    gap: 40px;
+}
+
+.header_menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__item {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__link {
+    text-decoration: none;
+    color: #5F5F5F;
+    line-height: normal;
+    display: inline-block;
+}
+
+.menuItemsLeft {
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+.right__menu {
+    gap: 10px;
+}
+
+.right__menu__icons {
+    gap: 10px;
+}
+
+.hidden__buttons{
+    display: none;
+    gap: 20px;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 1010px){
+    .menu__list {
+        gap: 20px;   
+    }
+
+    .leftMenu{
+        gap: 20px;
+    }
+}
+
+@media (max-width: 892px){
+    .menu__list {
+        display: none;  
+    }
+
+    .hidden__buttons{
+        display: flex;  
+    }
+    
+    .burger_container{
+        display: none;
+    }
+
+    .leftMenu{
+        gap: 20px;
+    }
+}
