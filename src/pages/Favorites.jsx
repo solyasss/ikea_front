@@ -7,7 +7,6 @@ import Footer from "../components/Footer/Footer.jsx";
 function Favorites() {
     return (
         <>
-
             <Headers />
             <div className="container">
                 <Link to="/" style={{ color: "#007bff", textDecoration: "underline" }}>
