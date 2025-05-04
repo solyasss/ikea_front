@@ -61,9 +61,12 @@
     font-weight: 700;
 }
 
+
+
 @media (max-width: 1535px) {
     .hero-section {
-        width: 100%;
+        width: 100vw;
+        min-width: 100vw;
         height: auto;
     }
 }
@@ -71,9 +74,6 @@
 @media (max-width: 859px) {
     .hero-section {
         background-image: url("/src/assets/img/heroSection/background.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         position: relative; 
     }
     
@@ -113,9 +113,11 @@
         justify-content: center;
         padding: 0px 25px 10px 25px;
     }
-    .discount__block{
+    .discount__block {
         text-align: center;
         margin-bottom: 80px;
         width: 398px;
+        max-width: 100%; 
+        box-sizing: border-box; 
     }
 }

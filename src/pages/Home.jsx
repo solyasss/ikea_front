@@ -13,7 +13,7 @@ import InformationCard from "../components/InformationCard/InformationCard";
 import sliderData from "../mocks/sliderData.json";
 import AdditionalRecommendations from "../components/AdditionalRecommendations/AdditionalRecommendations.jsx";
 import recommendationsData from '/src/mocks/recommendations.json';
-
+import Footer from "../components/Footer/Footer.jsx";
 
 function Home() {
 
@@ -63,6 +63,7 @@ function Home() {
 
 
             </div>
+            <Footer/>
         </>
     );
 }

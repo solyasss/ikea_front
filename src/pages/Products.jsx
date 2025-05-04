@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import NewOptionsProducts from "../components/NewOptionsProducts/NewOptionsProducts";
 import { Link } from "react-router-dom";
 import Headers from "../components/Header/Header";
+import Footer from "../components/Footer/Footer.jsx";
 import FeatureSection from "../components/FeatureSection/FeatureSection";
 import FeatureData from "../mocks/FeatureCard.json"
 import SectionDescriptionData from "../mocks/SectionDescription.json";
@@ -12,6 +13,7 @@ import SectionDescription from "../components/SectionDescription/SectionDescript
 function Products() {
     return (
         <>
+            <Headers/>
             <div className="product-list container">
                 <NewOptionsProducts />
                 <h2>Products Page</h2>
@@ -35,6 +37,7 @@ function Products() {
                     />
                 ))}
             </div>
+            <Footer/>
         </>
     );
 }
