@@ -19,7 +19,7 @@ header {
 
 }
 
-.leftMenu {
+.left__menu {
     display: flex;
     align-items: center;
     height: auto;
@@ -98,7 +98,7 @@ li {
     .hidden__buttons{
         display: flex;  
     }
-    
+
     .burger_container{
         display: none;
     }

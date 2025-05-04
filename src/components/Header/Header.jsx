@@ -14,7 +14,7 @@ export default function Headers() {
         <>
             <RunningLine />
             <header className="hedaer__container">
-                <div className="leftMenu">
+                <div className="left__menu">
                     <div className="burger_container">
                         <img src={burgerIcon} alt="Меню" width={30} />
                         <span>Меню</span>

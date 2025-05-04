@@ -13,6 +13,7 @@ export default function HeroSection() {
     return (
         <>
             <section className="hero-section">
+                <Headers />
                 <h1>{TITLE}</h1>
                 <div className="hero-block-navigations">
                     <div className="hero-block-buttons">
@@ -37,7 +38,7 @@ export default function HeroSection() {
                             />
                         ))}
                     </div>
-                    <p>ЛОВИ МОМЕНТ | <span className="discount-text"> Знижки до 60%</span> на вибрані категорії товарів!</p>
+                    <div className="discount__block">ЛОВИ МОМЕНТ | <span className="discount-text"> Знижки до 60%</span> на вибрані категорії товарів!</div>
                 </div>
             </section>
         </>
