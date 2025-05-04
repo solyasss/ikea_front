@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 function Login() {
     return (
-        <div className="container">
-            <h2>Login Page</h2>
-            <Link to="/" style={{ color: "#007bff", textDecoration: "underline" }}>
+        <div className="container-fluid px-0">
+            {/* <h2>Login Page</h2> */}
+            {/* <Link to="/" style={{ color: "#007bff", textDecoration: "underline" }}>
                 Вернуться на главную
-            </Link>
+            </Link> */}
             <LoginForm />
         </div>
     );

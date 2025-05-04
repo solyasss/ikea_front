@@ -26,7 +26,8 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/basket" element={<Basket />} />
             <Route path="/Idea" element={<Idea />} />
-            <Route path="/admin" element={<AdminPanel />} />    
+            <Route path="/admin" element={<AdminPanel />} />
+
         </Routes>
     );
 }

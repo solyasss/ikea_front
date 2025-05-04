@@ -126,3 +126,41 @@ body {
 .btn-outline {
     text-decoration: none !important;
 }
+
+@media (max-width: 768px) {
+    .login-left {
+        display: none;
+    }
+
+    .login-heading {
+        display: none;
+    }
+
+    .login-form {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .login-input,
+    .btn-dark,
+    .btn-outline {
+        font-size: 14px;
+        height: 45px;
+    }
+
+    .pwd-icon {
+        width: 18px;
+        height: 12px;
+        right: 12px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    .info-text,
+    .forgot-link,
+    .register-text {
+        font-size: 11px;
+    }
+}

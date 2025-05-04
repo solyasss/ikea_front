@@ -1,5 +1,7 @@
 .registration-container {
     min-height: 1340px;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .registration-button {
@@ -13,4 +15,7 @@
     object-fit: cover;
     object-position: center;
     display: block;
+}
+.row {
+    height: 100%;
 }
