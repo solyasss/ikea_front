@@ -7,17 +7,33 @@ import BuyIcon from "../../assets/img/header/BuyIcon.svg";
 import likeIkon from "../../assets/img/header/Component 1.svg";
 import Search from "../Search/Search";
 import RunningLine from "../RunningLine/RunningLine";
-
+import BurgerMenu from "../Menu/Menu";
+import React, { useState } from "react";
 
 export default function Headers() {
+
+    const [menuActive, setMenuActive] = useState(false);
+
+    const items = [
+        { value: "ГОЛОВНА", href: "/" },
+        { value: "ТОВАРИ", href: "/products" },
+        { value: "КІМНАТИ", href: "/" },
+        { value: "ІДЕЇ", href: "/Idea" },
+        { value: "ДИЗАЙН", href: "/" }
+    ]
+
     return (
         <>
             <RunningLine />
             <header className="hedaer__container">
                 <div className="left__menu">
                     <div className="burger_container">
-                        <img src={burgerIcon} alt="Меню" width={30} />
-                        <span>Меню</span>
+                        <nav className="parrent__block">
+                            <div className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
+                                <span />
+                            </div>
+                        </nav>
+                        <BurgerMenu active={menuActive} setActive={setMenuActive} header={"БУРГЕР МЕНЮ"} items={items} />
                     </div>
 
                     <div>
@@ -70,7 +86,14 @@ export default function Headers() {
                         <a href="">
                             <img src={likeIkon} alt="Гео" />
                         </a>
-                        <img src={burgerIcon} alt="Меню" width={30} />
+                        <div className="burger_container burger_container-adaptive">
+                            <nav className="parrent__block">
+                                <div className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
+                                    <span />
+                                </div>
+                            </nav>
+                            <BurgerMenu active={menuActive} setActive={setMenuActive} header={"БУРГЕР МЕНЮ"} items={items} />
+                        </div>
                     </li>
                 </nav>
             </header>
