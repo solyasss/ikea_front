@@ -1,0 +1,10 @@
+._container{
+    padding: 55px;
+}
+
+.basket__button{
+    background-color: black;
+    color: #fff;
+    padding: 20px;
+    border-radius: 30px;
+}

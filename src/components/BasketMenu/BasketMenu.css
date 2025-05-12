@@ -1,0 +1,101 @@
+.basket-burger_menu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;     
+    left: auto;   
+    z-index: 1000;
+    transform: translateX(130%); 
+    transition: transform 0.2s;
+}
+
+.basket-burger_menu.active {
+    transform: translateX(0);   
+}
+
+.basket-menu__content {
+    position: absolute;
+    top: 0;
+    right: 0;     
+    left: auto;
+    width: 28%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 120px 0px 0px; 
+    transition: all 0.4s;
+    border-radius: 15px 0 0 15px;
+}
+
+.basket-burger__blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+.basket-menu__header {
+    padding: 10px;
+    font-size: 2rem;
+}
+
+.basket-burger__list li a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.basket-burger__list li {
+   display: flex;
+   align-items: center;
+   margin: 10px 0;
+}
+
+.basket-burger__list {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 0px 0px 0px;
+}
+
+.basket-burger__close-wrapper{
+    position: absolute;
+    top: 47px;
+    left: 57px;
+    cursor: pointer;
+}
+
+.basket-continue__shopping{
+    border-radius: 30px;
+    background-color: #fff;
+    padding: 15px;
+
+}
+
+.basket-go-basket{
+    background-color: black;
+    color: #fff;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.basket-basket-buttons{
+    display: flex;
+    
+}
+
+@media screen and (max-width: 1062px) {
+    .basket-menu__content {
+        width: 100%;         
+    }
+
+    .basket-burger__blur {
+        backdrop-filter: none;  
+    }
+}
