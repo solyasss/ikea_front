@@ -1,18 +1,17 @@
 [
-    {
-      "id": 1,
-      "title": "НАША НОВА КОЛЕКЦІЯ",    
-      "image": "/src/assets/img/collections_card/img1.png"  
-    },
-    {
-      "id": 2,
-      "title": "НАША НОВА КОЛЕКЦІЯ",    
-      "image": "/src/assets/img/collections_card/img2.png"  
-    },
-    {
-      "id": 3,
-      "title": "НАША НОВА КОЛЕКЦІЯ",    
-      "image": "/src/assets/img/collections_card/img3.png"  
-    }
+  {
+    "id": 1,
+    "title": "КОЛЕКЦІЯ NATURA — ДЕРЕВО І СПОКІЙ",
+    "image": "/src/assets/img/collections_card/img1.png"
+  },
+  {
+    "id": 2,
+    "title": "URBAN MINIMAL — СУЧАСНА ГЕОМЕТРІЯ",
+    "image": "/src/assets/img/collections_card/img2.png"
+  },
+  {
+    "id": 3,
+    "title": "SOFT LIVING — М’ЯКІ ФОРМИ ТА ТЕПЛІ ВІДТІНКИ",
+    "image": "/src/assets/img/collections_card/img3.png"
+  }
 ]
-  

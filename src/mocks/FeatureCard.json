@@ -2,25 +2,25 @@
     {
       "id": 1,
       "title": "Доставка",
-      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "description": "Швидка та надійна доставка до вашого дому чи офісу.",
       "icon": "/src/assets/img/feature_card/img-1.png"
     },
     {
       "id": 2,
       "title": "Оплата",
-      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "description": "Безпечна оплата онлайн або при отриманні.",
       "icon": "/src/assets/img/feature_card/img-2.png"
     },
     {
       "id": 3,
       "title": "Організація",
-      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "description": "Допомога в організації простору з нашими рішеннями.",
       "icon": "/src/assets/img/feature_card/img-3.png"
     },
     {
       "id": 4,
       "title": "Планування",
-      "description": "lorem ipsum dolor sit amet consectetur. egestas viverra tempus molestie non.",
+      "description": "Індивідуальне планування меблів під ваші потреби.",
       "icon": "/src/assets/img/feature_card/img-4.png"
     }
 ]

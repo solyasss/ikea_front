@@ -1,35 +1,35 @@
 [
   {
     "id": 1,
-    "title": "Гостиная",
+    "title": "Вітальня",
     "slug": "living-room",
     "subcategories": [
       {
-        "title": "Диваны",
+        "title": "Дивани",
         "slug": "sofas"
       },
       {
-        "title": "Кресла",
+        "title": "Крісла",
         "slug": "armchairs"
       },
       {
-        "title": "Журнальные столики",
+        "title": "Журнальні столики",
         "slug": "coffee-tables"
       },
       {
-        "title": "Шкафы и полки",
+        "title": "Шафи та полиці",
         "slug": "wardrobes-and-shelves"
       },
       {
-        "title": "Стеллажи для ТВ",
+        "title": "ТВ-стелажі",
         "slug": "tv-stands"
       },
       {
-        "title": "Ковры",
+        "title": "Килими",
         "slug": "carpets"
       },
       {
-        "title": "Освещение",
+        "title": "Освітлення",
         "slug": "lighting"
       },
       {
@@ -37,7 +37,7 @@
         "slug": "decor"
       },
       {
-        "title": "Системы хранения",
+        "title": "Системи зберігання",
         "slug": "storage"
       }
     ]
@@ -48,88 +48,88 @@
     "slug": "bedroom",
     "subcategories": [
       {
-        "title": "Кровати",
+        "title": "Ліжка",
         "slug": "beds"
       },
       {
-        "title": "Матрасы",
+        "title": "Матраци",
         "slug": "mattresses"
       },
       {
-        "title": "Шкафы",
+        "title": "Шафи",
         "slug": "closets"
       }
     ]
   },
   {
     "id": 3,
-    "title": "Кухня и столовая",
+    "title": "Кухня та їдальня",
     "slug": "kitchen-and-dining",
     "subcategories": [
       {
-        "title": "Обеденные столы",
+        "title": "Обідні столи",
         "slug": "dining-tables"
       },
       {
-        "title": "Стулья",
+        "title": "Стільці",
         "slug": "chairs"
       },
       {
-        "title": "Барные стулья",
+        "title": "Барні стільці",
         "slug": "bar-stools"
       },
       {
-        "title": "Посуда",
+        "title": "Посуд",
         "slug": "dishes"
       },
       {
-        "title": "Сервировка стола",
+        "title": "Сервірування столу",
         "slug": "table-setting"
       },
       {
-        "title": "Столовые приборы",
+        "title": "Столові прибори",
         "slug": "cutlery"
       }
     ]
   },
   {
     "id": 4,
-    "title": "Ванная",
+    "title": "Ванна",
     "slug": "bathroom",
     "subcategories": [
       {
-        "title": "Полки и шкафчики",
+        "title": "Полиці та шафки",
         "slug": "shelves-and-cabinets"
       },
       {
-        "title": "Полотенца",
+        "title": "Рушники",
         "slug": "towels"
       },
       {
-        "title": "Шторки для душа",
+        "title": "Шторки для душу",
         "slug": "shower-curtains"
       }
     ]
   },
   {
     "id": 5,
-    "title": "Офис",
+    "title": "Офіс",
     "slug": "office",
     "subcategories": [
       {
-        "title": "Письменные столы",
+        "title": "Письмові столи",
         "slug": "desks"
       },
       {
-        "title": "Офисные кресла",
+        "title": "Офісні крісла",
         "slug": "office-chairs"
       },
       {
-        "title": "Книжные шкафы",
+        "title": "Книжкові шафи",
         "slug": "bookshelves"
       },
       {
-        "title": "Настольные лампы",
+        "title": "Настільні лампи",
         "slug": "desk-lamps"
       }
     ]
