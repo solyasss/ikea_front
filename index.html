@@ -9,5 +9,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.toastError = (msg) => {
+        const t = document.createElement("div");
+        t.className = "toast-error";
+        t.innerText = msg;
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 4000);
+      };
+    </script>
+
   </body>
 </html>
