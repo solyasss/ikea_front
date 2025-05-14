@@ -1,0 +1,129 @@
+._container {
+    padding: 55px;
+}
+
+.basket__button {
+    background-color: black;
+    color: #fff;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.details-box {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.product-description {
+    padding: 0px 0px 0px 40px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    /* padding: 0px 0px 0px 40px; */
+
+}
+
+.product-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gallery {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 20px;
+}
+
+.product-info-list li:nth-child(1) {
+    font-size: 16px;
+}
+
+.product-info-list li:nth-child(2) {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.product-info-list li:nth-child(3) {
+    padding: 12px 0px 12px 0px;
+    font-size: 25px;
+}
+
+.product-info-list li:nth-child(4) {
+    font-size: 12px;
+}
+
+.product-info-list,
+.product-specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.product-specs-list li {
+    margin-bottom: 4px;
+}
+
+
+
+.credit-info {
+    font-size: 12px;
+    margin-top: 10px;
+    max-width: 450px;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.more-info-link {
+    color: #484848;
+}
+
+.order-title{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.order-box{
+    display: flex;
+   
+}
+
+.buy-information-box{
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.order-box div{
+    padding-left: 5px;
+}
+
+.info-line-with-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; 
+}
+
+.basket-button{
+    border-radius: 64px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 3.5rem;
+    padding: 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition-property: opacity, transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+    background-color: #295aa3;
+    color: #fff;
+    font-weight: 500;
+}
+

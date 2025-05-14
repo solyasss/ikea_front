@@ -38,6 +38,7 @@ function Home() {
                     <li><Link to="/basket">Go to Basket</Link></li>
                     <li><Link to="/idea">Go to Ideas</Link></li>
                     <li><Link to="/admin">Go to Admin Panel</Link></li>
+                    <li><Link to="/products${id}">Go to Product details</Link></li>
                 </ul>
             </div>
 

@@ -1,0 +1,97 @@
+[
+  {
+    "id": "1",
+    "article": "TV-42SAM2024",
+    "categoryId": "TV",
+    "price": 42999,
+    "mainImage": "/src/assets/img/product_details/img1.jpg",
+    "name": "Samsung 42\" UHD Smart TV",
+    "details": "Modern television with 4K UHD resolution and built-in smart features.",
+    "images": [
+      "src/assets/img/tv/main-tv1.png",
+      "src/assets/img/tv/side-tv1.png",
+      "src/assets/img/tv/back-tv1.png"
+    ],
+    "specifications": [
+      {"name": "Screen Size", "value": "42 inches"},
+      {"name": "Resolution", "value": "3840x2160"},
+      {"name": "Smart TV Support", "value": "Yes"},
+      {"name": "Refresh Rate", "value": "60 Hz"}
+    ],
+    "color": "Black",
+    "dimensions": "94x20x59",
+    "weight": "8 kg",
+    "type": "Television",
+    "countryOfOrigin": "South Korea",
+    "packageContents": "Remote control, documentation, power cable",
+    "warranty": "2 years",
+    "materials": "Plastic, metal",
+    "customFields": [
+      {"name": "Bluetooth", "value": "Yes"},
+      {"name": "HDMI Ports", "value": "3"}
+    ],
+    "rating": 4.7
+  },
+  {
+    "id": "2",
+    "article": "CH-WD2025",
+    "categoryId": "CHAIR",
+    "price": 5490,
+    "mainImage": "/img/product_details/img1.jpg",
+    "name": "Office Chair WD2025",
+    "details": "Ergonomic office chair with adjustable height and soft backrest.",
+    "images": [
+      "src/assets/img/tv/main-tv1.png",
+      "src/assets/img/tv/main-tv1.png"
+    ],
+    "specifications": [
+      {"name": "Height Adjustment", "value": "Yes"},
+      {"name": "Upholstery Material", "value": "Fabric"},
+      {"name": "Max Load", "value": "120 kg"}
+    ],
+    "color": "Gray",
+    "dimensions": "65x65x110",
+    "weight": "12 kg",
+    "type": "Office Chair",
+    "countryOfOrigin": "China",
+    "packageContents": "Chair (disassembled), instruction manual, assembly key",
+    "warranty": "1 year",
+    "materials": "Metal, fabric, plastic",
+    "customFields": [
+      {"name": "Armrests", "value": "Soft, adjustable"},
+      {"name": "Wheels", "value": "Polyurethane"}
+    ],
+    "rating": 4.3
+  },
+  {
+    "id": "3",
+    "article": "BLN-KIT-03",
+    "categoryId": "LIGHT",
+    "price": 2390,
+    "mainImage": "src/assets/img/tv/main-tv1.png",
+    "name": "Pendant Light Ballon Kit 03",
+    "details": "Stylish pendant light for living room or kitchen in Scandinavian design.",
+    "images": [
+      "src/assets/img/tv/main-tv1.png",
+      "src/assets/img/tv/main-tv1.png"
+    ],
+    "specifications": [
+      {"name": "Lamp Type", "value": "LED"},
+      {"name": "Socket", "value": "E27"},
+      {"name": "Power", "value": "40 W"},
+      {"name": "Cord Length", "value": "1 m"}
+    ],
+    "color": "White/Wood",
+    "dimensions": "30x30x45",
+    "weight": "1.2 kg",
+    "type": "Pendant Light",
+    "countryOfOrigin": "Russia",
+    "packageContents": "Lamp, mounting kit, manual",
+    "warranty": "1 year",
+    "materials": "Metal, wood",
+    "customFields": [
+      {"name": "Water Protection", "value": "IP20"}
+    ],
+    "rating": 4.6
+  }
+]

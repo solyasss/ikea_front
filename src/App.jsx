@@ -13,6 +13,7 @@ import Favorites from "./pages/Favorites.jsx";
 import Basket from "./pages/Basket.jsx";
 import Idea from "./pages/Idea.jsx";
 import AdminPanel from "./pages/AdminPanel.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/basket" element={<Basket />} />
             <Route path="/Idea" element={<Idea />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/productsDetails/:id" element={<ProductDetails />} />
 
         </Routes>
     );
