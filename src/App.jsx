@@ -28,7 +28,7 @@ function App() {
             <Route path="/basket" element={<Basket />} />
             <Route path="/Idea" element={<Idea />} />
             <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/productsDetails/:id" element={<ProductDetails />} />
 
         </Routes>
     );
