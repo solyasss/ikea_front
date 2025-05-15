@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import Heder from "../Header/Header";
 import BasketMenu from "../BasketMenu/BasketMenu";
 import likeIkon from "../../assets/img/header/Component 1.svg";
+import shopIkon from "../../assets/img/product_details/shop.svg"
+import trukIkon from "../../assets/img/product_details/truk.svg"
+import rightIkon from "../../assets/img/product_details/right_arrow.svg"
 import Characteristic from "../ProductCharacteristics/ProductCharacteristics"
 import './ProductDetails.css';
 
@@ -10,6 +13,8 @@ function ProductDetails() {
     const { id } = useParams();
     const [productData, setProductData] = useState(null);
     const [menuActive, setMenuActive] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+
 
     const items = [
         { value: "ГОЛОВНА", href: "/" },
@@ -48,6 +53,13 @@ function ProductDetails() {
         );
     };
 
+    const increaseQuantity = () => {
+        setQuantity(prev => prev + 1);
+    };
+
+    const decreaseQuantity = () => {
+        setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+    };
 
     if (!productData) return <div>Загрузка...</div>;
 
@@ -57,11 +69,7 @@ function ProductDetails() {
             <div className="_container">
                 <div className="details-box">
                     <div className="gallery">
-                        <div className="thumbnails">
-                            {productData.images && productData.images.map((img, index) => (
-                                <img key={index} src={img} alt={`Thumb ${index}`} style={{ width: '80px' }} />
-                            ))}
-                        </div>
+                       
                         <img
                             className="main-image"
                             src={productData.mainImage}
@@ -90,17 +98,42 @@ function ProductDetails() {
                             Услуга финансирования, предлагаемая BCR. <a className="more-info-link" href="">Узнайте больше здесь</a>
                         </div>
                         <Characteristic productData={productData} />
-                          <div className="buy-information-box">
-                            <div className="order-box">
-                                🚚
-                                <div>
-                                    <div className="order-title">Доставка</div>
-                                    <div>Проверить наличие</div>
+                         <div className="thumbnails">
+                            {productData.images && productData.images.map((img, index) => (
+                                <img key={index} src={img} alt={`Thumb ${index}`} className="slider-image" />
+                            ))}
+                        </div>
+                        <div className="buy-information-box">
+                            <div className="external-order-box">
+                                <div className="order-box">
+                                    <img className="buy-information-icons" src={trukIkon}></img>
+                                    <div>
+                                        <div className="order-title">Доставка</div>
+                                        <div>Проверить наличие</div>
+                                    </div>
                                 </div>
-
+                                <img className="details-information-icons" src={rightIkon}></img>
+                            </div>
+                            <div className="separator-line" />
+                            <div className="external-order-box">
+                                <div className="order-box">
+                                    <img className="buy-information-icons" src={shopIkon}></img>
+                                    <div>
+                                        <div className="order-title">В магазине</div>
+                                        <div>Проверить наличие</div>
+                                    </div>
+                                </div>
+                                <img className="details-information-icons" src={rightIkon}></img>
                             </div>
                         </div>
-                        <button className="basket-button">Добавить в корзину</button>
+                        <div className="add-basket-products-box">
+                            <ul>
+                                <li onClick={increaseQuantity}><button>+</button></li>
+                                <li>{quantity}</li> 
+                                <li onClick={decreaseQuantity}><button>-</button></li>
+                            </ul>
+                            <button className="basket-button">Добавить в корзину</button>
+                        </div>
                     </div>
                 </div>
             </div>
