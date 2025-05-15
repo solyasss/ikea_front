@@ -1,0 +1,36 @@
+.arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.characteristics-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+/* Контейнер для анимации */
+.specs-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Открытое состояние */
+.specs-content.open {
+    max-height: 500px; /* Достаточно большое значение */
+    opacity: 1;
+}
+
+.product-specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.product-specs-list li {
+    margin-bottom: 4px;
+}

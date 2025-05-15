@@ -84,7 +84,7 @@ export default function Headers() {
                             <img src={BuyIcon} alt="Гео" />
                         </a>
                         <a href="">
-                            <img src={likeIkon} alt="Гео" />
+                            тзь кгт вум
                         </a>
                         <div className="burger_container burger_container-adaptive">
                             <nav className="parrent__block">

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Heder from "../Header/Header";
 import BasketMenu from "../BasketMenu/BasketMenu";
 import likeIkon from "../../assets/img/header/Component 1.svg";
+import Characteristic from "../ProductCharacteristics/ProductCharacteristics"
 import './ProductDetails.css';
 
 function ProductDetails() {
@@ -88,8 +89,8 @@ function ProductDetails() {
                             Купите сейчас, платите постепенно с 0% процентной ставкой.
                             Услуга финансирования, предлагаемая BCR. <a className="more-info-link" href="">Узнайте больше здесь</a>
                         </div>
-
-                        <div className="buy-information-box">
+                        <Characteristic productData={productData} />
+                          <div className="buy-information-box">
                             <div className="order-box">
                                 🚚
                                 <div>
@@ -98,17 +99,6 @@ function ProductDetails() {
                                 </div>
 
                             </div>
-                        </div>
-                        <div className="characteristics">
-                            <h3 className="specs-title">Характеристики</h3>
-                            <ul className="product-specs-list">
-                                <li>Color: {productData.color}</li>
-                                <li>Weight: {productData.weight} kg</li>
-                                <li>Type: {productData.type}</li>
-                                <li>Country of origin: {productData.countryOfOrigin}</li>
-                                <li>Warranty: {productData.warranty}</li>
-                                <li>Materials: {productData.materials}</li>
-                            </ul>
                         </div>
                         <button className="basket-button">Добавить в корзину</button>
                     </div>
