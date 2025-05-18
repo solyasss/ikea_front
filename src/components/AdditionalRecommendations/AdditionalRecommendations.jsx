@@ -81,3 +81,4 @@ const AdditionalRecommendations = ({ title, showButtons, data }) => {
 };
 
 export default AdditionalRecommendations;
+
