@@ -69,7 +69,7 @@ function ProductDetails() {
             <div className="_container">
                 <div className="details-box">
                     <div className="gallery">
-                       
+
                         <img
                             className="main-image"
                             src={productData.mainImage}
@@ -98,14 +98,14 @@ function ProductDetails() {
                             Услуга финансирования, предлагаемая BCR. <a className="more-info-link" href="">Узнайте больше здесь</a>
                         </div>
                         <Characteristic productData={productData} />
-                         <div className="thumbnails">
+                        <div className="thumbnails">
                             {productData.images && productData.images.map((img, index) => (
                                 <img key={index} src={img} alt={`Thumb ${index}`} className="slider-image" />
                             ))}
                         </div>
                         <div className="buy-information-box">
-                            <div className="external-order-box">
-                                <div className="order-box">
+                            <div className="order-box">
+                                <div className="external-order-box">
                                     <img className="buy-information-icons" src={trukIkon}></img>
                                     <div>
                                         <div className="order-title">Доставка</div>
@@ -115,8 +115,8 @@ function ProductDetails() {
                                 <img className="details-information-icons" src={rightIkon}></img>
                             </div>
                             <div className="separator-line" />
-                            <div className="external-order-box">
-                                <div className="order-box">
+                            <div className="order-box">
+                                <div className="external-order-box">
                                     <img className="buy-information-icons" src={shopIkon}></img>
                                     <div>
                                         <div className="order-title">В магазине</div>
@@ -129,7 +129,7 @@ function ProductDetails() {
                         <div className="add-basket-products-box">
                             <ul>
                                 <li onClick={increaseQuantity}><button>+</button></li>
-                                <li>{quantity}</li> 
+                                <li>{quantity}</li>
                                 <li onClick={decreaseQuantity}><button>-</button></li>
                             </ul>
                             <button className="basket-button">Добавить в корзину</button>

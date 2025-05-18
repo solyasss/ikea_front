@@ -92,6 +92,8 @@
 
 .order-box {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     min-width: 300px;
     padding: 15px 0px 15px 0px;
 }
