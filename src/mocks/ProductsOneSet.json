@@ -1,0 +1,19 @@
+{
+  "images1": [
+    { "id": 1, "src": "/src/assets/img/products_set_pages/img1.png", "link": "#", "column": 1, "heightRatio": "0" },
+    { "id": 2, "src": "/src/assets/img/products_set_pages/img2.png", "link": "#", "column": 2, "heightRatio": "0" },
+    { "id": 3, "src": "/src/assets/img/products_set_pages/img3.png", "link": "#", "column": 1, "heightRatio": "2" },
+    { "id": 4, "src": "/src/assets/img/products_set_pages/img4.png", "link": "#", "column": 2, "heightRatio": "1" }
+  ],
+  "title1": "Товари з одного набору",
+  "description1": "Lorem ipsum dolor sit amet consectetur. Egestas viverra tempus molestie non. Ut pellentesque ultricies quis quis nec ultricies dolor eu sem. Duis tempus aliquam nisi volutpat vitae etiam turpis. At gravida risus eu pellentesque quis. Sed lobortis tincidunt in purus mauris eu consectetur non molestie. Scelerisque id amet quis eget ullamcorper donec non tempus. Malesuada amet nibh tellus nunc convallis elit ultrices. Felis viverra ac nunc felis. Nec ipsum feugiat faucibus eget mauris. Sed molestie facilisi ipsum ullamcorper aliquet. Nibh sed diam eu tincidunt dignissim porttitor vel blandit.",
+
+  "images2": [
+    { "id": 1, "src": "/src/assets/img/products_set_pages/img5.png", "link": "#", "column": 1, "heightRatio": "0" },
+    { "id": 2, "src": "/src/assets/img/products_set_pages/img6.png", "link": "#", "column": 2, "heightRatio": "0" },
+    { "id": 3, "src": "/src/assets/img/products_set_pages/img7.png", "link": "#", "column": 1, "heightRatio": "2" },
+    { "id": 4, "src": "/src/assets/img/products_set_pages/img8.png", "link": "#", "column": 2, "heightRatio": "1" }
+  ],
+  "title2": "Товари з одного набору",
+  "description2": "Lorem ipsum dolor sit amet consectetur. Egestas viverra tempus molestie non. Ut pellentesque ultricies quis quis nec ultricies dolor eu sem. Duis tempus aliquam nisi volutpat vitae etiam turpis. At gravida risus eu pellentesque quis. Sed lobortis tincidunt in purus mauris eu consectetur non molestie. Scelerisque id amet quis eget ullamcorper donec non tempus. Malesuada amet nibh tellus nunc convallis elit ultrices. Felis viverra ac nunc felis. Nec ipsum feugiat faucibus eget mauris. Sed molestie facilisi ipsum ullamcorper aliquet. Nibh sed diam eu tincidunt dignissim porttitor vel blandit."
+}

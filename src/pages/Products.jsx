@@ -9,35 +9,42 @@ import FeatureSection from "../components/FeatureSection/FeatureSection";
 import FeatureData from "../mocks/FeatureCard.json"
 import SectionDescriptionData from "../mocks/SectionDescription.json";
 import SectionDescription from "../components/SectionDescription/SectionDescription";
+import CategoryCards from "../components/CategorySlider/CategorySlider";
+import sliderData from "../mocks/sliderData.json";
+import ProductsOneSet from "../components/ProductsOneSet/ProductsOneSet.jsx"
+import productsOneSet from '../mocks/ProductsOneSet.json';
+
 
 function Products() {
     return (
         <>
-            <Headers/>
+            <Headers />
             <div className="product-list container">
+                <CategoryCards title="ТОВАРИ" cards={sliderData} />
+                <ProductsOneSet
+                    title={productsOneSet.title1}
+                    description={productsOneSet.description1}
+                    data={{ images: productsOneSet.images1 }}
+                />
+
                 <NewOptionsProducts />
-                <h2>Products Page</h2>
-                <Link to="/" style={{ color: "#007bff", textDecoration: "underline" }}>
-                    Вернуться на главную
-                </Link>
-                {data.map((item) => (
-                    <ProductCard
-                        key={item.id}
-                        name={item.name}
-                        price={item.price}
-                        image={item.image}
-                    />
-                ))}
-                <FeatureSection cards={FeatureData}/>
+
+                <ProductsOneSet
+                    title={productsOneSet.title2}
+                    description={productsOneSet.description2}
+                    data={{ images: productsOneSet.images2 }}
+                />
+
+                <FeatureSection cards={FeatureData} />
                 {SectionDescriptionData.map((item) => (
-                    <SectionDescription 
+                    <SectionDescription
                         key={item.id}
                         title={item.title}
                         description={item.description}
                     />
                 ))}
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }

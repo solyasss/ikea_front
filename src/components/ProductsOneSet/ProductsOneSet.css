@@ -1,0 +1,17 @@
+
+.images-row {
+    display: flex;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 12px;
+
+}
+
+.column {
+    display: grid;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gallery-products-container{
+    margin-bottom: 30px;
+}
