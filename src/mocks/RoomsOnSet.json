@@ -1,0 +1,9 @@
+{
+  "images1": [
+    { "id": 1, "src": "/src/assets/img/rooms_img/first_img1_on_set.png", "link": "#", "column": 1, "heightRatio": "0" },
+    { "id": 2, "src": "/src/assets/img/rooms_img/first_img2_on_set.png", "link": "#", "column": 2, "heightRatio": "0" },
+    { "id": 3, "src": "/src/assets/img/rooms_img/first_img3_on_set.png", "link": "#", "column": 1, "heightRatio": "2" },
+    { "id": 4, "src": "/src/assets/img/rooms_img/first_img4_on_set.png", "link": "#", "column": 2, "heightRatio": "1" }
+  ],
+  "title1": "іДЕЇ ДЛЯ ОФОРМЛЕННЯ"
+}

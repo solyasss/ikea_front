@@ -1,0 +1,39 @@
+
+
+.room-product-card p {
+    margin: 0;
+    padding: 0;
+}
+
+.room-product-card h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4px;
+}
+
+.room-product-card p:nth-of-type(1) {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.room-product-card p:nth-of-type(3) {
+    font-size: 25px;
+    padding: 10px 0px 0px 0px;
+}
+
+.room-product-card {
+    border: 1px solid transparent; 
+    transition: all 0.3s ease;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.room-product-card:hover {
+    border: 1px solid #aaa; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px); 
+    background-color: #fff; 
+    cursor: pointer;
+}
+
+

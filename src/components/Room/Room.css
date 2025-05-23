@@ -1,0 +1,23 @@
+.room-slider{
+    margin-top: 160px;
+}
+
+.room-cards-box{
+    display: flex;
+    margin-top: 80px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-cards_box {
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow-x: auto;  
+    padding-top: 10px;
+    gap: 20px;  
+    margin-bottom: 100px;      
+}
+
+.room-gallery {
+    margin-top: 80px;
+}

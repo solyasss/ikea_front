@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "img": "/src/assets/img/rooms_prodict_cards/img1.png",
+        "product_name": "НАЗВА ТОВАРУ",
+        "description": "Опис товару опис товару опис товару",
+        "price": "001$"
+    },
+    {
+        "id": 2,
+        "img": "/src/assets/img/rooms_prodict_cards/img2.png",
+        "product_name": "НАЗВА ТОВАРУ",
+        "description": "Опис товару опис товару опис товару",
+        "price": "001$"
+    },
+    {
+        "id": 3,
+        "img": "/src/assets/img/rooms_prodict_cards/img1.png",
+        "product_name": "НАЗВА ТОВАРУ",
+        "description": "Опис товару опис товару опис товару",
+        "price": "001$"
+    },
+    {
+        "id": 4,
+        "img": "/src/assets/img/rooms_prodict_cards/img2.png",
+        "product_name": "НАЗВА ТОВАРУ",
+        "description": "Опис товару опис товару опис товару",
+        "price": "001$"
+    }
+   
+]

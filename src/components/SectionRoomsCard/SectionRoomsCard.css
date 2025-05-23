@@ -1,0 +1,38 @@
+.room-card{
+    cursor: pointer;
+}
+
+.room-card p {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0; 
+}
+
+
+.room-card:hover p {
+    font-weight: 600;
+}
+
+.underline-text {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 30px;
+    height: 4px;
+    width: 0;
+    background-color: #000;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+.room-card:hover .underline-text::after {
+    width: 100%;
+}

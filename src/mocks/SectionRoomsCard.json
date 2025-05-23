@@ -1,0 +1,27 @@
+[
+    {
+        "img": "/src/assets/img/rooms_img/img1.png",
+        "title": "Назва розділу"
+    },
+    {
+        "img": "/src/assets/img/rooms_img/img2.png",
+        "title": "Назва розділу"
+    },
+    {
+        "img": "/src/assets/img/rooms_img/img3.png",
+        "title": "Назва розділу"
+    },
+    {
+        "img": "/src/assets/img/rooms_img/img4.png",
+        "title": "Назва розділу"
+    },
+    {
+        "img": "/src/assets/img/rooms_img/img5.png",
+        "title": "Назва розділу"
+    },
+
+    {
+        "img": "/src/assets/img/rooms_img/img7.png",
+        "title": "Назва розділу"
+    }
+]
