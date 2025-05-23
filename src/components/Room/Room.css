@@ -1,8 +1,8 @@
-.room-slider{
+.room-slider {
     margin-top: 160px;
 }
 
-.room-cards-box{
+.room-cards-box {
     display: flex;
     margin-top: 80px;
     justify-content: space-around;
@@ -11,13 +11,33 @@
 
 .product-cards_box {
     display: flex;
-    flex-wrap: nowrap; 
-    overflow-x: auto;  
+    flex-wrap: nowrap;
+    overflow-x: auto;
     padding-top: 10px;
-    gap: 20px;  
-    margin-bottom: 100px;      
+    gap: 20px;
+    margin-bottom: 100px;
 }
 
 .room-gallery {
     margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.set-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    overflow-x: auto;
+    margin-bottom: 80px;
+}
+
+.set-box img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.additional-information {
+   max-width: 980px;
+   margin-bottom: 80px;
 }
