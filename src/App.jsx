@@ -32,7 +32,7 @@ function App() {
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/productsDetails/:id" element={<ProductDetails />} />
             <Route path="/room" element={<Roomss />} />
-            <Route path="/account" element={<UserAccount />} />
+            <Route path="/account/:id" element={<UserAccount />} />
 
         </Routes>
     );

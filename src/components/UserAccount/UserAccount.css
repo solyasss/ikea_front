@@ -8,6 +8,7 @@
 .user-menu-list li {
     font-weight: 500;
     margin-bottom: 20px;
+    font-size: 20px;
     cursor: pointer;
 
 }
@@ -28,12 +29,21 @@
     left: 0;
     bottom: 0;
     top: 30px;
-    height: 4px;
+    height: 2px;
     width: 0;
     background-color: #ffffff;
     border-radius: 3px;
-    transition: width 0.4s ease;
+    transition: width 0.3s ease;
 }
+
+.user-menu-list li.active {
+    font-weight: 600;
+}
+
+.user-menu-list li.active .underline-text::after {
+    width: 100%;
+}
+
 
 .user-menu-list li:hover .underline-text::after {
     width: 100%;
@@ -42,6 +52,7 @@
 .custom-menu-bg {
     background-color: #839D9A;
     color: #fff;
+
 }
 
 .user-account {
@@ -57,7 +68,6 @@
     flex-shrink: 0;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 0px 15px 15px 0px;
 }
 
 /* ------------------------- СТИЛИ ДЛЯ MAIN КОНТЕЙНЕРА  -----------------------------------*/
