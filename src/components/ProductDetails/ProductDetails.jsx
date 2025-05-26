@@ -69,7 +69,6 @@ function ProductDetails() {
             <div className="_container">
                 <div className="details-box">
                     <div className="gallery">
-
                         <img
                             className="main-image"
                             src={productData.mainImage}
