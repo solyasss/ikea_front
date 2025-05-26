@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./UserAccount.css";
 import UserProfile from "../UserProfile/UserProfile";
+import UserOrder from "../UserOrder/UserOrder";
 
 function UserAccount() {
     const [activeSection, setActiveSection] = useState("purchases");
@@ -39,7 +40,9 @@ function UserAccount() {
             </nav>
 
             <main className="show-container">
-                {activeSection === "purchases" && <div>FIRST BLOCK</div>}
+                {activeSection === "purchases" &&
+                    <UserOrder Id={id} />
+                }
                 {activeSection === "profile" &&
                     <UserProfile Id={id} />
                 }

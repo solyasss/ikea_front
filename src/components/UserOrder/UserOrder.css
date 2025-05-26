@@ -1,0 +1,25 @@
+.user-order {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+}
+
+.order-info {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.order-product-image {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.order-details p {
+    margin: 5px 0;
+}
