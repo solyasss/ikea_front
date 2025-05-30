@@ -13,7 +13,7 @@ function BasketMenu({ header, items, active, setActive }) {
                         <button className="basket-continue__shopping">Продолжить покупки</button>
                         <button className="basket-go-basket">Перейти в корзину</button>
                     </div>
-                </div>
+                </div> 
             </div>
         </>
     );
