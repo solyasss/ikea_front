@@ -135,6 +135,20 @@ function ProductDetails() {
                         </div>
                     </div>
                 </div>
+                <div className="comments-section">
+                    <h3>Отзывы</h3>
+                    {productData.comments.length === 0 ? (
+                        <p>Нет комментариев</p>
+                    ) : (
+                        productData.comments.map((comment, index) => (
+                            <div key={index} className="comment">
+                                <p><strong>{comment.user.firstName} {comment.user.lastName}:</strong> {comment.commentText}</p>
+                                <p>Оценка: {comment.rating}★</p>
+                            </div>
+                        ))
+                    )}
+                </div>
+
             </div>
         </>
     );

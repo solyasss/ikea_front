@@ -15,6 +15,7 @@ import Idea from "./pages/Idea.jsx";
 import AdminPanel from "./pages/AdminPanel.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import Roomss from "./pages/Rooms.jsx";
+import UserAccount from "./pages/UserAccount.jsx";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/productsDetails/:id" element={<ProductDetails />} />
             <Route path="/room" element={<Roomss />} />
+            <Route path="/account/:id" element={<UserAccount />} />
 
         </Routes>
     );

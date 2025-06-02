@@ -1,0 +1,217 @@
+.user-profile {
+    background-color: rgb(229, 236, 242);
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+.user-profile h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #2c3e50;
+}
+
+.profile-field {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.profile-field strong {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.user-prodile-settings {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 0px 0px 50px;
+}
+
+.user-prodile-settings ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+
+.user-prodile-settings ul li {
+    display: block;
+    font-weight: 650;
+    font-size: 12px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.user-prodile-settings ul li:hover {
+    color: #839D9A;
+
+}
+
+.user-prodile-settings ul li.active {
+    color: #839D9A;
+}
+
+.user-profile button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #839D9A;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background-color: transparent;
+
+
+}
+
+.user-profile button:hover {
+    transform: translateY(-2px);
+    background-color: #f4ebaa;
+}
+
+.user-profile button img {
+    display: inline-block;
+}
+
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.form-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.form-actions button[type="button"] {
+    background-color: #6c757d;
+}
+
+.error {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.primary-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+    background-color: #0056b3;
+}
+
+.danger-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.danger-button:hover {
+    background-color: #a71d2a;
+}
+
+.divider {
+    margin: 32px 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+.user-control-box{
+    display: flex;
+}
+
