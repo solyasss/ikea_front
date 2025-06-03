@@ -43,6 +43,7 @@
     gap: 20px;
     list-style: none;
     padding: 0;
+    white-space: nowrap
 }
 
 
@@ -211,7 +212,6 @@
     border-top: 1px solid #eee;
 }
 
-.user-control-box{
+.user-control-box {
     display: flex;
 }
-

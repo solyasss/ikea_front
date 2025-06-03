@@ -3,7 +3,6 @@
     display: flex;
     grid-template-columns: 1fr 2fr;
     grid-gap: 12px;
-
 }
 
 .column {
@@ -14,4 +13,24 @@
 
 .gallery-products-container{
     margin-bottom: 30px;
+}
+
+.section-title__productsOneSet {
+    width: 100%;
+    color: #000;
+    font-family: "Montserrat",sans-serif;
+}
+
+.section-title__productsOneSet h1{
+    text-align: start;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0;
+}
+
+.section-title__productsOneSet div{
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: lowercase;
+    text-align: start;
 }

@@ -9,9 +9,9 @@ const ProductsOneSet = ({ title, description, data }) => {
 
     return (
         <div className="gallery-products-container">
-            <div className="section-title">
+            <div className="section-title section-title__productsOneSet">
                 <h1>{title}</h1>
-                <p>{description}</p>
+                <div>{description}</div>
             </div>
 
             <div className="images-row">

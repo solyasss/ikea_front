@@ -57,8 +57,7 @@
 
 .user-account {
     display: flex;
-    min-height: 100vh;
-
+    position: relative;
 }
 
 .user-menu {
@@ -76,4 +75,12 @@
     flex: 1;
     padding: 20px;
     background-color: #f9f9f9;
+}
+.user-menu.custom-menu-bg {
+    position: fixed;
+    height: 100%;
+}
+
+.show-container {
+    margin-left: 250px;
 }
