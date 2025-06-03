@@ -135,20 +135,37 @@ function ProductDetails() {
                         </div>
                     </div>
                 </div>
+                <div className="product-description-text">
+                    <h3>Описание товара</h3>
+                    <p>{productData.description}</p>
+                </div>
                 <div className="comments-section">
                     <h3>Отзывы</h3>
                     {productData.comments.length === 0 ? (
                         <p>Нет комментариев</p>
                     ) : (
-                        productData.comments.map((comment, index) => (
-                            <div key={index} className="comment">
-                                <p><strong>{comment.user.firstName} {comment.user.lastName}:</strong> {comment.commentText}</p>
-                                <p>Оценка: {comment.rating}★</p>
-                            </div>
-                        ))
+                        <table className="comments-table">
+                            <thead>
+                                <tr className="comments-header">
+                                    <th>Пользователь</th>
+                                    <th>Комментарий</th>
+                                    <th>Оценка</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {productData.comments.map((comment) => (
+                                    <tr key={comment.id}>
+                                        <td>{comment.user.firstName} {comment.user.lastName}</td>
+                                        <td>{comment.commentText}</td>
+                                        <td>{comment.rating}★</td>
+
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     )}
                 </div>
-
             </div>
         </>
     );
