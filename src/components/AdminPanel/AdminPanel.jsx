@@ -1,34 +1,43 @@
 import React, { useState } from "react";
+import ManageСategories from "../ManageСategories/ManageСategories";
+import ManageUsers from "../ManageUsers/ManageUsers";
 import "./AdminPanel.css";
 
 function AdminPanel() {
     const [activeSection, setActiveSection] = useState("categories");
 
     return (
-        <div className="main-admin-panel">
-            <div className="sidebar">
-                <button onClick={() => setActiveSection("categories")}>
-                    Категории
-                </button>
-                <button onClick={() => setActiveSection("users")}>
-                    Пользователи
-                </button>
-            </div>
-            <div className="main-panel-content">
+        <section className="main-admin-panel">
+            <nav className="admin-menu admin-custom-menu-bg">
+                <ul className="admin-menu-list">
+                    <li
+                        className={activeSection === "purchases" ? "active" : ""}
+                        onClick={() => setActiveSection("categories")}
+                    >
+                        <span className="underline-text">Категории</span>
+                    </li>
+                    <li
+                        className={activeSection === "profile" ? "active" : ""}
+                        onClick={() => setActiveSection("user")}
+                    >
+                        <span className="underline-text">Пользователи</span>
+                    </li>
+
+                </ul>
+            </nav>
+            <main className="admin-show-container">
                 {activeSection === "categories" && (
                     <div>
-                        <h2>Категории</h2>
-                        <p>Здесь отображаются категории товаров.</p>
+                        <ManageСategories />
                     </div>
                 )}
-                {activeSection === "users" && (
+                {activeSection === "user" && (
                     <div>
-                        <h2>Пользователи</h2>
-                        <p>Здесь отображаются данные пользователей.</p>
+                      <ManageUsers />
                     </div>
                 )}
-            </div>
-        </div>
+            </main>
+        </section>
     );
 }
 
