@@ -1,31 +1,27 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import "./Registration.css"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Registration.css";
 
 function Registration() {
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [birthDate, setBirthDate] = useState("")
-    const [country, setCountry] = useState("")
-    const [address, setAddress] = useState("")
-    const [phone, setPhone] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [agree, setAgree] = useState(false)
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [birthDate, setBirthDate] = useState("");
+    const [country, setCountry] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [agree, setAgree] = useState(false);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const nameRegex    = /^[A-Za-zА-Яа-яЁёІіЇїҐґ’' -]+$/
-    const countryRegex = /^[A-Za-zА-Яа-яЁёІіЇїҐґ’' -]+$/
-    const addressRegex = /^[A-Za-zА-Яа-яЁёІіЇїҐґ’' -]+$/
-    const uaPhoneRegex = /^380\d{9}$/
-    const pwRegex      = /^(?=.*[A-Za-z]).{8,30}$/
-    const maxBirth     = "2023-12-31"
-
-    const handlePhoneChange = (e) => {
-        const onlyDigits = e.target.value.replace(/\D/g, "")
-        setPhone(onlyDigits)
-    }
+    const nameRegex = /^[A-Za-z\u0400-\u04FF]+$/;
+    const countryRegex = /^[A-Za-z\u0400-\u04FF\s]+$/;
+    const phoneRegex = /^\+\d{9,15}$/;
+    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const addressMaxLength = 100;
+    const maxLength50 = 50;
+    const today = new Date().toISOString().split('T')[0];
 
     const validateForm = () => {
         if (
@@ -39,48 +35,71 @@ function Registration() {
             !password ||
             !agree
         ) {
-            return "All fields must be filled and the checkbox must be ticked"
+            return "All fields must be filled and the checkbox must be ticked";
         }
 
-        if (!firstName.match(nameRegex))       return "First name must contain letters only"
-        if (!lastName.match(nameRegex))        return "Last name must contain letters only"
-        if (birthDate > maxBirth)              return "Birth date must be before 2024"
-        if (!country.match(countryRegex))      return "Country must contain letters only"
-        if (!address.match(addressRegex))      return "Address must contain letters only"
-        if (!uaPhoneRegex.test(phone))         return "Phone must be a valid number: 380XXXXXXXXX"
-        if (!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/))
-            return "Email must be a valid format"
-        if (!pwRegex.test(password))           return "Password must be 8‑30 characters and contain at least one letter"
+        if (firstName.length > maxLength50) return "First name cannot exceed 50 characters.";
+        if (!firstName.match(nameRegex)) return "First name must contain only letters (Latin or Cyrillic).";
 
-        return ""
-    }
+        if (lastName.length > maxLength50) return "Last name cannot exceed 50 characters.";
+        if (!lastName.match(nameRegex)) return "Last name must contain only letters (Latin or Cyrillic).";
+
+        if (!birthDate || birthDate >= today) return "Birth date must be in the past.";
+
+        if (country.length > maxLength50) return "Country cannot exceed 50 characters.";
+        if (!country.match(countryRegex)) return "Country must contain only letters and spaces (Latin or Cyrillic).";
+
+        if (address.length > addressMaxLength) return "Address cannot exceed 100 characters.";
+
+        if (!phone.match(phoneRegex)) return "Phone number must start with + and contain 9 to 15 digits.";
+
+        if (!email.match(emailRegex)) return "Email must be a valid format.";
+
+        if (password.length < 6) return "Password must be at least 6 characters.";
+
+        return "";
+    };
+
+    const handlePhoneChange = (e) => {
+        setPhone(e.target.value);
+    };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const error = validateForm()
+        const error = validateForm();
         if (error) {
-            window.toastError?.(error)
-            return
+            window.toastError?.(error);
+            return;
         }
 
-        const response = await fetch("http://localhost:5123/api/users", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                IsAdmin: false,
-                FirstName: firstName,
-                LastName: lastName,
-                BirthDate: birthDate,
-                Country: country,
-                Address: address,
-                Phone: phone,
-                Email: email,
-                Password: password
-            })
-        })
-        if (response.ok) navigate("/login")
-    }
+        try {
+            const response = await fetch("http://localhost:5123/api/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    IsAdmin: false,
+                    FirstName: firstName,
+                    LastName: lastName,
+                    BirthDate: birthDate,
+                    Country: country,
+                    Address: address,
+                    Phone: phone,
+                    Email: email,
+                    Password: password,
+                }),
+            });
+
+            if (response.ok) {
+                navigate("/login");
+            } else {
+                const data = await response.json();
+                window.toastError?.(data.message || "Registration failed.");
+            }
+        } catch (err) {
+            window.toastError?.("An error occurred during registration.");
+        }
+    };
 
     return (
         <div className="container-fluid registration-container">
@@ -104,9 +123,9 @@ function Registration() {
                                 className="form-control"
                                 style={{ minHeight: "48px" }}
                                 value={firstName}
-                                pattern={nameRegex.source}
+                                pattern="[A-Za-z\u0400-\u04FF]+"
                                 onChange={(e) => setFirstName(e.target.value)}
-                                title="Letters only"
+                                title="Letters only (Latin or Cyrillic)"
                             />
                         </div>
 
@@ -118,9 +137,9 @@ function Registration() {
                                 className="form-control"
                                 style={{ minHeight: "48px" }}
                                 value={lastName}
-                                pattern={nameRegex.source}
+                                pattern="[A-Za-z\u0400-\u04FF]+"
                                 onChange={(e) => setLastName(e.target.value)}
-                                title="Letters only"
+                                title="Letters only (Latin or Cyrillic)"
                             />
                         </div>
 
@@ -131,10 +150,10 @@ function Registration() {
                                 type="date"
                                 className="form-control"
                                 style={{ minHeight: "48px" }}
-                                max={maxBirth}
+                                max={today}
                                 value={birthDate}
                                 onChange={(e) => setBirthDate(e.target.value)}
-                                title="Date must be before 2024"
+                                title="Date must be in the past"
                             />
                         </div>
 
@@ -146,9 +165,9 @@ function Registration() {
                                 className="form-control"
                                 style={{ minHeight: "48px" }}
                                 value={country}
-                                pattern={countryRegex.source}
+                                pattern="[A-Za-z\u0400-\u04FF\s]+"
                                 onChange={(e) => setCountry(e.target.value)}
-                                title="Letters only"
+                                title="Letters and spaces only (Latin or Cyrillic)"
                             />
                         </div>
 
@@ -160,9 +179,9 @@ function Registration() {
                                 className="form-control"
                                 style={{ minHeight: "48px" }}
                                 value={address}
-                                pattern={addressRegex.source}
+                                maxLength={addressMaxLength}
                                 onChange={(e) => setAddress(e.target.value)}
-                                title="Address must contain letters only"
+                                title="Max 100 characters"
                             />
                         </div>
 
@@ -174,10 +193,10 @@ function Registration() {
                                 className="form-control mb-2"
                                 style={{ minHeight: "48px" }}
                                 value={phone}
-                                pattern={uaPhoneRegex.source}
-                                placeholder="380XXXXXXXXX"
+                                pattern="\+\d{9,15}"
+                                placeholder="+380XXXXXXXXX"
                                 onChange={handlePhoneChange}
-                                title="Ukrainian phone: 380XXXXXXXXX"
+                                title="Phone number must start with + and contain 9 to 15 digits."
                             />
                             <h6>
                                 <div className="fw-reg lt-grey">
@@ -217,9 +236,9 @@ function Registration() {
                                 className="form-control"
                                 style={{ minHeight: "48px" }}
                                 value={password}
-                                pattern={pwRegex.source}
+                                minLength="6"
                                 onChange={(e) => setPassword(e.target.value)}
-                                title="8‑30 characters, at least one letter"
+                                title="At least 6 characters"
                             />
                         </div>
 
@@ -250,7 +269,7 @@ function Registration() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Registration
+export default Registration;

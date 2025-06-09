@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
 export default function Login() {
@@ -8,19 +8,27 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [remember, setRemember] = useState(false);
 
-    const emailOrPhoneRegex = /^([^\s@]+@[^\s@]+\.[^\s@]+|380\d{9})$/;
-    const pwRegex = /^(?=.*[A-Za-z]).{8,30}$/;
+    const navigate = useNavigate();
+
+    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const phoneRegex = /^\+\d{9,15}$/;
 
     const validateForm = () => {
         if (!login.trim() || !password.trim() || !remember) {
             return "All fields must be filled and the checkbox must be ticked";
         }
-        if (!emailOrPhoneRegex.test(login)) {
-            return "Login must be a valid email";
+
+        const isEmail = emailRegex.test(login);
+        const isPhone = phoneRegex.test(login);
+
+        if (!isEmail && !isPhone) {
+            return "Login must be a valid email or phone number";
         }
-        if (!pwRegex.test(password)) {
-            return "Password must be 8‑30 characters and contain at least one letter";
+
+        if (password.length < 6) {
+            return "Password must be at least 6 characters.";
         }
+
         return "";
     };
 
@@ -32,8 +40,8 @@ export default function Login() {
             return;
         }
 
-
         console.log("✅ Login successful:", { login, password, remember });
+        navigate("/");
     };
 
     return (
@@ -62,7 +70,7 @@ export default function Login() {
                     <form className="login-form" onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="login" className="form-label fw-med">
-                                Email
+                                Email or Phone
                             </label>
                             <input
                                 id="login"
@@ -70,7 +78,7 @@ export default function Login() {
                                 className="form-control login-input"
                                 value={login}
                                 onChange={(e) => setLogin(e.target.value)}
-                                placeholder="you@example.com"
+                                placeholder="you@example.com or +380XXXXXXXXX"
                             />
                             <p className="info-text lt-grey mt-2">
                                 By entering your mobile number and one-time code sign-in option,
