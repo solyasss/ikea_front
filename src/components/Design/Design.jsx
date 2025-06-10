@@ -20,13 +20,13 @@ function Design() {
                 </div>
                 <div className="design-offers-card second-backround-img-card">
                     <div className="design-card-description">
-                        <h3>ЯК ОБРАТИ СТИЛЬ</h3>
+                        <h3>НАШІ ПОРАДИ</h3>
                         <div>Lorem ipsum dolor sit amet consectetur. Habitasse consequat egestas lectus consequat egestas lectus blandit consequat. A sed  blandit consequat. A sed placerat sapien amet...</div>
                     </div>
                 </div>
                 <div className="design-offers-card third-backround-img-card">
                     <div className="design-card-description">
-                        <h3>ЯК ОБРАТИ СТИЛЬ</h3>
+                        <h3>ЯК СПАЛАНУВАТИ</h3>
                         <div>Lorem ipsum dolor sit amet consectetur. Habitasse consequat egestas lectus consequat egestas lectus blandit consequat. A sed  blandit consequat. A sed placerat sapien amet...</div>
                     </div>
                 </div>
