@@ -14,6 +14,26 @@ function ProductDetails() {
     const [productData, setProductData] = useState(null);
     const [menuActive, setMenuActive] = useState(false);
     const [quantity, setQuantity] = useState(1);
+    const [commentText, setCommentText] = useState("");
+    const [rating, setRating] = useState(5);
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        async function fetchUser() {
+            const response = await fetch("https://localhost:7290/api/auth/me", {
+                credentials: "include"
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setUser(data);
+            } else {
+                setUser(null);
+            }
+        }
+        fetchUser();
+    }, []);
+
 
 
     const items = [
@@ -59,6 +79,38 @@ function ProductDetails() {
 
     const decreaseQuantity = () => {
         setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+    };
+
+    const handleAddComment = async () => {
+        if (!commentText.trim()) {
+            alert("Комментарий не может быть пустым");
+            return;
+        }
+        const dto = {
+            productId: id,
+            commentText,
+            rating,
+        };
+
+        const response = await fetch("https://localhost:7290/api/productComments", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify(dto),
+        });
+
+        if (response.ok) {
+            alert("Комментарий добавлен");
+            setCommentText("");
+            setRating(5);
+            const response = await fetch(`https://localhost:7290/api/products/${id}`);
+            const updatedProduct = await response.json();
+            setProductData(updatedProduct);
+        } else if (response.status === 401) {
+            alert("Пожалуйста, войдите в систему чтобы оставить комментарий.");
+        } else {
+            alert("Ошибка при добавлении комментария.");
+        }
     };
 
     if (!productData) return <div>Загрузка...</div>;
@@ -139,6 +191,30 @@ function ProductDetails() {
                     <h3>Описание товара</h3>
                     <p>{productData.description}</p>
                 </div>
+                {user ? (
+                    <div className="add-comment-form">
+                        <h4>Оставить отзыв</h4>
+                        <textarea
+                            value={commentText}
+                            onChange={(e) => setCommentText(e.target.value)}
+                            placeholder="Ваш комментарий"
+                        />
+                        <select value={rating} onChange={e => setRating(Number(e.target.value))}>
+                            <option value={1}>1 ★</option>
+                            <option value={2}>2 ★</option>
+                            <option value={3}>3 ★</option>
+                            <option value={4}>4 ★</option>
+                            <option value={5}>5 ★</option>
+                        </select>
+                        <button onClick={handleAddComment}>Отправить</button>
+                    </div>
+                ) : (
+                    <div className="login-notice">
+                        Для оставления комментария необходимо <a href="/login">войти в систему</a>.
+                    </div>
+                )}
+
+
                 <div className="comments-section">
                     <h3>Отзывы</h3>
                     {productData.comments.length === 0 ? (

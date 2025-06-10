@@ -32,7 +32,7 @@ export default function Login() {
         return "";
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const error = validateForm();
         if (error) {
@@ -40,9 +40,30 @@ export default function Login() {
             return;
         }
 
-        console.log("✅ Login successful:", { login, password, remember });
-        navigate("/");
+        try {
+            const response = await fetch("https://localhost:7290/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include", 
+                body: JSON.stringify({
+                    email: login,
+                    password: password,
+                }),
+            });
+
+            if (response.ok) {
+                window.toastSuccess?.("Вход выполнен успешно");
+                navigate("/");
+            } else {
+                const result = await response.json();
+                window.toastError?.(result.message || "Ошибка входа");
+            }
+        } catch (err) {
+            console.error(err);
+            window.toastError?.("Ошибка соединения с сервером");
+        }
     };
+
 
     return (
         <div className="container-fluid px-0 login-page">
