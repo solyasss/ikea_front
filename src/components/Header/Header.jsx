@@ -8,11 +8,15 @@ import likeIkon from "../../assets/img/header/Component 1.svg";
 import Search from "../Search/Search";
 import RunningLine from "../RunningLine/RunningLine";
 import BurgerMenu from "../Menu/Menu";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { Link } from "react-router-dom";
+
 
 export default function Headers() {
 
     const [menuActive, setMenuActive] = useState(false);
+    const [user, setUser] = useState(null);
 
     const items = [
         { value: "ГОЛОВНА", href: "/" },
@@ -20,7 +24,17 @@ export default function Headers() {
         { value: "КІМНАТИ", href: "/" },
         { value: "ІДЕЇ", href: "/Idea" },
         { value: "ДИЗАЙН", href: "/" }
-    ]
+    ];
+
+    useEffect(() => {
+        fetch("https://localhost:7290/api/auth/me", { credentials: "include" })
+            .then(res => {
+                if (res.ok) return res.json();
+                throw new Error("Not authenticated");
+            })
+            .then(data => setUser(data))
+            .catch(() => setUser(null));
+    }, []);
 
     return (
         <>
@@ -62,7 +76,13 @@ export default function Headers() {
                         </li>
                         <li className="menu__item right__menu">
                             <img src={UserIcon} alt="Гео" />
-                            <a href="" className="menu__link">Привіт! Увійдіть в Систему</a>
+                            {user ? (
+                                <Link to={`http://localhost:5173/account/${user.userId}`} className="menu__link">
+                                    {user.userName}
+                                </Link>
+                            ) : (
+                                <a href="/login" className="menu__link">Привіт! Увійдіть в Систему</a>
+                            )}
                         </li>
                         <li className="menu__item right__menu__icons">
                             <a href="">
