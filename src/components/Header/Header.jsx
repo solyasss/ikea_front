@@ -21,9 +21,9 @@ export default function Headers() {
     const items = [
         { value: "ГОЛОВНА", href: "/" },
         { value: "ТОВАРИ", href: "/products" },
-        { value: "КІМНАТИ", href: "/" },
-        { value: "ІДЕЇ", href: "/Idea" },
-        { value: "ДИЗАЙН", href: "/" }
+        { value: "КІМНАТИ", href: "/room" },
+        { value: "ІДЕЇ", href: "/idea" },
+        { value: "ДИЗАЙН", href: "/design" }
     ];
 
     useEffect(() => {
@@ -57,13 +57,13 @@ export default function Headers() {
                     <nav className="header_menu">
                         <ul className="menu__list">
                             <li className="menu__item">
-                                <a href="" className="menu__link">Товари</a>
+                                <Link to="/products" className="menu__link">Товари</Link>
                             </li>
                             <li className="menu__item">
-                                <a href="" className="menu__link">Кімнати</a>
+                                <Link to="/room" className="menu__link">Кімнати</Link>
                             </li>
                             <li className="menu__item">
-                                <a href="" className="menu__link">Дизайн</a>
+                                <Link to="/design" className="menu__link">Дизайн</Link>
                             </li>
                         </ul>
                     </nav>
@@ -72,40 +72,40 @@ export default function Headers() {
                     <ul className="menu__list">
                         <li className="menu__item right__menu">
                             <img src={GeoIcon} alt="Гео" />
-                            <a href="" className="menu__link">Київ</a>
+                            <Link to="/city" className="menu__link">Київ</Link>
                         </li>
                         <li className="menu__item right__menu">
                             <img src={UserIcon} alt="Гео" />
                             {user ? (
-                                <Link to={`http://localhost:5173/account/${user.userId}`} className="menu__link">
+                                <Link to={`/account/${user.userId}`} className="menu__link">
                                     {user.userName}
                                 </Link>
                             ) : (
-                                <a href="/login" className="menu__link">Привіт! Увійдіть в Систему</a>
+                                <Link to="/login" className="menu__link">Привіт! Увійдіть в Систему</Link>
                             )}
                         </li>
                         <li className="menu__item right__menu__icons">
-                            <a href="">
-                                <img src={BuyIcon} alt="Гео" />
-                            </a>
-                            <a href="">
-                                <img src={likeIkon} alt="Гео" />
-                            </a>
+                            <Link to="/basket">
+                                <img src={BuyIcon} alt="Купити" />
+                            </Link>
+                            <Link to="/favorites">
+                                <img src={likeIkon} alt="Вподобання" />
+                            </Link>
                         </li>
                     </ul>
                     <li className="menu__item hidden__buttons">
-                        <a href="">
+                        <Link to="/city">
                             <img src={GeoIcon} alt="Гео" />
-                        </a>
-                        <a href="">
-                            <img src={UserIcon} alt="Гео" />
-                        </a>
-                        <a href="">
-                            <img src={BuyIcon} alt="Гео" />
-                        </a>
-                        <a href="">
-                            <img src={likeIkon} alt="Гео" />
-                        </a>
+                        </Link>
+                        <Link to="/login">
+                            <img src={UserIcon} alt="Користувач" />
+                        </Link>
+                        <Link to="/buy">
+                            <img src={BuyIcon} alt="Купити" />
+                        </Link>
+                        <Link to="/favorites">
+                            <img src={likeIkon} alt="Вподобання" />
+                        </Link>
                         <div className="burger_container burger_container-adaptive">
                             <nav className="parrent__block">
                                 <div className="burger-btn" onClick={() => setMenuActive(!menuActive)}>

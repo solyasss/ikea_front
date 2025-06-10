@@ -22,15 +22,8 @@ function Home() {
             <HeroSection/>
             <div className="container">
             <div style={{padding: "2rem"}}>
-                <h1>Welcome to BuyNow</h1>
-
-                <img
-                    src={buyNowImg}
-                    alt="logo"
-                    style={{width: 250, height: 100, objectFit: "fill"}}
-                />
-
-                <ul>
+               
+                {/* <ul>
                     <li><Link to="/registration">Go to Registration</Link></li>
                     <li><Link to="/products">View Products</Link></li>
                     <li><Link to="/login">Go to Login</Link></li>
@@ -39,7 +32,7 @@ function Home() {
                     <li><Link to="/idea">Go to Ideas</Link></li>
                     <li><Link to="/admin">Go to Admin Panel</Link></li>
                     <li><Link to="/products${id}">Go to Product details</Link></li>
-                </ul>
+                </ul> */}
             </div>
 
                 <PromoSection title="ЗНАЙДИ ТЕ, ЩО ШУКАЄШ!"/>

@@ -1,5 +1,5 @@
 .hedaer__container {
-    padding: 13px 30px 13px 30px
+    padding: 13px 30px 13px 30px;
 }
 
 header {
@@ -12,7 +12,7 @@ header {
 
 .burger_container {
     margin: 0;
-    padding: 0; 
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +69,7 @@ header {
     gap: 10px;
 }
 
-.hidden__buttons{
+.hidden__buttons {
     display: none;
     gap: 20px;
 }
@@ -79,56 +79,56 @@ header {
     gap: 30px;
 } */
 
-.parrent__block{
+.parrent__block {
     width: 50px;
-    height: 100%; 
-    background-color: #fff; 
-    z-index: 50;  
-    display: flex; 
+    height: 100%;
+    background-color: #fff;
+    z-index: 50;
+    display: flex;
     align-items: center;
 }
 
-.burger-btn{
-    width: 30px;    
+.burger-btn {
+    width: 30px;
     height: 30px;
     margin-left: 20px;
-    position: absolute; 
+    position: absolute;
     cursor: pointer;
 }
 
-.burger-btn::before{
+.burger-btn::before {
     content: '';
     position: absolute;
-    top: 4px;  
+    top: 4px;
     width: 30px;
     height: 2px;
-    background-color: #5F5F5F; 
+    background-color: #5F5F5F;
 }
 
-.burger-btn span{
+.burger-btn span {
     content: '';
     position: absolute;
     top: 13px;
     width: 30px;
     height: 2px;
-    background-color: #5F5F5F; 
-    
+    background-color: #5F5F5F;
+
 }
 
-.burger-btn::after{
+.burger-btn::after {
     content: '';
-    position: absolute; 
-    bottom: 7px;  
+    position: absolute;
+    bottom: 7px;
     width: 30px;
-    background-color: #5F5F5F; 
+    background-color: #5F5F5F;
     height: 2px;
 }
 
-.main__burger{
+.main__burger {
     padding: 30px;
 }
 
-.paragraf{
+.paragraf {
     margin: 20px;
 }
 
@@ -140,34 +140,34 @@ li {
 }
 
 
-@media (max-width: 1010px){
+@media (max-width: 1010px) {
     .menu__list {
-        gap: 20px;   
+        gap: 20px;
     }
 
-    .leftMenu{
+    .leftMenu {
         gap: 20px;
     }
 }
 
-@media (max-width: 892px){
+@media (max-width: 892px) {
     .menu__list {
-        display: none;  
-    }
-
-    .hidden__buttons{
-        display: flex;  
-    }
-
-    .burger_container{
         display: none;
     }
 
-    .burger_container-adaptive{
+    .hidden__buttons {
         display: flex;
     }
 
-    .leftMenu{
+    .burger_container {
+        display: none;
+    }
+
+    .burger_container-adaptive {
+        display: flex;
+    }
+
+    .leftMenu {
         gap: 20px;
     }
 }

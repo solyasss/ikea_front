@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import UnionIcon from "../../assets/img/icons_svg/BuyNow.svg";
 import CloseIcon from "../../assets/img/burger_menu/colse.svg"
 import "./Menu.css"
@@ -17,10 +18,11 @@ function BurgerMenu({ header, items, active, setActive }) {
                             <img src={UnionIcon} className="burger__logo" width={112} height={36} alt="Лого" />
                         </div>
                         <ul className="burger__list">
-                            {items.map(item =>
-                                <li>
-                                    <a href={item.href}>{item.value}</a>
-
+                            {items.map((item, index) =>
+                                <li key={index}>
+                                    <Link to={item.href} onClick={() => setActive(false)}>
+                                        {item.value}
+                                    </Link>
                                 </li>
                             )}
                         </ul>
