@@ -1,0 +1,50 @@
+.design-card-box {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.design-offers-card {
+    flex: 1 1 300px;
+    max-width: 481px;
+    height: 720px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 12px;
+}
+
+.design-card-description {
+    background-color: #F2F2F2;
+    text-align: center;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.design-offers-card h3 {
+    font-size: 24px;
+}
+
+.first-backround-img-card {
+    background-image: url("/src/assets/img/design/card1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.second-backround-img-card {
+    background-image: url("/src/assets/img/design/card2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.third-backround-img-card {
+    background-image: url("/src/assets/img/design/card3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
