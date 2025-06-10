@@ -1,25 +1,156 @@
-.user-order {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    max-width: 600px;
+.order-card {
+    background-color: rgb(229, 236, 242);
+    width: 300px;
     margin: 20px auto;
-    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.order-image-center {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.order-title-small {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.order-price {
+    font-size: 16px;
+    color: #007bff;
+    margin-bottom: 12px;
+}
+
+.order-detail-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-detail-btn:hover {
+    background-color: #0056b3;
+}
+
+/* ====================== MODAL ====================== */
+
+.order-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.order-modal {
+    background: white;
+    padding: 20px 24px;
+    border-radius: 12px;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #777;
+}
+
+.close-modal-btn:hover {
+    color: #333;
+}
+
+.order-modal-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.order-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
 }
 
 .order-info {
     display: flex;
-    gap: 20px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.order-product-image {
-    width: 120px;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
+.order-info p {
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+    line-height: 1.4;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
 }
 
-.order-details p {
-    margin: 5px 0;
+.order-info p strong {
+    display: inline-block;
+    color: #555;
+    font-weight: 600;
+    margin-right: 6px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+}
+
+.order-info .total {
+    color: #007bff;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.order-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 30px;
+    color: #555;
+}
+
+.error-text {
+    color: #dc3545;
 }
