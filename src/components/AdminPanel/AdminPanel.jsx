@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ManageСategories from "../ManageСategories/ManageСategories";
 import ManageUsers from "../ManageUsers/ManageUsers";
+import ManageProducts from "../ManageProducts/ManageProducts";
 import "./AdminPanel.css";
 
 function AdminPanel() {
@@ -22,6 +23,12 @@ function AdminPanel() {
                     >
                         <span className="underline-text">Пользователи</span>
                     </li>
+                    <li
+                        className={activeSection === "profile" ? "active" : ""}
+                        onClick={() => setActiveSection("products")}
+                    >
+                        <span className="underline-text">Продукты</span>
+                    </li>
 
                 </ul>
             </nav>
@@ -33,7 +40,12 @@ function AdminPanel() {
                 )}
                 {activeSection === "user" && (
                     <div>
-                      <ManageUsers />
+                        <ManageUsers />
+                    </div>
+                )}
+                {activeSection === "products" && (
+                    <div>
+                        <ManageProducts />
                     </div>
                 )}
             </main>
