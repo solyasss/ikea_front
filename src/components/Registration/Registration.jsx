@@ -74,9 +74,10 @@ function Registration() {
         }
 
         try {
-            const response = await fetch("http://localhost:5123/api/users", {
+            const response = await fetch("https://localhost:7290/api/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include", 
                 body: JSON.stringify({
                     IsAdmin: false,
                     FirstName: firstName,
@@ -89,6 +90,8 @@ function Registration() {
                     Password: password,
                 }),
             });
+
+            console.log("Status:", response.status);
 
             if (response.ok) {
                 navigate("/login");
