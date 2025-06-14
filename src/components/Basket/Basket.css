@@ -52,3 +52,85 @@
     transform: translate(-50%, -50%);
     object-fit: contain;
 }
+
+.basket-box {
+    display: flex;
+    gap: 60px;
+}
+
+.items-in-cart h1 {
+    font-weight: 700;
+}
+
+.items-in-cart {
+    width: 100%;
+    flex: 2;
+}
+
+.payment-block {
+    width: 100%;
+    flex: 1;
+}
+
+.card-product-item {
+    border-bottom: 1px solid rgb(224, 224, 224);
+    display: flex;
+    gap: 20px;
+    padding: 20px 0px 20px 0px;
+
+}
+
+.card-product-desctiption h3 {
+    font-weight: 600;
+}
+
+.card-img {
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.basket-card-icons img {
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.basket-card-icons img:hover {
+    background-color: rgb(219, 217, 217);
+}
+
+.basket-card-icons img:last-child {
+    margin-left: 20px;
+}
+
+.main-card-inform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-card-inform div {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 650;
+    background-color: rgb(249, 246, 246);
+    padding: 2px 12px;
+}
+
+.card-name-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-extra-info {
+    margin-left: auto;
+}
+
+.card-extra-info p {
+    font-weight: 600;
+    white-space: nowrap;
+}
