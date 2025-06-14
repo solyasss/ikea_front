@@ -55,7 +55,9 @@
 
 .basket-box {
     display: flex;
+    margin-top: 60px;
     gap: 60px;
+  
 }
 
 .items-in-cart h1 {
@@ -69,7 +71,7 @@
 
 .payment-block {
     width: 100%;
-    flex: 1;
+    flex: 1.3;
 }
 
 .card-product-item {
@@ -133,4 +135,78 @@
 .card-extra-info p {
     font-weight: 600;
     white-space: nowrap;
+}
+
+.payment-block h3 {
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+
+}
+
+.sum-details {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding: 25px 0px;
+    margin: 0;
+}
+
+
+.sum-details div:last-child {
+    font-weight: 600;
+}
+
+.proceed-payment-block {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 88, 163));
+    align-items: center;
+    padding: 35px 15px;
+    margin-top: 35px;
+    color: rgb(var(--colour-static-white, 255, 255, 255));
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.proceed-payment-block:hover {
+    background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 78, 163));
+}
+
+.proceed-payment-block div {
+    font-weight: 600;
+
+}
+
+.proceed-payment-block img {
+    padding: 10px;
+    background: rgb(var(--colour-static-white, 255, 255, 255));
+    border-radius: 30px;
+}
+
+.paymant-cards-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.paymant-cards-box img {
+    border: 1px solid rgb(209, 209, 209);
+}
+
+.payment-block p {
+    font-size: 12px;
+    color: black;
+    padding: 0;
+}
+
+.payment-block p a {
+    color: black;
+}
+
+.payment-block a {
+    font-size: 12px;
+    color: black;
 }
