@@ -52,3 +52,161 @@
     transform: translate(-50%, -50%);
     object-fit: contain;
 }
+
+.basket-box {
+    display: flex;
+    margin-top: 60px;
+    gap: 60px;
+  
+}
+
+.items-in-cart h1 {
+    font-weight: 700;
+}
+
+.items-in-cart {
+    width: 100%;
+    flex: 2;
+}
+
+.payment-block {
+    width: 100%;
+    flex: 1.3;
+}
+
+.card-product-item {
+    border-bottom: 1px solid rgb(224, 224, 224);
+    display: flex;
+    gap: 20px;
+    padding: 20px 0px 20px 0px;
+
+}
+
+.card-product-desctiption h3 {
+    font-weight: 600;
+}
+
+.card-img {
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.basket-card-icons img {
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.basket-card-icons img:hover {
+    background-color: rgb(219, 217, 217);
+}
+
+.basket-card-icons img:last-child {
+    margin-left: 20px;
+}
+
+.main-card-inform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-card-inform div {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 650;
+    background-color: rgb(249, 246, 246);
+    padding: 2px 12px;
+}
+
+.card-name-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-extra-info {
+    margin-left: auto;
+}
+
+.card-extra-info p {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.payment-block h3 {
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+
+}
+
+.sum-details {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding: 25px 0px;
+    margin: 0;
+}
+
+
+.sum-details div:last-child {
+    font-weight: 600;
+}
+
+.proceed-payment-block {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 88, 163));
+    align-items: center;
+    padding: 35px 15px;
+    margin-top: 35px;
+    color: rgb(var(--colour-static-white, 255, 255, 255));
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.proceed-payment-block:hover {
+    background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 78, 163));
+}
+
+.proceed-payment-block div {
+    font-weight: 600;
+
+}
+
+.proceed-payment-block img {
+    padding: 10px;
+    background: rgb(var(--colour-static-white, 255, 255, 255));
+    border-radius: 30px;
+}
+
+.paymant-cards-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.paymant-cards-box img {
+    border: 1px solid rgb(209, 209, 209);
+}
+
+.payment-block p {
+    font-size: 12px;
+    color: black;
+    padding: 0;
+}
+
+.payment-block p a {
+    color: black;
+}
+
+.payment-block a {
+    font-size: 12px;
+    color: black;
+}
