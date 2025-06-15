@@ -53,3 +53,150 @@
     transform: translate(-50%, -50%);
     object-fit: contain;
 }
+
+.favorite-details-block {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 80px;
+}
+
+.favorite-details-block h1 {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.price-basket {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.price-basket button {
+    background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 88, 163));
+    color: #fff;
+    padding: 18px;
+    border: none;
+    border-radius: 50px;
+    margin-top: 20px;
+    font-weight: 600;
+    display: flex;
+    gap: 5px;
+}
+
+.price-basket button p {
+    margin: 0;
+    padding: 0;
+}
+
+.white-icon {
+    filter: brightness(0) invert(1);
+}
+
+.all-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+}
+
+.favorite-product-card {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    padding: 30px 0px 20px 0px;
+}
+
+.product-main-image {
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.favorite-product-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.favorite-product-description h3 {
+    font-weight: 600;
+}
+
+.star-rating {
+    display: inline-flex;
+    gap: 2px;
+    font-size: 20px;
+    color: gray;
+}
+
+.star.filled {
+    color: gold;
+}
+
+.rating-reviews {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.number-reviews {
+    font-size: 13px;
+}
+
+.favorite-product-icons {
+    display: flex;
+    margin-top: 10px;
+    gap: 30px;
+}
+
+.blue-backround {
+    fill: currentColor;
+}
+
+.favorite-product-icons div {
+    background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 88, 163));
+    padding: 8px;
+    border-radius: 50px;
+}
+
+.color-box {
+    display: inline-block;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+}
+
+.custom-bullet {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-bullet li {
+    padding-left: 1.5rem;
+    font-size: 14px;
+    color: #797878;
+    font-weight: 500;
+    position: relative;
+}
+
+.custom-bullet li::before {
+    content: "•";
+    color: #b7b7b7;
+    font-size: 3em;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: translateY(-50%);
+    line-height: 1;
+}
+
+.additional-information {
+    margin-left: 5rem;
+}
+
+.additional-information a {
+    color: #656565;
+    font-size: 14px;
+}
+
