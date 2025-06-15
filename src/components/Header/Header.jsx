@@ -17,6 +17,7 @@ export default function Headers() {
 
     const [menuActive, setMenuActive] = useState(false);
     const [user, setUser] = useState(null);
+    const [city, setCity] = useState("Київ");
 
     const items = [
         { value: "ГОЛОВНА", href: "/" },
@@ -34,6 +35,36 @@ export default function Headers() {
             })
             .then(data => setUser(data))
             .catch(() => setUser(null));
+    }, []);
+
+    useEffect(() => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude } = position.coords;
+
+                    try {
+                        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
+                        const data = await res.json();
+
+                        if (data.address && data.address.city) {
+                            setCity(data.address.city);
+                        } else if (data.address && data.address.town) {
+                            setCity(data.address.town);
+                        } else if (data.address && data.address.village) {
+                            setCity(data.address.village);
+                        }
+                    } catch (error) {
+                        console.error("Ошибка при определении города:", error);
+                    }
+                },
+                (error) => {
+                    console.warn("Геолокация отклонена или недоступна:", error);
+                }
+            );
+        } else {
+            console.warn("Геолокация не поддерживается");
+        }
     }, []);
 
     return (
@@ -72,7 +103,7 @@ export default function Headers() {
                     <ul className="menu__list">
                         <li className="menu__item right__menu">
                             <img src={GeoIcon} alt="Гео" />
-                            <Link to="/city" className="menu__link">Київ</Link>
+                            <Link to="/city" className="menu__link">{city}</Link>
                         </li>
                         <li className="menu__item right__menu">
                             <img src={UserIcon} alt="Гео" />
