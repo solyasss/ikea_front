@@ -45,9 +45,10 @@ function AdminPanel() {
                 )}
                 {activeSection === "products" && (
                     <div>
-                        <ManageProducts />
+                        <ManageProducts /> 
                     </div>
                 )}
+                {/* test */}
             </main>
         </section>
     );
