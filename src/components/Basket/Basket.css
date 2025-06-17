@@ -167,15 +167,16 @@
     color: rgb(var(--colour-static-white, 255, 255, 255));
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .proceed-payment-block:hover {
     background-color: rgb(var(--colour-interactive-emphasised-bg-default, 0, 78, 163));
 }
 
-.proceed-payment-block div {
+.proceed-payment-block span {
     font-weight: 600;
-
+    color: #fff;
 }
 
 .proceed-payment-block img {
@@ -183,6 +184,7 @@
     background: rgb(var(--colour-static-white, 255, 255, 255));
     border-radius: 30px;
 }
+
 
 .paymant-cards-box {
     display: flex;

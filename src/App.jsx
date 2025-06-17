@@ -17,6 +17,7 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import Roomss from "./pages/Rooms.jsx";
 import UserAccount from "./pages/UserAccount.jsx";
 import DesignPage from "./pages/DesignPage.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
 
 function App() {
     return (
@@ -35,7 +36,7 @@ function App() {
             <Route path="/room" element={<Roomss />} />
             <Route path="/account/:id" element={<UserAccount />} />
             <Route path="/design" element={<DesignPage />} />
-
+            <Route path="/payment" element={<PaymentPage />} />
         </Routes>
     );
 }
