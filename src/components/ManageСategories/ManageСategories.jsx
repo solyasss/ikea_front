@@ -60,9 +60,8 @@ function ManageСategories() {
 
     return (
         <>
-
             <div className="admin-container">
-                <div>Hello</div>
+                <div>Hello</div> 
                 <div>
                     <h1 className="admin-title">Управление Категориями</h1>
                     <button onClick={showBlock} className="btn-create start_btn-create">Создать</button>
