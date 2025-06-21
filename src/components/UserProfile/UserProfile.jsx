@@ -22,6 +22,9 @@ function UserProfile({ Id }) {
         newPassword: "",
         confirmPassword: "",
     });
+    // const [addressData, setaddressData] = useState({
+        
+    // });
 
     const [formError, setFormError] = useState(null);
 
@@ -168,6 +171,109 @@ function UserProfile({ Id }) {
             alert("Сервер недоступний або сталася інша помилка");
         }
     };
+
+    useEffect(() => {
+        if (!Id) return;
+
+        const fetchUserAndCard = async () => {
+            try {
+                const userRes = await fetch(`https://localhost:7290/api/users/${Id}`);
+                if (!userRes.ok) throw new Error("Не вдалося завантажити користувача");
+
+                const userData = await userRes.json();
+                setUser(userData);
+
+                setFormData({
+                    firstName: userData.firstName || "",
+                    lastName: userData.lastName || "",
+                    birthDate: userData.birthDate ? new Date(userData.birthDate).toISOString().split("T")[0] : "",
+                    country: userData.country || "",
+                    address: userData.address || "",
+                    phone: userData.phone || "",
+                    email: userData.email || ""
+                });
+
+                // Запрос карты
+                const cardRes = await fetch(`https://localhost:7290/api/user-cards/by-user/${Id}`);
+                if (cardRes.ok) {
+                    const cardData = await cardRes.json();
+                    setCard(cardData);
+                } else if (cardRes.status !== 404) {
+                    // Если это не 404 (нет карты) — тогда показать ошибку
+                    throw new Error("Помилка при завантаженні карти");
+                }
+
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUserAndCard();
+    }, [Id]);
+
+
+    const handleAddCard = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const newCard = {
+            userId: Id,
+            cardNumber: form.cardNumber.value,
+            validDay: parseInt(form.validDay.value),
+            validYear: parseInt(form.validYear.value),
+            cardType: form.cardType.value.toLowerCase(),
+            cvv: form.cvv.value
+        };
+
+        try {
+            const response = await fetch("https://localhost:7290/api/user-cards", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newCard)
+            });
+
+            if (!response.ok) {
+                const errMsg = await response.text();
+                throw new Error(errMsg);
+            }
+
+            const cardRes = await fetch(`https://localhost:7290/api/user-cards/by-user/${Id}`);
+            const cardData = await cardRes.json();
+            setCard(cardData);
+
+            alert("Карту додано успішно!");
+        } catch (err) {
+            alert("Помилка додавання карти: " + err.message);
+        }
+    };
+
+    const handleDeleteCard = async () => {
+        if (!card || !card.id) return;
+
+        const confirmed = window.confirm("Ви впевнені, що хочете видалити карту?");
+        if (!confirmed) return;
+
+        try {
+            const response = await fetch(`https://localhost:7290/api/user-cards/${card.id}`, {
+                method: "DELETE"
+            });
+
+            if (response.ok) {
+                alert("Карту видалено");
+                setCard(null);
+            } else {
+                alert("Помилка при видаленні карти");
+            }
+        } catch (err) {
+            alert("Сервер недоступний або сталася інша помилка");
+        }
+    };
+
+    // const EditAddress =  async ()  => {
+    //     if () 
+    // }
 
 
     if (loading) return <p>Завантаження...</p>;
@@ -330,17 +436,56 @@ function UserProfile({ Id }) {
             {activeSection === "wallet" && (
                 <div className="user-profile">
                     <h1>Гаманець</h1>
-                    {user.card && user.card.length > 0 ? (
+                    {card ? (
                         <>
-                            <div className="profile-field"><strong>Тип карти:</strong><div>{user.card[0].cardType.toUpperCase()}</div></div>
-                            <div className="profile-field"><strong>Номер карти:</strong><div>{user.card[0].cardNumber}</div></div>
-                            <div className="profile-field"><strong>Дійсна до:</strong><div>{String(user.card[0].validDay).padStart(2, "0")}/{user.card[0].validYear}</div></div>
+                            <div className="profile-field"><strong>Тип карти:</strong> <div>{card.cardType.toUpperCase()}</div></div>
+                            <div className="profile-field"><strong>Номер карти:</strong> <div>{card.cardNumber}</div></div>
+                            <div className="profile-field"><strong>Дійсна до:</strong> <div>{String(card.validDay).padStart(2, "0")}/{card.validYear}</div></div>
+                            <button onClick={handleDeleteCard} className="btn-delete">Видалити карту</button>
                         </>
                     ) : (
-                        <p>Немає збереженої карти.</p>
+                        <>
+                            <p>Немає збереженої карти.</p>
+                            <form onSubmit={handleAddCard} className="profile-form">
+                                <div className="form-field">
+                                    <label htmlFor="cardNumber">Номер карти</label>
+                                    <input className="input" name="cardNumber" placeholder="Номер карти" required />
+                                </div>
+
+                                <div className="form-field">
+                                    <label htmlFor="validDay">Місяць</label>
+                                    <input className="input" name="validDay" type="number" min="1" max="12" placeholder="Місяць" required />
+                                </div>
+
+                                <div className="form-field">
+                                    <label htmlFor="validYear">Рік</label>
+                                    <input className="input" name="validYear" type="number" min="2024" placeholder="Рік" required />
+                                </div>
+
+                                <div className="form-field">
+                                    <label htmlFor="cardType">Тип карти</label>
+                                    <select className="input" name="cardType" required>
+                                        <option value="">Виберіть тип</option>
+                                        <option value="visa">Visa</option>
+                                        <option value="mastercard">MasterCard</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-field">
+                                    <label htmlFor="cvv">CVV</label>
+                                    <input className="input" name="cvv" type="password" placeholder="CVV" required />
+                                </div>
+
+                                <div className="form-actions">
+                                    <button type="submit" className="primary-button">Додати карту</button>
+                                </div>
+                            </form>
+
+                        </>
                     )}
                 </div>
             )}
+
             {activeSection === "address" && (
                 <div className="user-profile">
                     <h1>Адреса доставки</h1>
