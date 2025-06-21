@@ -8,7 +8,7 @@ export default function ManageСategories() {
     const [showCreate,setShow] = useState(false);
 
     const [page,setPage] = useState(1);
-    const pageSize = 10;
+    const pageSize = 5;
     const [total,setTotal] = useState(0);
     const totalPages = Math.ceil(total / pageSize);
 

@@ -15,7 +15,7 @@ export default function ManageProducts() {
     const [showCreateModal, setShowCreateModal] = useState(false);
 
     const [page, setPage] = useState(1);
-    const pageSize = 10;          // при желании меняйте
+    const pageSize = 5;          // при желании меняйте
     const [total, setTotal] = useState(0);
     const totalPages = Math.ceil(total / pageSize);
 
