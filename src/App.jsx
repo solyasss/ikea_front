@@ -37,14 +37,14 @@ function App() {
             <Route path="/design" element={<DesignPage />} />
 
 
-                <Route
+                {/* <Route
                     path="/admin"
                     element={
                             <AdminRoute>
                                     <AdminPanel />
                             </AdminRoute>
                     }
-                />
+                /> */}
         </Routes>
     );
 }

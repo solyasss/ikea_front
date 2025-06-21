@@ -22,7 +22,7 @@ export default function ManageProducts() {
     const fetchProducts = async () => {
         try {
             const res = await fetch(
-                `http://localhost:5123/api/products/paged?page=${page}&pageSize=${pageSize}`
+                `https://localhost:7290/api/products/paged?page=${page}&pageSize=${pageSize}`
             );
             const { items, totalCount } = await res.json();
             setProducts(items);
@@ -36,7 +36,7 @@ export default function ManageProducts() {
 
     const createProduct = async () => {
         if (!validate(newProduct)) return alert("Заполните обязательные поля");
-        await fetch("http://localhost:5123/api/products", {
+        await fetch("https://localhost:7290/api/products", {
             method:"POST", headers:{ "Content-Type":"application/json" },
             body: JSON.stringify(newProduct)
         });
@@ -47,7 +47,7 @@ export default function ManageProducts() {
 
     const updateProduct = async () => {
         if (!validate(editProduct)) return alert("Заполните обязательные поля");
-        await fetch(`http://localhost:5123/api/products/${editProduct.id}`, {
+        await fetch(`https://localhost:7290/api/products/${editProduct.id}`, {
             method:"PUT", headers:{ "Content-Type":"application/json" },
             body: JSON.stringify(editProduct)
         });
@@ -57,12 +57,12 @@ export default function ManageProducts() {
 
     const deleteProduct = async (id) => {
         if (!window.confirm("Удалить продукт?")) return;
-        await fetch(`http://localhost:5123/api/products/${id}`, { method:"DELETE" });
+        await fetch(`https://localhost:7290/api/products/${id}`, { method:"DELETE" });
         fetchProducts();
     };
 
     const handleEditClick = async (id) => {
-        const res  = await fetch(`http://localhost:5123/api/products/${id}`);
+        const res  = await fetch(`https://localhost:7290/api/products/${id}`);
         const full = await res.json();
         setEditProduct({
             ...emptyProduct,

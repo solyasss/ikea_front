@@ -14,7 +14,7 @@ export default function ManageСategories() {
 
     const fetchCategories = async () => {
         const res = await fetch(
-            `http://localhost:5123/api/categories/paged?page=${page}&pageSize=${pageSize}`
+            `https://localhost:7290/api/categories/paged?page=${page}&pageSize=${pageSize}`
         );
         const { items, totalCount } = await res.json();
         setCategories(items); setTotal(totalCount);
@@ -22,7 +22,7 @@ export default function ManageСategories() {
     useEffect(()=>{ fetchCategories(); },[page]);
 
     const createCat = async () => {
-        await fetch("http://localhost:5123/api/categories",{
+        await fetch("https://localhost:7290/api/categories",{
             method:"POST",headers:{ "Content-Type":"application/json" },
             body: JSON.stringify(newCat)
         });
@@ -30,7 +30,7 @@ export default function ManageСategories() {
         setShow(false); fetchCategories();
     };
     const updateCat = async () => {
-        await fetch(`http://localhost:5123/api/categories/${editCat.id}`,{
+        await fetch(`https://localhost:7290/api/categories/${editCat.id}`,{
             method:"PUT",headers:{ "Content-Type":"application/json" },
             body: JSON.stringify(editCat)
         });
@@ -38,7 +38,7 @@ export default function ManageСategories() {
     };
     const deleteCat = async id => {
         if(!window.confirm("Удалить категорию?")) return;
-        await fetch(`http://localhost:5123/api/categories/${id}`,{method:"DELETE"});
+        await fetch(`https://localhost:7290/api/categories/${id}`,{method:"DELETE"});
         fetchCategories();
     };
 

@@ -13,13 +13,13 @@ export default function ManageUsers() {
     const [showCreate,setShow]    = useState(false);
 
     const [page,setPage]   = useState(1);
-    const pageSize = 10;
+    const pageSize = 5;
     const [total,setTotal] = useState(0);
     const totalPages = Math.ceil(total / pageSize);
 
     const fetchUsers = async () => {
         const res = await fetch(
-            `http://localhost:5123/api/users/paged?page=${page}&pageSize=${pageSize}`
+            `https://localhost:7290/api/users/paged?page=${page}&pageSize=${pageSize}`
         );
         const { items, totalCount } = await res.json();
         setUsers(items); setTotal(totalCount);
@@ -27,14 +27,14 @@ export default function ManageUsers() {
     useEffect(()=>{ fetchUsers(); },[page]);
 
     const createUser = async () => {
-        await fetch("http://localhost:5123/api/users",{
+        await fetch("https://localhost:7290/api/users",{
             method:"POST",headers:{ "Content-Type":"application/json" },
             body: JSON.stringify(newUser)
         });
         setNewUser({...emptyUser}); setShow(false); fetchUsers();
     };
     const updateUser = async () => {
-        await fetch(`http://localhost:5123/api/users/${editUser.id}`,{
+        await fetch(`https://localhost:7290/api/users/${editUser.id}`,{
             method:"PUT",headers:{ "Content-Type":"application/json" },
             body: JSON.stringify(editUser)
         });
@@ -42,7 +42,7 @@ export default function ManageUsers() {
     };
     const deleteUser = async id => {
         if(!window.confirm("Удалить пользователя?")) return;
-        await fetch(`http://localhost:5123/api/users/${id}`,{method:"DELETE"});
+        await fetch(`https://localhost:7290/api/users/${id}`,{method:"DELETE"});
         fetchUsers();
     };
 
