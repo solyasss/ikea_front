@@ -44,42 +44,85 @@ function Favorites() {
         fetchProducts();
     }, [wishlist]);
 
+    const handleRemoveFromWishlist = async (productId) => {
+        try {
+            const response = await fetch(`https://localhost:7290/api/wishlists/remove/${productId}`, {
+                method: "DELETE",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                setwishlist(prev => prev.filter(item => item.productId !== productId));
+            } else {
+                const error = await response.json();
+                console.error("Ошибка при удалении:", error.message);
+            }
+        } catch (err) {
+            console.error("Ошибка запроса удаления:", err);
+        }
+    };
+
+    const handleClearWishlist = async () => {
+        try {
+            const response = await fetch("https://localhost:7290/api/wishlists/clear", {
+                method: "POST",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                setwishlist([]);
+                setProduct([]);
+            } else {
+                const error = await response.json();
+                console.error("Ошибка при очистке:", error.message);
+            }
+        } catch (err) {
+            console.error("Ошибка запроса очистки:", err);
+        }
+    };
+
 
 
 
     return (
-
-        // <div className="container-fluid favorites-container">
-        //     <div className="favorites-title-wrapper">
-        //         <h2 className="favorites-title fw-bold">ВАШ ЛИСТ БАЖАНЬ ПУСТИЙ...</h2>
-        //     </div>
-
-        //     <div className="favorites-images">
-        //         <img
-        //             src="/src/assets/img/favorites/face.png"
-        //             alt="face"
-        //             className="favorites-circle-img"
-        //         />
-        //         <img
-        //             src="/src/assets/img/favorites/smile.png"
-        //             alt="smile"
-        //             className="favorites-face-img"
-        //         />
-        //     </div>
-        // </div>
         <>
-            <>
+            {wishlist.length === 0 ? (
+                <div className="container-fluid favorites-container">
+                    <div className="favorites-title-wrapper">
+                        <h2 className="favorites-title fw-bold">ВАШ ЛИСТ БАЖАНЬ ПУСТИЙ...</h2>
+                    </div>
+                    <div className="favorites-images">
+                        <img
+                            src="/src/assets/img/favorites/face.png"
+                            alt="face"
+                            className="favorites-circle-img"
+                        />
+                        <img
+                            src="/src/assets/img/favorites/smile.png"
+                            alt="smile"
+                            className="favorites-face-img"
+                        />
+                    </div>
+                </div>
+            ) : (
                 <div className="favorite-details-block">
                     <h1>Мій список</h1>
                     <div className="price-basket">
-                        <div className="all-price">{product.reduce((sum, item) => sum + item.price, 0)} ₴</div>
+                        <div className="all-price">
+                            {product.reduce((sum, item) => sum + item.price, 0)} ₴
+                        </div>
+                    </div>
+                    <div className="wishlist-action-buttons">
+                        <button onClick={handleClearWishlist}>
+                            <img src={delete_icon} className="white-icon" alt="delete all" />
+                            <p>Очистити список</p>
+                        </button>
                         <button>
                             <img src={basket_icon} className="white-icon" alt="basket" />
                             <p>Додати всі товари до кошика</p>
                         </button>
-
                     </div>
-                    {product && product.map((item, index) => (
+                    {product.map((item, index) => (
                         <div key={index} className="favorite-product-card">
                             <img src={item.mainImage} className="product-main-image" />
                             <div className="favorite-product-description">
@@ -101,7 +144,10 @@ function Favorites() {
                                 <div className="rating-reviews">
                                     <div className="star-rating">
                                         {Array.from({ length: totalStars }, (_, index) => (
-                                            <span key={index} className={index < Math.round(item.rating) ? "star filled" : "star"}>
+                                            <span
+                                                key={index}
+                                                className={index < Math.round(item.rating) ? "star filled" : "star"}
+                                            >
                                                 ★
                                             </span>
                                         ))}
@@ -109,8 +155,17 @@ function Favorites() {
                                     <span className="number-reviews">({item.comments?.length || 0} відгуків)</span>
                                 </div>
                                 <div className="favorite-product-icons">
-                                    <div><img src={basket_icon} className="white-icon" alt="basket" /></div>
-                                    <img src={delete_icon} width={25} />
+                                    <div>
+                                        <img src={basket_icon} className="white-icon" alt="basket" />
+                                    </div>
+                                    <img
+                                        src={delete_icon}
+                                        width={25}
+                                        alt="delete"
+                                        style={{ cursor: "pointer" }}
+                                        onClick={() => handleRemoveFromWishlist(item.cartInfo.productId)}
+                                    />
+
                                 </div>
                             </div>
                             <div className="additional-information">
@@ -120,10 +175,9 @@ function Favorites() {
                                 <a href="">Більше варіантів</a>
                             </div>
                         </div>
-
                     ))}
                 </div>
-            </>
+            )}
         </>
     );
 }
