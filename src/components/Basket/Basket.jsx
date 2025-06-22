@@ -8,6 +8,7 @@ import type_card3 from "../../assets/img/basket/type_card3.svg";
 import type_card4 from "../../assets/img/basket/type_card4.svg";
 import type_card5 from "../../assets/img/basket/type_card5.svg";
 import type_card6 from "../../assets/img/basket/type_card6.svg";
+import favorites_black from "../../assets/img/basket/favorite.svg";
 import { Link } from "react-router-dom";
 
 
@@ -17,6 +18,8 @@ function Basket() {
     const [card, setCard] = useState([]);
     const [product, setProduct] = useState([]);
     const [loadingProducts, setLoadingProducts] = useState(true);
+    const [wishlist, setWishlist] = useState([]);
+
 
     useEffect(() => {
         const fetchCards = async () => {
@@ -64,6 +67,67 @@ function Basket() {
         fetchProducts();
     }, [card]);
 
+    const handleRemoveFromCart = async (productId) => {
+        try {
+            const response = await fetch(`https://localhost:7290/api/carts/remove/${productId}`, {
+                method: "DELETE",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                setCard(prev => prev.filter(item => item.productId !== productId));
+            } else {
+                const error = await response.json();
+                console.error("Ошибка при удалении из корзины:", error.message);
+            }
+        } catch (err) {
+            console.error("Ошибка запроса удаления:", err);
+        }
+    };
+
+    const handleAddToWishlist = async (productId) => {
+        try {
+            const response = await fetch(`https://localhost:7290/api/wishlists/add`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({ productId })
+            });
+
+            if (response.ok) {
+                setWishlist(prev => [...prev, productId]);
+            } else {
+                const error = await response.json();
+                console.error("Ошибка при добавлении в wishlist:", error.message);
+            }
+        } catch (err) {
+            console.error("Ошибка запроса добавления в wishlist:", err);
+        }
+    };
+
+    useEffect(() => {
+        const fetchWishlist = async () => {
+            try {
+                const response = await fetch("https://localhost:7290/api/wishlists", {
+                    credentials: "include"
+                });
+                if (!response.ok) throw new Error("Не вдалося отримати wishlist");
+
+                const wishlistData = await response.json();
+                const productIds = wishlistData.map(item => item.productId);
+                setWishlist(productIds);
+            } catch (error) {
+                console.error("Помилка при завантаженні wishlist:", error);
+            }
+        };
+
+        fetchWishlist();
+    }, []);
+
+
+
+
+
     const isCartEmpty = !card || card.length === 0;
 
     return (
@@ -107,8 +171,19 @@ function Basket() {
                                             <span>{item.dimensions} cm</span>
                                         </div>
                                         <div className="basket-card-icons">
-                                            <img src={wishlist_icon} alt="wishlist" />
-                                            <img src={basket_icon} alt="basket" />
+                                            <img
+                                                src={wishlist.includes(item.cartInfo.productId) ? favorites_black : wishlist_icon}
+                                                alt="wishlist"
+                                                style={{ cursor: "pointer" }}
+                                                onClick={() => handleAddToWishlist(item.cartInfo.productId)}
+                                            />
+
+                                            <img
+                                                src={basket_icon}
+                                                alt="basket"
+                                                style={{ cursor: "pointer" }}
+                                                onClick={() => handleRemoveFromCart(item.cartInfo.productId)}
+                                            />
                                         </div>
                                     </div>
                                     <div className="card-extra-info">
