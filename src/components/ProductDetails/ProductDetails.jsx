@@ -7,6 +7,8 @@ import shopIkon from "../../assets/img/product_details/shop.svg"
 import trukIkon from "../../assets/img/product_details/truk.svg"
 import rightIkon from "../../assets/img/product_details/right_arrow.svg"
 import Characteristic from "../ProductCharacteristics/ProductCharacteristics"
+import CommentCard from "../CommentCard/CommentCard";
+
 import './ProductDetails.css';
 
 function ProductDetails() {
@@ -16,6 +18,9 @@ function ProductDetails() {
     const [quantity, setQuantity] = useState(1);
     const [commentText, setCommentText] = useState("");
     const [rating, setRating] = useState(5);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+
 
     const [user, setUser] = useState(null);
 
@@ -26,13 +31,17 @@ function ProductDetails() {
             });
             if (response.ok) {
                 const data = await response.json();
-                setUser(data);
+                setUser({
+                    id: data.userId,
+                    fullName: data.userName
+                });
             } else {
                 setUser(null);
             }
         }
         fetchUser();
     }, []);
+
 
 
 
@@ -50,13 +59,18 @@ function ProductDetails() {
                 const response = await fetch(`https://localhost:7290/api/products/${id}`);
                 if (!response.ok) throw new Error("Product not found");
                 const data = await response.json();
-                setProductData(data);
+
+                const allImages = data.images ? [data.mainImage, ...data.images] : [data.mainImage];
+
+                setProductData({ ...data, allImages });
+                setSelectedImage(data.mainImage);
             } catch (error) {
                 console.error("Error fetching product:", error);
             }
         };
         fetchProduct();
     }, [id]);
+
 
     const renderStars = (rating) => {
         if (!rating) return "No rating";
@@ -86,6 +100,7 @@ function ProductDetails() {
             alert("Комментарий не может быть пустым");
             return;
         }
+
         const dto = {
             productId: id,
             commentText,
@@ -103,15 +118,49 @@ function ProductDetails() {
             alert("Комментарий добавлен");
             setCommentText("");
             setRating(5);
-            const response = await fetch(`https://localhost:7290/api/products/${id}`);
-            const updatedProduct = await response.json();
-            setProductData(updatedProduct);
+
+            const res = await fetch(`https://localhost:7290/api/products/${id}`);
+            const updatedProduct = await res.json();
+            const allImages = updatedProduct.images ? [updatedProduct.mainImage, ...updatedProduct.images] : [updatedProduct.mainImage];
+            setProductData({ ...updatedProduct, allImages });
         } else if (response.status === 401) {
             alert("Пожалуйста, войдите в систему чтобы оставить комментарий.");
         } else {
             alert("Ошибка при добавлении комментария.");
         }
     };
+
+    const handleAddToCart = async () => {
+        const dto = {
+            productId: parseInt(id),
+            quantity: quantity,
+            isCash: true, // или false, если нужно менять платёжный метод
+            totalSum: parseFloat((productData.price * quantity).toFixed(2)),
+        };
+
+        try {
+            const response = await fetch("https://localhost:7290/api/carts/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify(dto),
+            });
+
+            if (response.ok) {
+                alert("Товар добавлен в корзину!");
+            } else if (response.status === 401) {
+                alert("Пожалуйста, войдите в систему чтобы добавить товар в корзину.");
+            } else {
+                alert("Ошибка при добавлении товара в корзину.");
+            }
+        } catch (error) {
+            console.error("Ошибка при добавлении в корзину:", error);
+            alert("Ошибка соединения с сервером.");
+        }
+    };
+
 
     if (!productData) return <div>Загрузка...</div>;
 
@@ -123,7 +172,7 @@ function ProductDetails() {
                     <div className="gallery">
                         <img
                             className="main-image"
-                            src={productData.mainImage}
+                            src={selectedImage}
                             alt={productData.name}
                         />
                     </div>
@@ -150,11 +199,21 @@ function ProductDetails() {
                         </div>
                         <Characteristic productData={productData} />
                         <div className="thumbnails">
-                            {productData.images && productData.images.map((img, index) => (
-                                <img key={index} src={img} alt={`Thumb ${index}`} className="slider-image" />
+                            {productData.allImages.map((img, index) => (
+                                <img
+                                    key={index}
+                                    src={img}
+                                    alt={`Thumb ${index}`}
+                                    className="slider-image"
+                                    onClick={() => setSelectedImage(img)}
+                                    style={{
+                                        cursor: "pointer",
+                                        border: selectedImage === img ? "2px solid #000" : "none",
+                                    }}
+                                />
                             ))}
                         </div>
-                        <div className="buy-information-box">
+                        {/* <div className="buy-information-box">
                             <div className="order-box">
                                 <div className="external-order-box">
                                     <img className="buy-information-icons" src={trukIkon}></img>
@@ -176,14 +235,16 @@ function ProductDetails() {
                                 </div>
                                 <img className="details-information-icons" src={rightIkon}></img>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="add-basket-products-box">
                             <ul>
                                 <li onClick={increaseQuantity}><button>+</button></li>
                                 <li>{quantity}</li>
                                 <li onClick={decreaseQuantity}><button>-</button></li>
                             </ul>
-                            <button className="basket-button">Добавить в корзину</button>
+                            <button className="basket-button" onClick={handleAddToCart}>
+                                Добавить в корзину
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -215,33 +276,50 @@ function ProductDetails() {
                 )}
 
 
-                <div className="comments-section">
+                {/* <div className="comments-section">
                     <h3>Отзывы</h3>
                     {productData.comments.length === 0 ? (
                         <p>Нет комментариев</p>
                     ) : (
-                        <table className="comments-table">
-                            <thead>
-                                <tr className="comments-header">
-                                    <th>Пользователь</th>
-                                    <th>Комментарий</th>
-                                    <th>Оценка</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {productData.comments.map((comment) => (
-                                    <tr key={comment.id}>
-                                        <td>{comment.user.firstName} {comment.user.lastName}</td>
-                                        <td>{comment.commentText}</td>
-                                        <td>{comment.rating}★</td>
-
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <div className="comment-list">
+                            {productData.comments.map((comment) => (
+                                <CommentCard
+                                    key={comment.id}
+                                    comment={comment}
+                                    currentUser={user}
+                                    productId={id}
+                                    onUpdated={() => {
+                                        // Обновление данных после удаления или редактирования
+                                        fetch(`https://localhost:7290/api/products/${id}`)
+                                            .then(res => res.json())
+                                            .then(data => {
+                                                const allImages = data.images ? [data.mainImage, ...data.images] : [data.mainImage];
+                                                setProductData({ ...data, allImages });
+                                            });
+                                    }}
+                                />
+                            ))}
+                        </div>
                     )}
-                </div>
+                </div> */}
+
+                {productData.comments.map((comment) => (
+                    <CommentCard
+                        key={comment.id}
+                        comment={comment}
+                        currentUser={user}
+                        productId={id}
+                        onUpdated={() => {
+                            fetch(`https://localhost:7290/api/products/${id}`)
+                                .then(res => res.json())
+                                .then(data => {
+                                    const allImages = data.images ? [data.mainImage, ...data.images] : [data.mainImage];
+                                    setProductData({ ...data, allImages });
+                                });
+                        }}
+                    />
+                ))}
+
             </div>
         </>
     );

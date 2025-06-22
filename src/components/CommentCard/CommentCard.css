@@ -1,0 +1,44 @@
+.comment-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 30px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.comment-card textarea {
+    width: 100%;
+    padding: 10px;
+    resize: vertical;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.comment-card select {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.comment-actions button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #295aa3;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.comment-actions button:hover {
+    background-color: #1f437d;
+}
