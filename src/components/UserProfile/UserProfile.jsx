@@ -18,13 +18,12 @@ function UserProfile({ Id }) {
         phone: "",
         email: ""
     });
-    const [passwordData, setPasswordData] = useState({
-        newPassword: "",
-        confirmPassword: "",
+    const [isEditingAddress, setIsEditingAddress] = useState(false);
+    const [addressData, setAddressData] = useState({
+        country: user?.country || "",
+        address: user?.address || ""
     });
-    // const [addressData, setaddressData] = useState({
-        
-    // });
+
 
     const [formError, setFormError] = useState(null);
 
@@ -193,13 +192,11 @@ function UserProfile({ Id }) {
                     email: userData.email || ""
                 });
 
-                // Запрос карты
                 const cardRes = await fetch(`https://localhost:7290/api/user-cards/by-user/${Id}`);
                 if (cardRes.ok) {
                     const cardData = await cardRes.json();
                     setCard(cardData);
                 } else if (cardRes.status !== 404) {
-                    // Если это не 404 (нет карты) — тогда показать ошибку
                     throw new Error("Помилка при завантаженні карти");
                 }
 
@@ -271,10 +268,46 @@ function UserProfile({ Id }) {
         }
     };
 
-    // const EditAddress =  async ()  => {
-    //     if () 
-    // }
+    const handleAddressInputChange = (e) => {
+        const { name, value } = e.target;
+        setAddressData((prev) => ({ ...prev, [name]: value }));
+    };
 
+    const handleSaveAddress = async () => {
+        try {
+            const response = await fetch(`https://localhost:7290/api/users/${Id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    ...user,
+                    country: addressData.country,
+                    address: addressData.address
+                })
+            });
+
+            if (!response.ok) throw new Error("Помилка при оновленні");
+
+            setUser(prevUser => ({
+                ...prevUser,
+                country: addressData.country,
+                address: addressData.address
+            }));
+            setIsEditingAddress(false);
+
+        } catch (err) {
+            alert("Не вдалося оновити адресу");
+            console.error(err);
+        }
+    };
+
+
+    const handleCancelAddressEdit = () => {
+        setIsEditingAddress(false);
+        setAddressData({
+            country: user.country || "",
+            address: user.address || ""
+        });
+    };
 
     if (loading) return <p>Завантаження...</p>;
     if (error) return <p>Помилка: {error}</p>;
@@ -489,22 +522,56 @@ function UserProfile({ Id }) {
             {activeSection === "address" && (
                 <div className="user-profile">
                     <h1>Адреса доставки</h1>
-                    <div className="profile-field">
-                        <strong>Країна</strong>
-                        <div>{user.country || "Не указано"}</div>
-                    </div>
-                    <div className="profile-field">
-                        <strong>Адреса</strong>
-                        <div>{user.address || "Не указано"}</div>
-                    </div>
-                    <div className="profile-actions">
-                        {/* {!user.address ? (
-                            <button onClick={() => handleAddAddress()}>Добавить</button>
-                        ) : (
-                            <button onClick={() => handleDeleteAddress()}>Удалить</button>
-                        )} */}
-                        <button type="submit"> <img src={editIcon} alt="edit icon" width={30} /></button>
-                    </div>
+                    {isEditingAddress ? (
+                        <>
+                            <div className="form-field">
+                                <label>Країна</label>
+                                <input
+                                    type="text"
+                                    name="country"
+                                    value={addressData.country}
+                                    onChange={handleAddressInputChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-field">
+                                <label>Адреса</label>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    value={addressData.address}
+                                    onChange={handleAddressInputChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-actions">
+                                <button onClick={handleSaveAddress} className="primary-button">Зберегти</button>
+                                <button onClick={handleCancelAddressEdit} className="secondary-button">Скасувати</button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="profile-field">
+                                <strong>Країна</strong>
+                                <div>{user.country || "Не вказано"}</div>
+                            </div>
+                            <div className="profile-field">
+                                <strong>Адреса</strong>
+                                <div>{user.address || "Не вказано"}</div>
+                            </div>
+                            <div className="profile-actions">
+                                <button type="button" onClick={() => {
+                                    setAddressData({
+                                        country: user.country || "",
+                                        address: user.address || ""
+                                    });
+                                    setIsEditingAddress(true);
+                                }}>
+                                    <img src={editIcon} alt="edit icon" width={30} />
+                                </button>
+                            </div>
+                        </>
+                    )}
                 </div>
             )}
 
