@@ -8,6 +8,8 @@ import trukIkon from "../../assets/img/product_details/truk.svg"
 import rightIkon from "../../assets/img/product_details/right_arrow.svg"
 import Characteristic from "../ProductCharacteristics/ProductCharacteristics"
 import CommentCard from "../CommentCard/CommentCard";
+import favorites_black from "../../assets/img/basket/favorite.svg";
+
 
 import './ProductDetails.css';
 
@@ -19,10 +21,30 @@ function ProductDetails() {
     const [commentText, setCommentText] = useState("");
     const [rating, setRating] = useState(5);
     const [selectedImage, setSelectedImage] = useState(null);
-
-
-
     const [user, setUser] = useState(null);
+    const [isInWishlist, setIsInWishlist] = useState(false);
+
+    useEffect(() => {
+        const checkWishlist = async () => {
+            if (!user) return;
+
+            try {
+                const response = await fetch("https://localhost:7290/api/wishlists", {
+                    credentials: "include"
+                });
+                if (response.ok) {
+                    const wishlistItems = await response.json();
+                    const found = wishlistItems.some(item => item.productId === parseInt(id));
+                    setIsInWishlist(found);
+                }
+            } catch (error) {
+                console.error("Ошибка при получении вишлиста:", error);
+            }
+        };
+
+        checkWishlist();
+    }, [user, id]);
+
 
     useEffect(() => {
         async function fetchUser() {
@@ -41,17 +63,6 @@ function ProductDetails() {
         }
         fetchUser();
     }, []);
-
-
-
-
-    const items = [
-        { value: "ГОЛОВНА", href: "/" },
-        { value: "ТОВАРИ", href: "/products" },
-        { value: "КІМНАТИ", href: "/" },
-        { value: "ІДЕЇ", href: "/Idea" },
-        { value: "ДИЗАЙН", href: "/" }
-    ];
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -130,11 +141,53 @@ function ProductDetails() {
         }
     };
 
+    const handleAddToWishlist = async () => {
+        if (!user) {
+            alert("Пожалуйста, войдите в систему чтобы добавить товар в вишлист.");
+            return;
+        }
+
+
+
+
+        const dto = {
+            productId: parseInt(id),
+        };
+
+        try {
+            const response = await fetch("https://localhost:7290/api/wishlists/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify(dto),
+            });
+
+            if (response.ok) {
+                alert("Товар добавлен в избранное!");
+            } else if (response.status === 401) {
+                alert("Необходимо войти в систему, чтобы добавить в избранное.");
+            } else {
+                alert("Ошибка при добавлении в избранное.");
+            }
+        } catch (error) {
+            console.error("Ошибка при добавлении в вишлист:", error);
+            alert("Ошибка соединения с сервером.");
+        }
+
+        if (response.ok) {
+            alert("Товар добавлен в избранное!");
+            setIsInWishlist(true);
+        }
+    };
+
+
     const handleAddToCart = async () => {
         const dto = {
             productId: parseInt(id),
             quantity: quantity,
-            isCash: true, // или false, если нужно менять платёжный метод
+            isCash: true, 
             totalSum: parseFloat((productData.price * quantity).toFixed(2)),
         };
 
@@ -185,7 +238,13 @@ function ProductDetails() {
                                     <span>{productData.packageContents},</span>
                                     <span> {productData.dimensions}</span>
                                 </div>
-                                <img src={likeIkon} alt="Гео" />
+                                <img
+                                    src={likeIkon}
+                                    alt="Добавить в избранное"
+                                    onClick={handleAddToWishlist}
+                                    style={{ cursor: "pointer" }}
+                                    title="Добавить в избранное"
+                                />
                             </li>
                             <li>{productData.price}₴</li>
                             <li>
