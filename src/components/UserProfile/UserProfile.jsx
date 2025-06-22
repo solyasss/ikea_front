@@ -24,6 +24,11 @@ function UserProfile({ Id }) {
         address: user?.address || ""
     });
 
+    const [passwordData, setPasswordData] = useState({
+        newPassword: "",
+        confirmPassword: ""
+    });
+
 
     const [formError, setFormError] = useState(null);
 
