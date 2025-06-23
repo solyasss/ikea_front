@@ -4,6 +4,22 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+function PrevArrow({ onClick }) {
+    return (
+        <button className="cat-arrow prev" onClick={onClick} aria-label="Попередня">
+            ‹
+        </button>
+    );
+}
+
+function NextArrow({ onClick }) {
+    return (
+        <button className="cat-arrow next" onClick={onClick} aria-label="Наступна">
+            ›
+        </button>
+    );
+}
+
 function CategorySlider({ title, cards }) {
     const settings = {
         dots: true,
@@ -12,6 +28,8 @@ function CategorySlider({ title, cards }) {
         slidesToShow: 6,
         slidesToScroll: 1,
         arrows: true,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
         responsive: [
             {
                 breakpoint: 1400,
@@ -55,16 +73,15 @@ function CategorySlider({ title, cards }) {
 
     return (
         <>
-            <div className="category-slider ">
+            <div className="category-slider">
                 <h1>{title}</h1>
                 <div className="slider-wrapper">
                     <Slider {...settings}>
-                        {cards && cards.map((card, index) => (
-                            <CategoryCards key={index} image={card.image} name={card.name} />
+                        {cards?.map((card, i) => (
+                            <CategoryCards key={i} image={card.image} name={card.name} />
                         ))}
                     </Slider>
                 </div>
-
             </div>
         </>
     );
