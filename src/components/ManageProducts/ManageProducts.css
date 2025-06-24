@@ -42,6 +42,8 @@
 .modal-card h2 {
     color: #839D9A;
     margin-bottom: 20px;
+    text-align: center;
+
 }
 
 .modal-form {
@@ -62,7 +64,7 @@
 
 .modal-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
     padding: 10px;
 }

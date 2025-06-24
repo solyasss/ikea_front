@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ManageСategories from "../ManageСategories/ManageСategories";
 import ManageUsers from "../ManageUsers/ManageUsers";
 import ManageProducts from "../ManageProducts/ManageProducts";
+import ManageCharacteristics from "../ManageProductCharacteristic/ManageProductCharacteristic";
+import ManageProductImages from "../ManageProductImage/ManageProductImage";
 import "./AdminPanel.css";
 
 function AdminPanel() {
@@ -29,7 +31,18 @@ function AdminPanel() {
                     >
                         <span className="underline-text">Продукты</span>
                     </li>
-
+                    <li
+                        className={activeSection === "profile" ? "active" : ""}
+                        onClick={() => setActiveSection("characteristic")}
+                    >
+                        <span className="underline-text">Характеристики</span>
+                    </li>
+                    <li
+                        className={activeSection === "profile" ? "active" : ""}
+                        onClick={() => setActiveSection("image")}
+                    >
+                        <span className="underline-text">Картинки продукта</span>
+                    </li>
                 </ul>
             </nav>
             <main className="admin-show-container">
@@ -45,7 +58,17 @@ function AdminPanel() {
                 )}
                 {activeSection === "products" && (
                     <div>
-                        <ManageProducts /> 
+                        <ManageProducts />
+                    </div>
+                )}
+                {activeSection === "characteristic" && (
+                    <div>
+                        <ManageCharacteristics />
+                    </div>
+                )}
+                {activeSection === "image" && (
+                    <div>
+                        <ManageProductImages />
                     </div>
                 )}
                 {/* test */}
