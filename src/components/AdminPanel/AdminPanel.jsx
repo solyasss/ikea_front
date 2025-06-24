@@ -3,7 +3,7 @@ import ManageСategories from "../ManageСategories/ManageСategories";
 import ManageUsers from "../ManageUsers/ManageUsers";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import ManageCharacteristics from "../ManageProductCharacteristic/ManageProductCharacteristic";
-import ManageProductImages from "../ManageProductImage/ManageProductImage";
+import ManageProductImages from "../ManageProductImages/ManageProductImages";
 import "./AdminPanel.css";
 
 function AdminPanel() {

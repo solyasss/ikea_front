@@ -1,150 +1,149 @@
 import React, { useEffect, useState } from "react";
-import "./ManageUsers.css"
+import "./ManageUsers.css";
 
-function ManageUsers() {
+export default function ManageUsers() {
+    const emptyUser = {
+        firstName: "", lastName: "", email: "", phone: "",
+        address: "", country: "", birthDate: "", password: "", isAdmin: false
+    };
+
     const [users, setUsers] = useState([]);
-    const [newUser, setNewUser] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        address: "",
-        country: "",
-        birthDate: "",
-        password: "",
-        isAdmin: false
-    });
+    const [newUser, setNewUser] = useState({ ...emptyUser });
     const [editUser, setEditUser] = useState(null);
-    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showCreate, setShow] = useState(false);
+
+    const [page, setPage] = useState(1);
+    const pageSize = 5;
+    const [total, setTotal] = useState(0);
+    const totalPages = Math.ceil(total / pageSize);
 
     const fetchUsers = async () => {
-        const response = await fetch("https://localhost:7290/api/users");
-        const data = await response.json();
-        setUsers(data);
+        const res = await fetch(
+            `https://localhost:7290/api/users/paged?page=${page}&pageSize=${pageSize}`
+        );
+        const { items, totalCount } = await res.json();
+        setUsers(items); setTotal(totalCount);
     };
-
-    const showBlock = () => {
-        setShowCreateModal(true);
-    };
-
-    const hideBlock = () => {
-        setShowCreateModal(false);
-        setNewUser({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            address: "",
-            country: "",
-            birthDate: "",
-            password: "",
-            isAdmin: false
-        });
-    };
-
-    useEffect(() => {
-        fetchUsers();
-    }, []);
+    useEffect(() => { fetchUsers(); }, [page]);
 
     const createUser = async () => {
         await fetch("https://localhost:7290/api/users", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newUser),
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newUser)
         });
-        hideBlock();
+        setNewUser({ ...emptyUser }); setShow(false); fetchUsers();
+    };
+
+    const loadUserToEdit = async (id) => {
+        const res = await fetch(`https://localhost:7290/api/users/${id}`);
+        const user = await res.json();
+
+        // birthDate в формате "yyyy-MM-dd" для input[type=date]
+        const birthDate = new Date(user.birthDate).toISOString().substring(0, 10);
+
+        setEditUser({
+            ...user,
+            birthDate,
+        });
+    };
+
+    const updateUser = async (user) => {
+        const dto = {
+            isAdmin: user.isAdmin,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            birthDate: user.birthDate,
+            country: user.country,
+            address: user.address,
+            phone: user.phone,
+            email: user.email
+        };
+
+        await fetch(`https://localhost:7290/api/users/${user.id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dto)
+        });
+
+        setEditUser(null);
         fetchUsers();
     };
 
-    const deleteUser = async (id) => {
-        if (window.confirm("Вы уверены, что хотите удалить пользователя?")) {
-            await fetch(`https://localhost:7290/api/users/${id}`, {
-                method: "DELETE",
-            });
-            fetchUsers();
-        }
+
+
+    const deleteUser = async id => {
+        if (!window.confirm("Удалить пользователя?")) return;
+        await fetch(`https://localhost:7290/api/users/${id}`, { method: "DELETE" });
+        fetchUsers();
     };
 
-    const updateUser = async () => {
-        if (editUser) {
-            await fetch(`https://localhost:7290/api/users/${editUser.id}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(editUser),
-            });
-            setEditUser(null);
-            fetchUsers();
-        }
-    };
+    const PgBtn = ({ p }) => (
+        <button disabled={p === page} className={p === page ? "pg-active" : ""}
+            onClick={() => setPage(p)}>{p}</button>
+    );
 
     return (
         <div className="admin-container">
-            <h1 className="admin-title">Управление Пользователями</h1>
-            <button onClick={showBlock} className="btn-create start_btn-create">Создать</button>
+            <h1 className="admin-title">Управление пользователями</h1>
+            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Создать</button>
 
-            {showCreateModal && (
+            {showCreate && (
                 <div className="model">
                     <div className="admin-card">
                         <h2>Создать пользователя</h2>
                         <div className="form-group">
-                            <input placeholder="Имя" value={newUser.firstName} onChange={(e) => setNewUser({ ...newUser, firstName: e.target.value })} />
-                            <input placeholder="Фамилия" value={newUser.lastName} onChange={(e) => setNewUser({ ...newUser, lastName: e.target.value })} />
-                            <input placeholder="Email" value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} />
-                            <input placeholder="Телефон" value={newUser.phone} onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })} />
-                            <input placeholder="Адрес" value={newUser.address} onChange={(e) => setNewUser({ ...newUser, address: e.target.value })} />
-                            <input placeholder="Страна" value={newUser.country} onChange={(e) => setNewUser({ ...newUser, country: e.target.value })} />
-                            <input type="date" value={newUser.birthDate} onChange={(e) => setNewUser({ ...newUser, birthDate: e.target.value })} />
-                            <input type="password" placeholder="Пароль" value={newUser.password} onChange={(e) => setNewUser({ ...newUser, password: e.target.value })} />
+                            {Object.keys(emptyUser).filter(k => k !== "isAdmin")
+                                .map(k => (
+                                    <input key={k} placeholder={k}
+                                        type={k === "password" ? "password" : k === "birthDate" ? "date" : "text"}
+                                        value={newUser[k]} onChange={e => setNewUser({ ...newUser, [k]: e.target.value })} />
+                                ))}
                             <label>
-                                <input type="checkbox" checked={newUser.isAdmin} onChange={(e) => setNewUser({ ...newUser, isAdmin: e.target.checked })} />
+                                <input type="checkbox" checked={newUser.isAdmin}
+                                    onChange={e => setNewUser({ ...newUser, isAdmin: e.target.checked })} />
                                 Администратор
                             </label>
                             <button onClick={createUser} className="btn-create">Создать</button>
-                            <button onClick={hideBlock} className="btn-cancel">Отмена</button>
+                            <button onClick={() => setShow(false)} className="btn-cancel">Отмена</button>
                         </div>
                     </div>
                 </div>
             )}
-
             {editUser && (
                 <div className="model">
                     <div className="admin-card">
                         <h2>Редактировать пользователя</h2>
                         <div className="form-group">
-                            <input placeholder="Имя" value={editUser.firstName} onChange={(e) => setEditUser({ ...editUser, firstName: e.target.value })} />
-                            <input placeholder="Фамилия" value={editUser.lastName} onChange={(e) => setEditUser({ ...editUser, lastName: e.target.value })} />
-                            <input placeholder="Email" value={editUser.email} onChange={(e) => setEditUser({ ...editUser, email: e.target.value })} />
-                            <input placeholder="Телефон" value={editUser.phone} onChange={(e) => setEditUser({ ...editUser, phone: e.target.value })} />
-                            <input placeholder="Адрес" value={editUser.address} onChange={(e) => setEditUser({ ...editUser, address: e.target.value })} />
-                            <input placeholder="Страна" value={editUser.country} onChange={(e) => setEditUser({ ...editUser, country: e.target.value })} />
-                            <input type="date" value={editUser.birthDate} onChange={(e) => setEditUser({ ...editUser, birthDate: e.target.value })} />
+                            {["firstName", "lastName", "email", "phone", "address", "country", "birthDate"].map(k => (
+                                <input key={k}
+                                    placeholder={k}
+                                    type={k === "birthDate" ? "date" : "text"}
+                                    value={editUser[k] || ""}
+                                    onChange={e => setEditUser({ ...editUser, [k]: e.target.value })}
+                                />
+                            ))}
                             <label>
-                                <input type="checkbox" checked={editUser.isAdmin} onChange={(e) => setEditUser({ ...editUser, isAdmin: e.target.checked })} />
+                                <input type="checkbox"
+                                    checked={editUser.isAdmin}
+                                    onChange={e => setEditUser({ ...editUser, isAdmin: e.target.checked })}
+                                />
                                 Администратор
                             </label>
-                            <button onClick={updateUser} className="btn-create">Обновить</button>
-                            <button onClick={() => setEditUser(null)} className="btn-cancel">Отмена</button>
+                            <button className="btn-create" onClick={() => updateUser(editUser)}>Сохранить</button>
+                            <button className="btn-cancel" onClick={() => setEditUser(null)}>Отмена</button>
                         </div>
                     </div>
                 </div>
             )}
-
             <div className="admin-card">
                 <h2>Список пользователей</h2>
                 <table className="admin-table">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Имя</th>
-                            <th>Email</th>
-                            <th>Телефон</th>
-                            <th>Страна</th>
-                            <th>Админ</th>
-                            <th>Действия</th>
-                        </tr>
+                        <tr><th>ID</th><th>Имя</th><th>Email</th>
+                            <th>Телефон</th><th>Страна</th><th>Админ</th><th>Действия</th></tr>
                     </thead>
                     <tbody>
-                        {users.map((u) => (
+                        {users.map(u => (
                             <tr key={u.id}>
                                 <td>{u.id}</td>
                                 <td>{u.firstName} {u.lastName}</td>
@@ -153,16 +152,24 @@ function ManageUsers() {
                                 <td>{u.country}</td>
                                 <td>{u.isAdmin ? "Да" : "Нет"}</td>
                                 <td>
-                                    <button onClick={() => setEditUser(u)} className="btn-edit">Редактировать</button>
+                                    <button onClick={() => loadUserToEdit(u.id)} className="btn-edit">Редактировать</button>
                                     <button onClick={() => deleteUser(u.id)} className="btn-delete">Удалить</button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+
+                {totalPages > 1 && (
+                    <div className="paginator">
+                        <button disabled={page === 1} onClick={() => setPage(page - 1)}>‹</button>
+                        {Array.from({ length: totalPages }, (_, i) => i + 1)
+                            .filter(p => p === 1 || p === totalPages || Math.abs(p - page) <= 1)
+                            .map(p => <PgBtn key={p} p={p} />)}
+                        <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>›</button>
+                    </div>
+                )}
             </div>
         </div>
     );
 }
-
-export default ManageUsers;

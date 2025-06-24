@@ -6,7 +6,21 @@ import UserOrder from "../UserOrder/UserOrder";
 
 function UserAccount() {
     const [activeSection, setActiveSection] = useState("purchases");
-    const { id } = useParams();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        fetch("https://localhost:7290/api/auth/me", { credentials: "include" })
+            .then(res => {
+                if (res.status === 401) throw new Error("Not authorized");
+                return res.json();
+            })
+            .then(data => setUser(data))
+            .catch(() => {
+                window.location.href = "/login";
+            });
+    }, []);
+
+    if (!user) return <div>Загрузка...</div>;
 
     return (
         <section className="user-account">
@@ -41,10 +55,10 @@ function UserAccount() {
 
             <main className="show-container">
                 {activeSection === "purchases" &&
-                    <UserOrder Id={id} />
+                    <UserOrder Id={user.userId} />
                 }
                 {activeSection === "profile" &&
-                    <UserProfile Id={id} />
+                    <UserProfile Id={user.userId} />
                 }
                 {activeSection === "wishlist" && <div>WISHLIST BLOCK</div>}
                 {activeSection === "basket" && <div>BASKET BLOCK</div>}

@@ -1,0 +1,16 @@
+.paginator{
+    display:flex;
+    justify-content:center;
+    gap:4px;
+    margin-top:18px;
+}
+.paginator button{
+    min-width:34px;height:34px;
+    border:none;border-radius:6px;
+    background:#e1e1e1;color:#313131;
+    font-weight:600;cursor:pointer;
+    transition:background .25s;
+}
+.paginator button:hover:not(:disabled){ background:#b5b5b5; }
+.paginator button:disabled        { opacity:.45; cursor:default; }
+.paginator .pg-active             { background:#839D9A; color:#fff; }

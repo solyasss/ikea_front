@@ -28,14 +28,21 @@ export default function Headers() {
     ];
 
     useEffect(() => {
+        // 1. Получаем ID из сессии
         fetch("https://localhost:7290/api/auth/me", { credentials: "include" })
             .then(res => {
-                if (res.ok) return res.json();
-                throw new Error("Not authenticated");
+                if (!res.ok) throw new Error("Not authenticated");
+                return res.json();
             })
-            .then(data => setUser(data))
+            .then(data => {
+                // 2. Получаем детали пользователя по userId
+                return fetch(`https://localhost:7290/api/users/${data.userId}`, { credentials: "include" });
+            })
+            .then(res => res.json())
+            .then(fullUser => setUser(fullUser))
             .catch(() => setUser(null));
     }, []);
+
 
     useEffect(() => {
         if ("geolocation" in navigator) {
@@ -108,8 +115,8 @@ export default function Headers() {
                         <li className="menu__item right__menu">
                             <img src={UserIcon} alt="Гео" />
                             {user ? (
-                                <Link to={`/account/${user.userId}`} className="menu__link">
-                                    {user.userName}
+                                <Link to="/account" className="menu__link">
+                                    {user.firstName} {user.lastName}
                                 </Link>
                             ) : (
                                 <Link to="/login" className="menu__link">Привіт! Увійдіть в Систему</Link>
