@@ -14,3 +14,211 @@
 .paginator button:hover:not(:disabled){ background:#b5b5b5; }
 .paginator button:disabled        { opacity:.45; cursor:default; }
 .paginator .pg-active             { background:#839D9A; color:#fff; }
+
+/* Стили для модального окна */
+.modal-overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh; /* Ограничиваем высоту до 80% экрана */
+    width: 400px;
+}
+
+.modal-card h2 {
+    color: #839D9A;
+    margin-bottom: 20px;
+}
+
+.modal-form {
+    flex: 1; /* Занимает доступное пространство */
+    overflow-y: auto; /* Включаем прокрутку для полей */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px;
+}
+
+.modal-btn-confirm {
+    background-color: #839D9A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modal-btn-confirm:hover {
+    background-color: #6c8683;
+}
+
+.modal-btn-cancel {
+    background-color: #ccc;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Остальные стили остаются без изменений */
+.admin-container {
+    background: #f0f4f3;
+    min-height: 100vh;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-title {
+    font-size: 36px;
+    color: #839D9A;
+    margin-bottom: 30px;
+}
+
+.admin-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-card h2 {
+    color: #839D9A;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    flex: 1;
+}
+
+.btn-create {
+    background-color: #839D9A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-create:hover {
+    background-color: #6c8683;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.admin-table th {
+    background-color: #839D9A;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.start_btn-create {
+    margin-bottom: 20px;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 18px;
+}
+
+.paginator button {
+    min-width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 6px;
+    background: #e1e1e1;
+    color: #313131;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .25s;
+}
+
+.paginator button:hover:not(:disabled) {
+    background: #b5b5b5;
+}
+
+.paginator button:disabled {
+    opacity: .45;
+    cursor: default;
+}
+
+.paginator .pg-active {
+    background: #839D9A;
+    color: #fff;
+}
