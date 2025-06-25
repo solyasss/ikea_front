@@ -19,7 +19,7 @@ function Products() {
     return (
         <>
             <Headers />
-            <div className="product-list container">
+            <div className="product-list container" style={{ paddingTop: "80px" }}>
                 <CategoryCards title="ТОВАРИ" cards={sliderData} />
                 <ProductsOneSet
                     title={productsOneSet.title1}

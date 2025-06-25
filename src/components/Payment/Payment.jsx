@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Payment.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Payment() {
-    const [paymentMethod, setPaymentMethod] = useState("cash");
     const [userId, setUserId] = useState(null);
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
     const [address, setAddress] = useState("");
     const [cardNumber, setCardNumber] = useState("");
     const [userData, setUserData] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchUser();
@@ -35,8 +37,8 @@ function Payment() {
     };
 
     const handleOrder = async () => {
-        if (!address || (paymentMethod === "card" && !cardNumber)) {
-            alert("Заполните все обязательные поля.");
+        if (!address || !cardNumber) {
+            alert("Заповніть всі обов'язкові поля.");
             return;
         }
 
@@ -47,39 +49,22 @@ function Payment() {
                 productId: item.productId,
                 orderDate: new Date(),
                 receiveDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
-                isCash: paymentMethod === "cash",
+                isCash: false, // Только карта
                 totalSum: item.totalSum
             }, { withCredentials: true })
         );
 
         await Promise.all(orderPromises);
         await axios.post("https://localhost:7290/api/carts/clear", {}, { withCredentials: true });
-        alert("Заказ оформлен!");
-    };
-
-    const handleUserUpdate = async () => {
-        await axios.put(`https://localhost:7290/api/users/${userId}`, {
-            address: address,
-            cardNumber: cardNumber
-        });
-        alert("Информация обновлена");
+        alert("Замовлення успішно оформлено!");
+        navigate("/");
     };
 
     return (
         <div className="checkout-container">
-
-
             <div className="checkout-content">
-
                 <div className="checkout-form">
                     <h2 className="checkout-title">Оформлення замовлення</h2>
-                    <label>
-                        Спосіб оплати:
-                        <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
-                            <option value="cash">Готівка</option>
-                            <option value="card">Картка</option>
-                        </select>
-                    </label>
 
                     <label>
                         Адреса доставки:
@@ -91,21 +76,15 @@ function Payment() {
                         />
                     </label>
 
-                    {paymentMethod === "card" && (
-                        <label>
-                            Номер картки:
-                            <input
-                                type="text"
-                                value={cardNumber}
-                                onChange={(e) => setCardNumber(e.target.value)}
-                                placeholder="Введіть номер картки"
-                            />
-                        </label>
-                    )}
-
-                    <button className="update-info-btn" onClick={handleUserUpdate}>
-                        Зберегти адресу / картку
-                    </button>
+                    <label>
+                        Номер картки:
+                        <input
+                            type="text"
+                            value={cardNumber}
+                            onChange={(e) => setCardNumber(e.target.value)}
+                            placeholder="Введіть номер картки"
+                        />
+                    </label>
                 </div>
 
                 <div className="checkout-summary">
@@ -120,7 +99,6 @@ function Payment() {
                 </div>
             </div>
         </div>
-
     );
 }
 

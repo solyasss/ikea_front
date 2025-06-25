@@ -54,7 +54,6 @@
 
 }
 
-
 .admin-menu {
     width: 100%;
     max-width: 250px;
@@ -70,16 +69,42 @@
 }
 
 .admin-show-container {
-   
-   
+
+
     background-color: #f9f9f9;
 }
+
 .admin-menu.custom-menu-bg {
     position: fixed;
     height: 100%;
 }
 
 .admin-show-container {
-   width: 100%;
+    width: 100%;
 }
 
+.admin-logout-btn {
+    background-color: #ffffff;
+    color: #839D9A;
+    border: 2px solid #ffffff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: auto;
+}
+
+
+.admin-logout-btn:hover {
+    background-color: #839D9A;
+    color: #ffffff;
+}
+
+.admin-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}

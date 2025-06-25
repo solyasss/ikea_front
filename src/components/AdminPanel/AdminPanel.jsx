@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ManageСategories from "../ManageСategories/ManageСategories";
 import ManageUsers from "../ManageUsers/ManageUsers";
 import ManageProducts from "../ManageProducts/ManageProducts";
@@ -8,70 +9,48 @@ import "./AdminPanel.css";
 
 function AdminPanel() {
     const [activeSection, setActiveSection] = useState("categories");
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await fetch("https://localhost:7290/api/auth/logout", {
+            method: "POST",
+            credentials: "include"
+        });
+        navigate("/");
+    };
 
     return (
         <section className="main-admin-panel">
             <nav className="admin-menu admin-custom-menu-bg">
-                <ul className="admin-menu-list">
-                    <li
-                        className={activeSection === "purchases" ? "active" : ""}
-                        onClick={() => setActiveSection("categories")}
-                    >
-                        <span className="underline-text">Категории</span>
-                    </li>
-                    <li
-                        className={activeSection === "profile" ? "active" : ""}
-                        onClick={() => setActiveSection("user")}
-                    >
-                        <span className="underline-text">Пользователи</span>
-                    </li>
-                    <li
-                        className={activeSection === "profile" ? "active" : ""}
-                        onClick={() => setActiveSection("products")}
-                    >
-                        <span className="underline-text">Продукты</span>
-                    </li>
-                    <li
-                        className={activeSection === "profile" ? "active" : ""}
-                        onClick={() => setActiveSection("characteristic")}
-                    >
-                        <span className="underline-text">Характеристики</span>
-                    </li>
-                    <li
-                        className={activeSection === "profile" ? "active" : ""}
-                        onClick={() => setActiveSection("image")}
-                    >
-                        <span className="underline-text">Картинки продукта</span>
-                    </li>
-                </ul>
+                <div className="admin-menu-wrapper">
+                    <ul className="admin-menu-list">
+                        <li onClick={() => setActiveSection("categories")}>
+                            <span className={`underline-text ${activeSection === "categories" ? "active" : ""}`}>Категорії</span>
+                        </li>
+                        <li onClick={() => setActiveSection("user")}>
+                            <span className={`underline-text ${activeSection === "user" ? "active" : ""}`}>Користувачі</span>
+                        </li>
+                        <li onClick={() => setActiveSection("products")}>
+                            <span className={`underline-text ${activeSection === "products" ? "active" : ""}`}>Товари</span>
+                        </li>
+                        <li onClick={() => setActiveSection("characteristic")}>
+                            <span className={`underline-text ${activeSection === "characteristic" ? "active" : ""}`}>Характеристики</span>
+                        </li>
+                        <li onClick={() => setActiveSection("image")}>
+                            <span className={`underline-text ${activeSection === "image" ? "active" : ""}`}>Зображення товару</span>
+                        </li>
+                    </ul>
+
+                    <button className="admin-logout-btn" onClick={handleLogout}>Вийти з акаунту</button>
+                </div>
             </nav>
+
             <main className="admin-show-container">
-                {activeSection === "categories" && (
-                    <div>
-                        <ManageСategories />
-                    </div>
-                )}
-                {activeSection === "user" && (
-                    <div>
-                        <ManageUsers />
-                    </div>
-                )}
-                {activeSection === "products" && (
-                    <div>
-                        <ManageProducts />
-                    </div>
-                )}
-                {activeSection === "characteristic" && (
-                    <div>
-                        <ManageCharacteristics />
-                    </div>
-                )}
-                {activeSection === "image" && (
-                    <div>
-                        <ManageProductImages />
-                    </div>
-                )}
-                {/* test */}
+                {activeSection === "categories" && <ManageСategories />}
+                {activeSection === "user" && <ManageUsers />}
+                {activeSection === "products" && <ManageProducts />}
+                {activeSection === "characteristic" && <ManageCharacteristics />}
+                {activeSection === "image" && <ManageProductImages />}
             </main>
         </section>
     );

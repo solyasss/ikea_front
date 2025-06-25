@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // добавили useNavigate
 import "./UserAccount.css";
 import UserProfile from "../UserProfile/UserProfile";
 import UserOrder from "../UserOrder/UserOrder";
+import Headers from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function UserAccount() {
     const [activeSection, setActiveSection] = useState("purchases");
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("https://localhost:7290/api/auth/me", { credentials: "include" })
@@ -20,50 +23,26 @@ function UserAccount() {
             });
     }, []);
 
+    const handleLogout = async () => {
+        await fetch("https://localhost:7290/api/auth/logout", {
+            method: "POST",
+            credentials: "include"
+        });
+        navigate("/login");
+    };
+
     if (!user) return <div>Загрузка...</div>;
 
     return (
-        <section className="user-account">
-            <nav className="user-menu custom-menu-bg">
-                <ul className="user-menu-list">
-                    <li
-                        className={activeSection === "purchases" ? "active" : ""}
-                        onClick={() => setActiveSection("purchases")}
-                    >
-                        <span className="underline-text">ПОКУПКИ</span>
-                    </li>
-                    <li
-                        className={activeSection === "profile" ? "active" : ""}
-                        onClick={() => setActiveSection("profile")}
-                    >
-                        <span className="underline-text">ПРОФІЛЬ</span>
-                    </li>
-                    <li
-                        className={activeSection === "wishlist" ? "active" : ""}
-                        onClick={() => setActiveSection("wishlist")}
-                    >
-                        <span className="underline-text">ВІШЛІСТ</span>
-                    </li>
-                    <li
-                        className={activeSection === "basket" ? "active" : ""}
-                        onClick={() => setActiveSection("basket")}
-                    >
-                        <span className="underline-text">КОШИК</span>
-                    </li>
-                </ul>
-            </nav>
+        <>
+            <section className="user-account">
+                <button className="logout-button" onClick={handleLogout}>Вийти</button>
 
-            <main className="show-container">
-                {activeSection === "purchases" &&
-                    <UserOrder Id={user.userId} />
-                }
-                {activeSection === "profile" &&
+                <main className="show-container">
                     <UserProfile Id={user.userId} />
-                }
-                {activeSection === "wishlist" && <div>WISHLIST BLOCK</div>}
-                {activeSection === "basket" && <div>BASKET BLOCK</div>}
-            </main>
-        </section>
+                </main>
+            </section>
+        </>
     );
 }
 
