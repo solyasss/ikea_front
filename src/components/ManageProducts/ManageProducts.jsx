@@ -27,7 +27,9 @@ export default function ManageProducts() {
             const { items, totalCount } = await res.json();
             setProducts(items);
             setTotal(totalCount);
-        } catch (e) { console.error("Ошибка загрузки:", e); }
+        } catch (e) {
+            console.error("Помилка завантаження:", e);
+        }
     };
     useEffect(() => { fetchProducts(); }, [page]);
 
@@ -35,7 +37,7 @@ export default function ManageProducts() {
         p.article && p.name && p.price > 0 && p.categoryId > 0;
 
     const createProduct = async () => {
-        if (!validate(newProduct)) return alert("Заполните обязательные поля");
+        if (!validate(newProduct)) return alert("Заповніть обов'язкові поля");
         await fetch("https://localhost:7290/api/products", {
             method: "POST", headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProduct)
@@ -46,7 +48,7 @@ export default function ManageProducts() {
     };
 
     const updateProduct = async () => {
-        if (!validate(editProduct)) return alert("Заполните обязательные поля");
+        if (!validate(editProduct)) return alert("Заповніть обов'язкові поля");
         await fetch(`https://localhost:7290/api/products/${editProduct.id}`, {
             method: "PUT", headers: { "Content-Type": "application/json" },
             body: JSON.stringify(editProduct)
@@ -56,7 +58,7 @@ export default function ManageProducts() {
     };
 
     const deleteProduct = async (id) => {
-        if (!window.confirm("Удалить продукт?")) return;
+        if (!window.confirm("Видалити товар?")) return;
         await fetch(`https://localhost:7290/api/products/${id}`, { method: "DELETE" });
         fetchProducts();
     };
@@ -74,9 +76,9 @@ export default function ManageProducts() {
     const renderInputs = (obj, set) =>
         Object.keys(emptyProduct).map(k => (
             <input key={k}
-                type={["price", "weight", "rating", "categoryId"].includes(k) ? "number" : "text"}
-                name={k} placeholder={k}
-                value={obj[k] ?? ""} onChange={e => set(o => ({ ...o, [k]: e.target.value }))}
+                   type={["price", "weight", "rating", "categoryId"].includes(k) ? "number" : "text"}
+                   name={k} placeholder={k}
+                   value={obj[k] ?? ""} onChange={e => set(o => ({ ...o, [k]: e.target.value }))}
             />
         ));
 
@@ -89,19 +91,19 @@ export default function ManageProducts() {
 
     return (
         <div className="admin-container">
-            <h1 className="admin-title">Управление продуктами</h1>
-            <button onClick={() => setShowCreateModal(true)} className="btn-create start_btn-create">Создать</button>
+            <h1 className="admin-title">Управління товарами</h1>
+            <button onClick={() => setShowCreateModal(true)} className="btn-create start_btn-create">Створити</button>
 
             {showCreateModal && (
                 <div className="modal-overlay">
                     <div className="modal-card">
-                        <h2>Создать продукт</h2>
+                        <h2>Створити товар</h2>
                         <div className="modal-form">
                             {renderInputs(newProduct, setNewProduct)}
                         </div>
                         <div className="modal-buttons">
-                            <button onClick={createProduct} className="modal-btn-confirm">Создать</button>
-                            <button onClick={() => setShowCreateModal(false)} className="modal-btn-cancel">Отмена</button>
+                            <button onClick={createProduct} className="modal-btn-confirm">Створити</button>
+                            <button onClick={() => setShowCreateModal(false)} className="modal-btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
@@ -110,39 +112,39 @@ export default function ManageProducts() {
             {editProduct && (
                 <div className="modal-overlay">
                     <div className="modal-card">
-                        <h2>Редактировать продукт</h2>
+                        <h2>Редагувати товар</h2>
                         <div className="modal-form">
                             {renderInputs(editProduct, setEditProduct)}
                         </div>
                         <div className="modal-buttons">
-                            <button onClick={updateProduct} className="modal-btn-confirm">Сохранить</button>
-                            <button onClick={() => setEditProduct(null)} className="modal-btn-cancel">Отмена</button>
+                            <button onClick={updateProduct} className="modal-btn-confirm">Зберегти</button>
+                            <button onClick={() => setEditProduct(null)} className="modal-btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
             )}
 
             <div className="admin-card">
-                <h2>Список продуктов</h2>
+                <h2>Список товарів</h2>
                 <table className="admin-table">
                     <thead>
-                        <tr>
-                            <th>ID</th><th>Название</th><th>Артикул</th>
-                            <th>Цена</th><th>Изображение</th><th>Действия</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th><th>Назва</th><th>Артикул</th>
+                        <th>Ціна</th><th>Зображення</th><th>Дії</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {products.map(p => (
-                            <tr key={p.id}>
-                                <td>{p.id}</td><td>{p.name}</td><td>{p.article}</td>
-                                <td>{p.price} грн</td>
-                                <td>{p.mainImage?.slice(0, 20)}…</td>
-                                <td>
-                                    <button onClick={() => handleEditClick(p.id)} className="btn-edit">Редактировать</button>
-                                    <button onClick={() => deleteProduct(p.id)} className="btn-delete">Удалить</button>
-                                </td>
-                            </tr>
-                        ))}
+                    {products.map(p => (
+                        <tr key={p.id}>
+                            <td>{p.id}</td><td>{p.name}</td><td>{p.article}</td>
+                            <td>{p.price} грн</td>
+                            <td>{p.mainImage?.slice(0, 20)}…</td>
+                            <td>
+                                <button onClick={() => handleEditClick(p.id)} className="btn-edit">Редагувати</button>
+                                <button onClick={() => deleteProduct(p.id)} className="btn-delete">Видалити</button>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
 

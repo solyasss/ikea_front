@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ManageProductCharacteristic.css"; 
+import "./ManageProductCharacteristic.css";
 
 export default function ManageCharacteristics() {
     const [characteristics, setCharacteristics] = useState([]);
@@ -32,13 +32,12 @@ export default function ManageCharacteristics() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(editChar)
         });
-        console.log(editProduct)
         setEditChar(null);
         fetchCharacteristics();
     };
 
     const deleteChar = async id => {
-        if (!window.confirm("Удалить характеристику?")) return;
+        if (!window.confirm("Видалити характеристику?")) return;
         await fetch(`https://localhost:7290/api/ProductCharacteristic/${id}`, {
             method: "DELETE"
         });
@@ -47,22 +46,22 @@ export default function ManageCharacteristics() {
 
     return (
         <div className="admin-container">
-            <h1 className="admin-title">Управление характеристиками продукта</h1>
-            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Создать</button>
+            <h1 className="admin-title">Управління характеристиками товарів</h1>
+            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Створити</button>
 
             {showCreate && (
                 <div className="model">
                     <div className="admin-card">
-                        <h2>Создать характеристику</h2>
+                        <h2>Створити характеристику</h2>
                         <div className="form-group">
-                            <input placeholder="Product ID" type="number" value={newChar.productId}
-                                onChange={e => setNewChar({ ...newChar, productId: +e.target.value })} />
-                            <input placeholder="Название" value={newChar.name}
-                                onChange={e => setNewChar({ ...newChar, name: e.target.value })} />
-                            <input placeholder="Значение" value={newChar.value}
-                                onChange={e => setNewChar({ ...newChar, value: e.target.value })} />
-                            <button onClick={createChar} className="btn-create">Создать</button>
-                            <button onClick={() => setShow(false)} className="btn-cancel">Отмена</button>
+                            <input placeholder="ID товару" type="number" value={newChar.productId}
+                                   onChange={e => setNewChar({ ...newChar, productId: +e.target.value })} />
+                            <input placeholder="Назва" value={newChar.name}
+                                   onChange={e => setNewChar({ ...newChar, name: e.target.value })} />
+                            <input placeholder="Значення" value={newChar.value}
+                                   onChange={e => setNewChar({ ...newChar, value: e.target.value })} />
+                            <button onClick={createChar} className="btn-create">Створити</button>
+                            <button onClick={() => setShow(false)} className="btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
@@ -71,16 +70,16 @@ export default function ManageCharacteristics() {
             {editChar && (
                 <div className="model">
                     <div className="admin-card">
-                        <h2>Редактировать характеристику</h2>
+                        <h2>Редагувати характеристику</h2>
                         <div className="form-group">
-                            <input type="number" placeholder="Product ID" value={editChar.productId}
-                                onChange={e => setEditChar({ ...editChar, productId: +e.target.value })} />
-                            <input placeholder="Название" value={editChar.name}
-                                onChange={e => setEditChar({ ...editChar, name: e.target.value })} />
-                            <input placeholder="Значение" value={editChar.value}
-                                onChange={e => setEditChar({ ...editChar, value: e.target.value })} />
-                            <button onClick={updateChar} className="btn-create">Обновить</button>
-                            <button onClick={() => setEditChar(null)} className="btn-cancel">Отмена</button>
+                            <input type="number" placeholder="ID товару" value={editChar.productId}
+                                   onChange={e => setEditChar({ ...editChar, productId: +e.target.value })} />
+                            <input placeholder="Назва" value={editChar.name}
+                                   onChange={e => setEditChar({ ...editChar, name: e.target.value })} />
+                            <input placeholder="Значення" value={editChar.value}
+                                   onChange={e => setEditChar({ ...editChar, value: e.target.value })} />
+                            <button onClick={updateChar} className="btn-create">Оновити</button>
+                            <button onClick={() => setEditChar(null)} className="btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
@@ -90,21 +89,21 @@ export default function ManageCharacteristics() {
                 <h2>Список характеристик</h2>
                 <table className="admin-table">
                     <thead>
-                        <tr><th>ID</th><th>Product ID</th><th>Название</th><th>Значение</th><th>Действия</th></tr>
+                    <tr><th>ID</th><th>ID товару</th><th>Назва</th><th>Значення</th><th>Дії</th></tr>
                     </thead>
                     <tbody>
-                        {characteristics.map(c => (
-                            <tr key={c.id}>
-                                <td>{c.id}</td>
-                                <td>{c.productId}</td>
-                                <td>{c.name}</td>
-                                <td>{c.value}</td>
-                                <td>
-                                    <button onClick={() => setEditChar(c)} className="btn-edit">Редактировать</button>
-                                    <button onClick={() => deleteChar(c.id)} className="btn-delete">Удалить</button>
-                                </td>
-                            </tr>
-                        ))}
+                    {characteristics.map(c => (
+                        <tr key={c.id}>
+                            <td>{c.id}</td>
+                            <td>{c.productId}</td>
+                            <td>{c.name}</td>
+                            <td>{c.value}</td>
+                            <td>
+                                <button onClick={() => setEditChar(c)} className="btn-edit">Редагувати</button>
+                                <button onClick={() => deleteChar(c.id)} className="btn-delete">Видалити</button>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
             </div>

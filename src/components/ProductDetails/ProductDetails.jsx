@@ -3,13 +3,12 @@ import { useParams } from "react-router-dom";
 import Heder from "../Header/Header";
 import BasketMenu from "../BasketMenu/BasketMenu";
 import likeIkon from "../../assets/img/header/Component 1.svg";
-import shopIkon from "../../assets/img/product_details/shop.svg"
-import trukIkon from "../../assets/img/product_details/truk.svg"
-import rightIkon from "../../assets/img/product_details/right_arrow.svg"
-import Characteristic from "../ProductCharacteristics/ProductCharacteristics"
+import shopIkon from "../../assets/img/product_details/shop.svg";
+import trukIkon from "../../assets/img/product_details/truk.svg";
+import rightIkon from "../../assets/img/product_details/right_arrow.svg";
+import Characteristic from "../ProductCharacteristics/ProductCharacteristics";
 import CommentCard from "../CommentCard/CommentCard";
 import favorites_black from "../../assets/img/basket/favorite.svg";
-
 
 import './ProductDetails.css';
 
@@ -38,13 +37,12 @@ function ProductDetails() {
                     setIsInWishlist(found);
                 }
             } catch (error) {
-                console.error("Ошибка при получении вишлиста:", error);
+                console.error("Помилка при отриманні списку бажаного:", error);
             }
         };
 
         checkWishlist();
     }, [user, id]);
-
 
     useEffect(() => {
         async function fetchUser() {
@@ -68,7 +66,7 @@ function ProductDetails() {
         const fetchProduct = async () => {
             try {
                 const response = await fetch(`https://localhost:7290/api/products/${id}`);
-                if (!response.ok) throw new Error("Product not found");
+                if (!response.ok) throw new Error("Товар не знайдено");
                 const data = await response.json();
 
                 const allImages = data.images ? [data.mainImage, ...data.images] : [data.mainImage];
@@ -76,15 +74,14 @@ function ProductDetails() {
                 setProductData({ ...data, allImages });
                 setSelectedImage(data.mainImage);
             } catch (error) {
-                console.error("Error fetching product:", error);
+                console.error("Помилка при завантаженні товару:", error);
             }
         };
         fetchProduct();
     }, [id]);
 
-
     const renderStars = (rating) => {
-        if (!rating) return "No rating";
+        if (!rating) return "Немає оцінок";
         const fullStars = Math.floor(rating);
         const halfStar = rating % 1 >= 0.5;
         const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
@@ -108,7 +105,7 @@ function ProductDetails() {
 
     const handleAddComment = async () => {
         if (!commentText.trim()) {
-            alert("Комментарий не может быть пустым");
+            alert("Коментар не може бути порожнім");
             return;
         }
 
@@ -126,7 +123,7 @@ function ProductDetails() {
         });
 
         if (response.ok) {
-            alert("Комментарий добавлен");
+            alert("Коментар додано");
             setCommentText("");
             setRating(5);
 
@@ -135,20 +132,17 @@ function ProductDetails() {
             const allImages = updatedProduct.images ? [updatedProduct.mainImage, ...updatedProduct.images] : [updatedProduct.mainImage];
             setProductData({ ...updatedProduct, allImages });
         } else if (response.status === 401) {
-            alert("Пожалуйста, войдите в систему чтобы оставить комментарий.");
+            alert("Будь ласка, увійдіть у систему, щоб залишити коментар.");
         } else {
-            alert("Ошибка при добавлении комментария.");
+            alert("Помилка при додаванні коментаря.");
         }
     };
 
     const handleAddToWishlist = async () => {
         if (!user) {
-            alert("Пожалуйста, войдите в систему чтобы добавить товар в вишлист.");
+            alert("Будь ласка, увійдіть у систему, щоб додати товар до бажаного.");
             return;
         }
-
-
-
 
         const dto = {
             productId: parseInt(id),
@@ -165,29 +159,24 @@ function ProductDetails() {
             });
 
             if (response.ok) {
-                alert("Товар добавлен в избранное!");
+                alert("Товар додано до улюблених!");
+                setIsInWishlist(true);
             } else if (response.status === 401) {
-                alert("Необходимо войти в систему, чтобы добавить в избранное.");
+                alert("Потрібно увійти в систему, щоб додати до улюблених.");
             } else {
-                alert("Ошибка при добавлении в избранное.");
+                alert("Помилка при додаванні в улюблені.");
             }
         } catch (error) {
-            console.error("Ошибка при добавлении в вишлист:", error);
-            alert("Ошибка соединения с сервером.");
-        }
-
-        if (response.ok) {
-            alert("Товар добавлен в избранное!");
-            setIsInWishlist(true);
+            console.error("Помилка при додаванні до списку бажаного:", error);
+            alert("Помилка з'єднання з сервером.");
         }
     };
-
 
     const handleAddToCart = async () => {
         const dto = {
             productId: parseInt(id),
             quantity: quantity,
-            isCash: true, 
+            isCash: true,
             totalSum: parseFloat((productData.price * quantity).toFixed(2)),
         };
 
@@ -202,20 +191,19 @@ function ProductDetails() {
             });
 
             if (response.ok) {
-                alert("Товар добавлен в корзину!");
+                alert("Товар додано до кошика!");
             } else if (response.status === 401) {
-                alert("Пожалуйста, войдите в систему чтобы добавить товар в корзину.");
+                alert("Будь ласка, увійдіть у систему, щоб додати товар до кошика.");
             } else {
-                alert("Ошибка при добавлении товара в корзину.");
+                alert("Помилка при додаванні товару до кошика.");
             }
         } catch (error) {
-            console.error("Ошибка при добавлении в корзину:", error);
-            alert("Ошибка соединения с сервером.");
+            console.error("Помилка при додаванні в кошик:", error);
+            alert("Помилка з'єднання з сервером.");
         }
     };
 
-
-    if (!productData) return <div>Загрузка...</div>;
+    if (!productData) return <div>Завантаження...</div>;
 
     return (
         <>
@@ -240,21 +228,20 @@ function ProductDetails() {
                                 </div>
                                 <img
                                     src={likeIkon}
-                                    alt="Добавить в избранное"
+                                    alt="Додати до улюблених"
                                     onClick={handleAddToWishlist}
                                     style={{ cursor: "pointer" }}
-                                    title="Добавить в избранное"
+                                    title="Додати до улюблених"
                                 />
                             </li>
                             <li>{productData.price}₴</li>
                             <li>
                                 <div className="rating-stars">{renderStars(productData.rating)}</div>
                             </li>
-
                         </ul>
                         <div className="credit-info">
-                            Купите сейчас, платите постепенно с 0% процентной ставкой.
-                            Услуга финансирования, предлагаемая BCR. <a className="more-info-link" href="">Узнайте больше здесь</a>
+                            Купуйте зараз — платіть пізніше з 0% ставкою.
+                            Послуга фінансування від BCR. <a className="more-info-link" href="#">Дізнатися більше</a>
                         </div>
                         <Characteristic productData={productData} />
                         <div className="thumbnails">
@@ -262,7 +249,7 @@ function ProductDetails() {
                                 <img
                                     key={index}
                                     src={img}
-                                    alt={`Thumb ${index}`}
+                                    alt={`Мініатюра ${index}`}
                                     className="slider-image"
                                     onClick={() => setSelectedImage(img)}
                                     style={{
@@ -272,29 +259,6 @@ function ProductDetails() {
                                 />
                             ))}
                         </div>
-                        {/* <div className="buy-information-box">
-                            <div className="order-box">
-                                <div className="external-order-box">
-                                    <img className="buy-information-icons" src={trukIkon}></img>
-                                    <div>
-                                        <div className="order-title">Доставка</div>
-                                        <div>Проверить наличие</div>
-                                    </div>
-                                </div>
-                                <img className="details-information-icons" src={rightIkon}></img>
-                            </div>
-                            <div className="separator-line" />
-                            <div className="order-box">
-                                <div className="external-order-box">
-                                    <img className="buy-information-icons" src={shopIkon}></img>
-                                    <div>
-                                        <div className="order-title">В магазине</div>
-                                        <div>Проверить наличие</div>
-                                    </div>
-                                </div>
-                                <img className="details-information-icons" src={rightIkon}></img>
-                            </div>
-                        </div> */}
                         <div className="add-basket-products-box">
                             <ul>
                                 <li onClick={increaseQuantity}><button>+</button></li>
@@ -302,22 +266,22 @@ function ProductDetails() {
                                 <li onClick={decreaseQuantity}><button>-</button></li>
                             </ul>
                             <button className="basket-button" onClick={handleAddToCart}>
-                                Добавить в корзину
+                                Додати до кошика
                             </button>
                         </div>
                     </div>
                 </div>
                 <div className="product-description-text">
-                    <h3>Описание товара</h3>
+                    <h3>Опис товару</h3>
                     <p>{productData.description}</p>
                 </div>
                 {user ? (
                     <div className="add-comment-form">
-                        <h4>Оставить отзыв</h4>
+                        <h4>Залишити відгук</h4>
                         <textarea
                             value={commentText}
                             onChange={(e) => setCommentText(e.target.value)}
-                            placeholder="Ваш комментарий"
+                            placeholder="Ваш коментар"
                         />
                         <select value={rating} onChange={e => setRating(Number(e.target.value))}>
                             <option value={1}>1 ★</option>
@@ -326,41 +290,13 @@ function ProductDetails() {
                             <option value={4}>4 ★</option>
                             <option value={5}>5 ★</option>
                         </select>
-                        <button onClick={handleAddComment}>Отправить</button>
+                        <button onClick={handleAddComment}>Надіслати</button>
                     </div>
                 ) : (
                     <div className="login-notice">
-                        Для оставления комментария необходимо <a href="/login">войти в систему</a>.
+                        Щоб залишити коментар, потрібно <a href="/login">увійти</a> у систему.
                     </div>
                 )}
-
-
-                {/* <div className="comments-section">
-                    <h3>Отзывы</h3>
-                    {productData.comments.length === 0 ? (
-                        <p>Нет комментариев</p>
-                    ) : (
-                        <div className="comment-list">
-                            {productData.comments.map((comment) => (
-                                <CommentCard
-                                    key={comment.id}
-                                    comment={comment}
-                                    currentUser={user}
-                                    productId={id}
-                                    onUpdated={() => {
-                                        // Обновление данных после удаления или редактирования
-                                        fetch(`https://localhost:7290/api/products/${id}`)
-                                            .then(res => res.json())
-                                            .then(data => {
-                                                const allImages = data.images ? [data.mainImage, ...data.images] : [data.mainImage];
-                                                setProductData({ ...data, allImages });
-                                            });
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    )}
-                </div> */}
 
                 {productData.comments.map((comment) => (
                     <CommentCard
@@ -378,7 +314,6 @@ function ProductDetails() {
                         }}
                     />
                 ))}
-
             </div>
         </>
     );

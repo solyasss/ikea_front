@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ManageСategories.css";
 
-export default function ManageСategories() {
+export default function ManageCategories() {
     const [categories, setCategories] = useState([]);
     const [newCat, setNewCat] = useState({ title: "", slug: "", parentId: null });
     const [editCat, setEditCat] = useState(null);
@@ -29,6 +29,7 @@ export default function ManageСategories() {
         setNewCat({ title: "", slug: "", parentId: null });
         setShow(false); fetchCategories();
     };
+
     const updateCat = async () => {
         await fetch(`https://localhost:7290/api/categories/${editCat.id}`, {
             method: "PUT", headers: { "Content-Type": "application/json" },
@@ -36,33 +37,34 @@ export default function ManageСategories() {
         });
         setEditCat(null); fetchCategories();
     };
+
     const deleteCat = async id => {
-        if (!window.confirm("Удалить категорию?")) return;
+        if (!window.confirm("Видалити категорію?")) return;
         await fetch(`https://localhost:7290/api/categories/${id}`, { method: "DELETE" });
         fetchCategories();
     };
 
     const PgBtn = ({ p }) => (
         <button disabled={p === page} className={p === page ? "pg-active" : ""}
-            onClick={() => setPage(p)}>{p}</button>
+                onClick={() => setPage(p)}>{p}</button>
     );
 
     return (
         <div className="admin-container">
-            <h1 className="admin-title">Управление категориями</h1>
-            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Создать</button>
+            <h1 className="admin-title">Управління категоріями</h1>
+            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Створити</button>
 
             {showCreate && (
                 <div className="model">
                     <div className="admin-card">
-                        <h2>Создать категорию</h2>
+                        <h2>Створити категорію</h2>
                         <div className="form-group">
-                            <input placeholder="Название" value={newCat.title}
-                                onChange={e => setNewCat({ ...newCat, title: e.target.value })} />
-                            <input placeholder="Slug" value={newCat.slug}
-                                onChange={e => setNewCat({ ...newCat, slug: e.target.value })} />
-                            <button onClick={createCat} className="btn-create">Создать</button>
-                            <button onClick={() => setShow(false)} className="btn-cancel">Отмена</button>
+                            <input placeholder="Назва" value={newCat.title}
+                                   onChange={e => setNewCat({ ...newCat, title: e.target.value })} />
+                            <input placeholder="Слаг (slug)" value={newCat.slug}
+                                   onChange={e => setNewCat({ ...newCat, slug: e.target.value })} />
+                            <button onClick={createCat} className="btn-create">Створити</button>
+                            <button onClick={() => setShow(false)} className="btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
@@ -71,33 +73,33 @@ export default function ManageСategories() {
             {editCat && (
                 <div className="model">
                     <div className="admin-card">
-                        <h2>Редактировать категорию</h2>
+                        <h2>Редагувати категорію</h2>
                         <div className="form-group">
-                            <input placeholder="Название" value={editCat.title}
-                                onChange={e => setEditCat({ ...editCat, title: e.target.value })} />
-                            <input placeholder="Slug" value={editCat.slug}
-                                onChange={e => setEditCat({ ...editCat, slug: e.target.value })} />
-                            <button onClick={updateCat} className="btn-create">Обновить</button>
-                            <button onClick={() => setEditCat(null)} className="btn-cancel">Отмена</button>
+                            <input placeholder="Назва" value={editCat.title}
+                                   onChange={e => setEditCat({ ...editCat, title: e.target.value })} />
+                            <input placeholder="Слаг (slug)" value={editCat.slug}
+                                   onChange={e => setEditCat({ ...editCat, slug: e.target.value })} />
+                            <button onClick={updateCat} className="btn-create">Оновити</button>
+                            <button onClick={() => setEditCat(null)} className="btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
             )}
 
             <div className="admin-card">
-                <h2>Список категорий</h2>
+                <h2>Список категорій</h2>
                 <table className="admin-table">
-                    <thead><tr><th>ID</th><th>Название</th><th>Slug</th><th>Действия</th></tr></thead>
+                    <thead><tr><th>ID</th><th>Назва</th><th>Слаг</th><th>Дії</th></tr></thead>
                     <tbody>
-                        {categories.map(c => (
-                            <tr key={c.id}>
-                                <td>{c.id}</td><td>{c.title}</td><td>{c.slug}</td>
-                                <td>
-                                    <button onClick={() => setEditCat(c)} className="btn-edit">Редактировать</button>
-                                    <button onClick={() => deleteCat(c.id)} className="btn-delete">Удалить</button>
-                                </td>
-                            </tr>
-                        ))}
+                    {categories.map(c => (
+                        <tr key={c.id}>
+                            <td>{c.id}</td><td>{c.title}</td><td>{c.slug}</td>
+                            <td>
+                                <button onClick={() => setEditCat(c)} className="btn-edit">Редагувати</button>
+                                <button onClick={() => deleteCat(c.id)} className="btn-delete">Видалити</button>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
 

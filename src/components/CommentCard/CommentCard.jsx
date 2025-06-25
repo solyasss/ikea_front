@@ -9,7 +9,7 @@ function CommentCard({ comment, currentUser, productId, onUpdated }) {
     const isOwner = currentUser?.id === comment.user.id;
 
     const handleDelete = async () => {
-        if (window.confirm("Удалить комментарий?")) {
+        if (window.confirm("Видалити коментар?")) {
             const res = await fetch(`https://localhost:7290/api/productComments/${comment.id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
@@ -20,11 +20,10 @@ function CommentCard({ comment, currentUser, productId, onUpdated }) {
             if (res.ok) {
                 onUpdated();
             } else {
-                alert("Ошибка при удалении комментария.");
+                alert("Помилка при видаленні коментаря.");
             }
         }
     };
-
 
     const handleUpdate = async () => {
         const dto = {
@@ -46,10 +45,9 @@ function CommentCard({ comment, currentUser, productId, onUpdated }) {
             setIsEditing(false);
             onUpdated();
         } else {
-            alert("Ошибка при редактировании комментария.");
+            alert("Помилка при редагуванні коментаря.");
         }
     };
-
 
     return (
         <div className="comment-card">
@@ -69,8 +67,8 @@ function CommentCard({ comment, currentUser, productId, onUpdated }) {
                         ))}
                     </select>
                     <div className="comment-actions">
-                        <button onClick={handleUpdate}>Сохранить</button>
-                        <button onClick={() => setIsEditing(false)}>Отмена</button>
+                        <button onClick={handleUpdate}>Зберегти</button>
+                        <button onClick={() => setIsEditing(false)}>Скасувати</button>
                     </div>
                 </>
             ) : (
@@ -78,8 +76,8 @@ function CommentCard({ comment, currentUser, productId, onUpdated }) {
                     <p>{comment.commentText}</p>
                     {isOwner && (
                         <div className="comment-actions">
-                            <button onClick={() => setIsEditing(true)}>Редактировать</button>
-                            <button onClick={handleDelete}>Удалить</button>
+                            <button onClick={() => setIsEditing(true)}>Редагувати</button>
+                            <button onClick={handleDelete}>Видалити</button>
                         </div>
                     )}
                 </>

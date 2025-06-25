@@ -37,14 +37,8 @@ export default function ManageUsers() {
     const loadUserToEdit = async (id) => {
         const res = await fetch(`https://localhost:7290/api/users/${id}`);
         const user = await res.json();
-
-        // birthDate в формате "yyyy-MM-dd" для input[type=date]
         const birthDate = new Date(user.birthDate).toISOString().substring(0, 10);
-
-        setEditUser({
-            ...user,
-            birthDate,
-        });
+        setEditUser({ ...user, birthDate });
     };
 
     const updateUser = async (user) => {
@@ -69,94 +63,96 @@ export default function ManageUsers() {
         fetchUsers();
     };
 
-
-
     const deleteUser = async id => {
-        if (!window.confirm("Удалить пользователя?")) return;
+        if (!window.confirm("Видалити користувача?")) return;
         await fetch(`https://localhost:7290/api/users/${id}`, { method: "DELETE" });
         fetchUsers();
     };
 
     const PgBtn = ({ p }) => (
         <button disabled={p === page} className={p === page ? "pg-active" : ""}
-            onClick={() => setPage(p)}>{p}</button>
+                onClick={() => setPage(p)}>{p}</button>
     );
 
     return (
         <div className="admin-container">
-            <h1 className="admin-title">Управление пользователями</h1>
-            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Создать</button>
+            <h1 className="admin-title">Управління користувачами</h1>
+            <button onClick={() => setShow(true)} className="btn-create start_btn-create">Створити</button>
 
             {showCreate && (
                 <div className="model">
                     <div className="admin-card">
-                        <h2>Создать пользователя</h2>
+                        <h2>Створити користувача</h2>
                         <div className="form-group">
                             {Object.keys(emptyUser).filter(k => k !== "isAdmin")
                                 .map(k => (
                                     <input key={k} placeholder={k}
-                                        type={k === "password" ? "password" : k === "birthDate" ? "date" : "text"}
-                                        value={newUser[k]} onChange={e => setNewUser({ ...newUser, [k]: e.target.value })} />
+                                           type={k === "password" ? "password" : k === "birthDate" ? "date" : "text"}
+                                           value={newUser[k]} onChange={e => setNewUser({ ...newUser, [k]: e.target.value })} />
                                 ))}
                             <label>
                                 <input type="checkbox" checked={newUser.isAdmin}
-                                    onChange={e => setNewUser({ ...newUser, isAdmin: e.target.checked })} />
-                                Администратор
+                                       onChange={e => setNewUser({ ...newUser, isAdmin: e.target.checked })} />
+                                Адміністратор
                             </label>
-                            <button onClick={createUser} className="btn-create">Создать</button>
-                            <button onClick={() => setShow(false)} className="btn-cancel">Отмена</button>
+                            <button onClick={createUser} className="btn-create">Створити</button>
+                            <button onClick={() => setShow(false)} className="btn-cancel">Скасувати</button>
                         </div>
                     </div>
                 </div>
             )}
+
             {editUser && (
                 <div className="model">
                     <div className="admin-card">
-                        <h2>Редактировать пользователя</h2>
+                        <h2>Редагувати користувача</h2>
                         <div className="form-group">
                             {["firstName", "lastName", "email", "phone", "address", "country", "birthDate"].map(k => (
                                 <input key={k}
-                                    placeholder={k}
-                                    type={k === "birthDate" ? "date" : "text"}
-                                    value={editUser[k] || ""}
-                                    onChange={e => setEditUser({ ...editUser, [k]: e.target.value })}
+                                       placeholder={k}
+                                       type={k === "birthDate" ? "date" : "text"}
+                                       value={editUser[k] || ""}
+                                       onChange={e => setEditUser({ ...editUser, [k]: e.target.value })}
                                 />
                             ))}
                             <label>
                                 <input type="checkbox"
-                                    checked={editUser.isAdmin}
-                                    onChange={e => setEditUser({ ...editUser, isAdmin: e.target.checked })}
+                                       checked={editUser.isAdmin}
+                                       onChange={e => setEditUser({ ...editUser, isAdmin: e.target.checked })}
                                 />
-                                Администратор
+                                Адміністратор
                             </label>
-                            <button className="btn-create" onClick={() => updateUser(editUser)}>Сохранить</button>
-                            <button className="btn-cancel" onClick={() => setEditUser(null)}>Отмена</button>
+                            <button className="btn-create" onClick={() => updateUser(editUser)}>Зберегти</button>
+                            <button className="btn-cancel" onClick={() => setEditUser(null)}>Скасувати</button>
                         </div>
                     </div>
                 </div>
             )}
+
             <div className="admin-card">
-                <h2>Список пользователей</h2>
+                <h2>Список користувачів</h2>
                 <table className="admin-table">
                     <thead>
-                        <tr><th>ID</th><th>Имя</th><th>Email</th>
-                            <th>Телефон</th><th>Страна</th><th>Админ</th><th>Действия</th></tr>
+                    <tr>
+                        <th>ID</th><th>Ім’я</th><th>Email</th>
+                        <th>Телефон</th><th>Країна</th><th>Адмін</th><th>Дії</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {users.map(u => (
-                            <tr key={u.id}>
-                                <td>{u.id}</td>
-                                <td>{u.firstName} {u.lastName}</td>
-                                <td>{u.email}</td>
-                                <td>{u.phone}</td>
-                                <td>{u.country}</td>
-                                <td>{u.isAdmin ? "Да" : "Нет"}</td>
-                                <td>
-                                    <button onClick={() => loadUserToEdit(u.id)} className="btn-edit">Редактировать</button>
-                                    <button onClick={() => deleteUser(u.id)} className="btn-delete">Удалить</button>
-                                </td>
-                            </tr>
-                        ))}
+                    {users.map(u => (
+                        <tr key={u.id}>
+                            <td>{u.id}</td>
+                            <td>{u.firstName} {u.lastName}</td>
+                            <td>{u.email}</td>
+                            <td>{u.phone}</td>
+                            <td>{u.country}</td>
+                            <td>{u.isAdmin ? "Так" : "Ні"}</td>
+                            <td>
+                                <button onClick={() => loadUserToEdit(u.id)} className="btn-edit">Редагувати</button>
+                                <button onClick={() => deleteUser(u.id)} className="btn-delete">Видалити</button>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
 
